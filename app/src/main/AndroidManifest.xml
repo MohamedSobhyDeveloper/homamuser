@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.login.LoginActivity"></activity>
+        <activity android:name=".view.register.ActivityRegister"></activity>
+        <activity android:name=".view.login.LoginActivity" />
         <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity"></activity>
+        <activity android:name=".view.MainActivity" />
     </application>
 
 </manifest>

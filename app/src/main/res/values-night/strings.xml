@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">homamuser</string>
-    <string name="login">تسجيل الدخول</string>
-    <string name="rotate">180</string>
     <string name="welcome">ًWelcome</string>
     <string name="please_login_or_sign_up_to_continue_using_our_app">please login or sign up to continue using our app.</string>
     <string name="email_phonenumber">Email/PhoneNumber</string>
@@ -15,5 +12,4 @@
     <string name="phone">Phone</string>
     <string name="i_have_an_account">I have an account?</string>
     <string name="log_in">Log In</string>
-
 </resources>
