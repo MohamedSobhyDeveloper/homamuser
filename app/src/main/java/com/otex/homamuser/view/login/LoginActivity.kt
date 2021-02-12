@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
-import com.otex.homamuser.view.register.ActivityRegister
+import com.otex.homamuser.view.forgetpassword.ForgetPasswordoneActivity
+import com.otex.homamuser.view.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,7 +26,16 @@ class LoginActivity : AppCompatActivity() {
     private fun click() {
 
         binding.linRegister.setOnClickListener {
-            startActivity(Intent(this, ActivityRegister::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
+             finish()
+        }
+
+        binding.backbtn.setOnClickListener {
+            finish()
+        }
+
+        binding.txtForgoPassword.setOnClickListener {
+            startActivity(Intent(this, ForgetPasswordoneActivity::class.java))
 
         }
     }
