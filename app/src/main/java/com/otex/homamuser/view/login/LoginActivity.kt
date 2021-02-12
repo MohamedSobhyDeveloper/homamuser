@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.databinding.ActivityLoginBinding
-import com.otex.homamuser.view.forgetpassword.ForgetPasswordoneActivity
+import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.txtForgoPassword.setOnClickListener {
-            startActivity(Intent(this, ForgetPasswordoneActivity::class.java))
+            startActivity(Intent(this, ActivityForgetPassword::class.java))
 
         }
     }

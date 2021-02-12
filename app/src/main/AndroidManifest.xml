@@ -14,9 +14,7 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.forgetpassword.ForgetPasswordthreeActivity"></activity>
-        <activity android:name=".view.forgetpassword.ForgetPasswordtwoActivity" />
-        <activity android:name=".view.forgetpassword.ForgetPasswordoneActivity" />
+        <activity android:name=".view.forgetpassword.ActivityForgetPassword" />
         <activity android:name=".view.register.RegisterActivity" />
         <activity android:name=".view.login.LoginActivity" />
         <activity android:name=".view.splash.SplashActivity">
