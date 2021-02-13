@@ -30,5 +30,6 @@
     <string name="contact_us">Contact Us</string>
     <string name="subject">Subject</string>
     <string name="message">Message</string>
+    <string name="open">open</string>
 
 </resources>
