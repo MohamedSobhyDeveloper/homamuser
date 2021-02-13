@@ -12,6 +12,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
+        android:elevation="10dp"
         android:background="@drawable/drwable_corner_white_border_gray"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
@@ -24,7 +25,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/undrawpersonal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/img_offer"
+            android:layout_height="140dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             app:layout_constraintTop_toTopOf="parent"
@@ -33,6 +35,7 @@
             android:layout_marginStart="12dp"
             android:background="@drawable/darwable_corner_orangebutton"
             android:text="@string/open"
+            android:id="@+id/btn_open"
             android:textSize="10dp"
             android:fontFamily="@font/josefinsansbold"
             android:textColor="@color/green"
@@ -50,14 +53,57 @@
                 android:textColor="@color/black"
                 android:text="4.5"
                 android:textSize="10dp"
+                android:id="@+id/txt_rate"
                 android:textAlignment="center"
                 android:gravity="center"
                 android:fontFamily="@font/josefinsansbold"
                 android:drawableStart="@drawable/star"
-                android:layout_height="wrap_content"/>
+                android:layout_height="35dp"/>
 
 
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/img_pasta"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/pasta"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="@color/white"
+            app:civ_shadow_radius="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_offer"
+            app:layout_constraintStart_toStartOf="parent"
+             />
 
+        <TextView
+            app:layout_constraintStart_toEndOf="@+id/img_pasta"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Happy"
+            android:textSize="15sp"
+            android:id="@+id/txt_happy"
+            android:textColor="@color/bluefateh"
+            android:fontFamily="@font/josefinsansbold"
+            app:layout_constraintTop_toTopOf="@+id/img_pasta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintStart_toEndOf="@+id/img_pasta"
+            android:layout_marginStart="10dp"
+            android:text="Bakery and pasta"
+            android:textSize="13sp"
+            android:id="@+id/txt_Bakery"
+            android:textColor="@color/whiteblue"
+            android:fontFamily="@font/robotoregular"
+            app:layout_constraintTop_toBottomOf="@+id/txt_happy"
+            app:layout_constraintBottom_toBottomOf="@+id/img_pasta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
