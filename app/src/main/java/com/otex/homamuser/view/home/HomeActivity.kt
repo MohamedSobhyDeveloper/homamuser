@@ -1,12 +1,20 @@
 package com.otex.homamuser.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityHomeBinding
+import com.otex.homamuser.view.aboutus.AboutUsActivity
+import com.otex.homamuser.view.contactus.ContactUsActivity
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.FoodLoveAdapter
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.SpecialOrderAdapter
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
@@ -38,7 +46,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun click() {
-
+        binding.drawer.layoutContactus.setOnClickListener {
+            val intent = Intent(this, ContactUsActivity::class.java)
+            startActivity(intent)
+        }
+        binding.drawer.layoutAboutus.setOnClickListener {
+            val intent = Intent(this, AboutUsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setuptoolbar() {
@@ -61,10 +76,24 @@ class HomeActivity : AppCompatActivity() {
 
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
-        homeActivityViewModel!!.restaurantLiveData.observe(this, {
+        homeActivityViewModel!!.restaurantLiveData.observe(this) {
 
+            val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+            binding.recFoodLOve.layoutManager = layoutManager
+            val adapter =
+                    FoodLoveAdapter(this,null)
+            binding.recFoodLOve.adapter = adapter
 
-        })
+        }
+        homeActivityViewModel!!.countryhomelivedata.observe(this) {
+
+            val layoutManager = LinearLayoutManager(this)
+            binding.recSpecialOrders.layoutManager = layoutManager
+            val adapter =
+                    SpecialOrderAdapter(this,null)
+            binding.recSpecialOrders.adapter = adapter
+
+        }
 
     }
 

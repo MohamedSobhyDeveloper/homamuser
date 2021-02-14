@@ -43,25 +43,114 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+<androidx.core.widget.NestedScrollView
+    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
 
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:padding="10dp"
+                android:text="@string/role_on_food_you_which_love"
+                android:fontFamily="@font/robotobold"
+                android:textSize="14sp"
+                android:id="@+id/txt_food_love"
+                android:textColor="@color/bluefateh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                app:layout_constraintTop_toTopOf="@+id/txt_food_love"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_food_love"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="12dp"
+                android:text="@string/sell_all"
+                android:fontFamily="@font/josefinsansregular"
+                android:textSize="13sp"
+                android:padding="10dp"
+                android:id="@+id/txt_sellAll_foodlove"
+                android:textColor="@color/orangefateh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tablayout_viewpager"
+                android:id="@+id/rec_foodLOve"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_food_love"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="RtlCompat">
 
             </androidx.recyclerview.widget.RecyclerView>
 
+            <TextView
+                app:layout_constraintTop_toBottomOf="@+id/rec_foodLOve"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:padding="10dp"
+                android:text="@string/special_offers"
+                android:fontFamily="@font/robotobold"
+                android:textSize="14sp"
+                android:id="@+id/txt_special_offers"
+                android:textColor="@color/bluefateh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                app:layout_constraintTop_toTopOf="@+id/txt_special_offers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_special_offers"
+                android:layout_marginEnd="12dp"
+                android:text="@string/sell_all"
+                android:fontFamily="@font/josefinsansregular"
+                android:textSize="13sp"
+                android:padding="10dp"
+                android:id="@+id/txt_sellAll_special"
+                android:textColor="@color/orangefateh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rec_special_orders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/txt_sellAll_special"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="RtlCompat"/>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!-- The navigation drawer -->
+</androidx.core.widget.NestedScrollView>
 
-        <include layout="@layout/xml_drawer" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include layout="@layout/xml_drawer"
+            android:id="@+id/drawer"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
 

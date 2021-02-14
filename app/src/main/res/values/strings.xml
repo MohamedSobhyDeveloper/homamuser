@@ -34,5 +34,8 @@
     <string name="open">open</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="role_on_food_you_which_love">Role on Food You Which Love</string>
+    <string name="special_offers">Special Offers</string>
+    <string name="sell_all">See all</string>
 
 </resources>
