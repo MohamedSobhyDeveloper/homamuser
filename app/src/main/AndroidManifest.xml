@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.contactus.ContactUsActivity"></activity>
+        <activity android:name=".view.home.HomeActivity"></activity>
+        <activity android:name=".view.contactus.ContactUsActivity" />
         <activity android:name=".view.aboutus.AboutUsActivity" />
         <activity android:name=".view.forgetpassword.ActivityForgetPassword" />
         <activity android:name=".view.register.RegisterActivity" />

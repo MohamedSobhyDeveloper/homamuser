@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -20,45 +21,47 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/undrawpersonal"
-            android:layout_width="match_parent"
             android:id="@+id/img_offer"
-            android:layout_height="140dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/undrawpersonal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <androidx.appcompat.widget.AppCompatButton
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
-            android:background="@drawable/darwable_corner_orangebutton"
+            android:background="@drawable/drwable_corner_white"
             android:text="@string/open"
             android:id="@+id/btn_open"
-            android:textSize="10dp"
-            android:fontFamily="@font/josefinsansbold"
+            android:textSize="11sp"
+            android:fontFamily="@font/rubikbold"
             android:textColor="@color/green"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"/>
+            android:layout_height="35dp"
+            tools:ignore="SmallSp" />
 
             <TextView
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="12dp"
                 android:layout_width="wrap_content"
-                android:elevation="5dp"
-                android:background="@drawable/drwable_circle_white"
                 android:textColor="@color/black"
                 android:text="4.5"
-                android:textSize="10dp"
+                android:textSize="11sp"
                 android:id="@+id/txt_rate"
                 android:textAlignment="center"
                 android:gravity="center"
+                android:padding="20dp"
                 android:fontFamily="@font/josefinsansbold"
-                android:drawableStart="@drawable/star"
-                android:layout_height="35dp"/>
+                android:layout_height="wrap_content"
+                app:drawableStartCompat="@drawable/star"
+                tools:ignore="HardcodedText,SmallSp" />
 
 
         <com.mikhaellopez.circularimageview.CircularImageView

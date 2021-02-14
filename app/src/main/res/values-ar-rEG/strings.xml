@@ -3,6 +3,7 @@
     <string name="app_name">homamuser</string>
     <string name="login">تسجيل الدخول</string>
     <string name="rotate">180</string>
+    <string name="rotate0">0</string>
     <string name="welcome">ًWelcome</string>
     <string name="please_login_or_sign_up_to_continue_using_our_app">please login or sign up to continue using our app.</string>
     <string name="email_phonenumber">Email/PhoneNumber</string>
@@ -32,5 +33,7 @@
     <string name="subject">Subject</string>
     <string name="message">Message</string>
     <string name="open">open</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
 
 </resources>
