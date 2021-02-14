@@ -39,5 +39,11 @@
     <string name="special_offers">Special Offers</string>
     <string name="sell_all">See all</string>
     <string name="restaurants">Restaurants</string>
+    <string name="save">Save</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_profile">My Profile</string>
+    <string name="edit">Edit</string>
+    <string name="logout">Logout</string>
+    <string name="order">Order</string>
 
 </resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/drwable_corner_white_border_gray"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/pasta"
+            android:scaleType="centerCrop"
+            android:id="@+id/img_food"
+            android:layout_width="100dp"
+            android:layout_height="80dp"/>
+
+
+        <LinearLayout
+            app:layout_constraintStart_toEndOf="@+id/img_food"
+            app:layout_constraintTop_toTopOf="@+id/img_food"
+            app:layout_constraintBottom_toBottomOf="@id/img_food"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp">
+
+            <TextView
+                android:text="Big zak"
+                android:id="@+id/big_zak"
+                android:textSize="18sp"
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp"/>
+
+            <LinearLayout
+                android:layout_width="170dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:text="3 dishes"
+                    android:id="@+id/num_dished"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/black"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="@string/order"
+                    android:id="@+id/order"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/greenkhameq"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="170dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:text="#320vm"
+                    android:id="@+id/num_order"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/black"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="2/11/2012"
+                    android:id="@+id/txt_date"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/robotoregular"
+                    android:textColor="@color/greenkhameq"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/img_food"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="15dp"
+            android:text="170 L.E"
+            android:textSize="16sp"
+            android:textColor="@color/orangefateh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="Order Now"
+            android:textSize="14sp"
+            android:fontFamily="@font/robotobold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/darwable_corner_orangefatehn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

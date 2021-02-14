@@ -13,6 +13,7 @@ import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityHomeBinding
 import com.otex.homamuser.view.aboutus.AboutUsActivity
 import com.otex.homamuser.view.contactus.ContactUsActivity
+import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.FoodLoveAdapter
@@ -54,6 +55,10 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.drawer.layoutAboutus.setOnClickListener {
             val intent = Intent(this, AboutUsActivity::class.java)
+            startActivity(intent)
+        }
+        binding.drawer.layoutProfile.setOnClickListener {
+            val intent = Intent(this, MyProfileActivity::class.java)
             startActivity(intent)
         }
         binding.txtSellAllFoodlove.setOnClickListener {
