@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.restaurantprofile.RestaurantProfileActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/con_cover_photo"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="20dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            tools:ignore="UnusedAttribute,UseCompoundDrawables">
+
+            <ImageView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/back"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/backbtn"
+                android:rotation="@string/rotate"
+                tools:ignore="ContentDescription" />
+
+
+            <LinearLayout
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/share"
+                    android:layout_gravity="center"
+                    android:id="@+id/img_share"
+                    android:rotation="@string/rotate"
+                    tools:ignore="ContentDescription" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/save"
+                    android:id="@+id/img_save"
+                    android:rotation="@string/rotate"
+                    tools:ignore="ContentDescription" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/img_coverphoto"
+            android:src="@drawable/logosplash"
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            app:tint="@color/green"
+            tools:ignore="ContentDescription,HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageView
+        app:layout_constraintTop_toBottomOf="@+id/con_cover_photo"
+        app:layout_constraintBottom_toTopOf="@+id/con_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/pastaprofile"
+        android:id="@+id/img_pastaprofile"
+        android:elevation="15dp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"/>
+
+    <ImageView
+        app:layout_constraintTop_toBottomOf="@+id/con_cover_photo"
+        app:layout_constraintBottom_toTopOf="@+id/con_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/phone"
+        android:id="@+id/img_phone"
+        android:background="@drawable/drawable_circle_orange"
+        android:scaleType="centerInside"
+        android:elevation="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@+id/con_cover_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:id="@+id/con_menu"
+        android:elevation="10dp"
+        android:background="@drawable/drwable_corner_below_white"
+        android:layout_height="wrap_content">
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:id="@+id/txt_happy"
+            android:text="Happy Bouns"
+            android:textColor="@color/bluefateh"
+            android:textSize="21sp"
+            android:fontFamily="@font/robotobold"
+            android:layout_marginTop="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/txt_rate"
+            android:text="4.5"
+            android:drawableStart="@drawable/star"
+            android:drawablePadding="5dp"
+            android:textColor="@color/bluefateh"
+            android:textSize="13sp"
+            android:fontFamily="@font/josefinsansbold"
+            android:layout_marginTop="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/txt_happy"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:id="@+id/txt_Bakery"
+            android:text="Bakery and Pastra"
+            android:textColor="@color/whiteblue"
+            android:textSize="12sp"
+            android:fontFamily="@font/robotoregular"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/txt_Bakery"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:id="@+id/txt_address"
+            android:text="12 street/Nasr city 2012"
+            android:drawableStart="@drawable/location"
+            android:drawablePadding="5dp"
+            android:textColor="@color/whiteblue"
+            android:textSize="14sp"
+            android:fontFamily="@font/robotoregular"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/txt_address"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/txt_clock"
+            android:text="@string/open_now"
+            android:textColor="@color/orangefateh"
+            android:drawableStart="@drawable/clock"
+            android:drawablePadding="5dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/robotoregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/txt_clock"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="22dp"
+            android:id="@+id/txt_menu"
+            android:text="@string/menu"
+            android:textColor="@color/eyecolor"
+            android:drawablePadding="5dp"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/robotobold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@+id/txt_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            android:id="@+id/rec_menu"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/item_menu"
+            android:padding="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@+id/con_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/best_dishes"
+            android:textColor="@color/black"
+            android:fontFamily="@font/robotobold"
+            android:textSize="16sp"
+            android:id="@+id/best"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@+id/best"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/rec_bestdishes"
+            tools:listitem="@layout/item_bestdishes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

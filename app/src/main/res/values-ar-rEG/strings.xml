@@ -45,5 +45,9 @@
     <string name="edit">Edit</string>
     <string name="logout">Logout</string>
     <string name="order">Order</string>
+    <string name="open_now">Open Now</string>
+    <string name="best_dishes">Best Dishes</string>
+    <string name="my_order">My Order</string>
+    <string name="menu">Menu</string>
 
 </resources>

@@ -2,6 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/drwable_corner_white_border_gray"
+    android:elevation="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -11,12 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/drwable_corner_white_border_gray"
-        android:elevation="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -30,7 +30,7 @@
             android:src="@drawable/pasta"
             android:scaleType="centerCrop"
             android:id="@+id/img_food"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="80dp"/>
 
 
@@ -38,9 +38,10 @@
             app:layout_constraintStart_toEndOf="@+id/img_food"
             app:layout_constraintTop_toTopOf="@+id/img_food"
             app:layout_constraintBottom_toBottomOf="@id/img_food"
-            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_ordernow"
+            android:layout_marginStart="5dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp">
 
             <TextView
@@ -54,13 +55,13 @@
                 android:layout_height="0dp"/>
 
             <LinearLayout
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
                 android:layout_weight="1">
 
                 <TextView
-                    android:text="3 dishes"
+                    android:text="3dishes"
                     android:id="@+id/num_dished"
                     android:textSize="14sp"
                     android:fontFamily="@font/robotoregular"
@@ -73,6 +74,7 @@
                     android:text="@string/order"
                     android:id="@+id/order"
                     android:textSize="14sp"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/robotoregular"
                     android:textColor="@color/greenkhameq"
                     android:layout_width="0dp"
@@ -83,28 +85,30 @@
 
 
             <LinearLayout
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
+                android:id="@+id/lin_date"
                 android:layout_weight="1">
 
                 <TextView
                     android:text="#320vm"
                     android:id="@+id/num_order"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:fontFamily="@font/robotoregular"
                     android:textColor="@color/black"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="2/11/2012"
                     android:id="@+id/txt_date"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/robotoregular"
                     android:textColor="@color/greenkhameq"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"/>
 
@@ -131,13 +135,14 @@
             android:fontFamily="@font/robotobold"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            android:id="@+id/btn_ordernow"
             android:background="@drawable/darwable_corner_orangefatehn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

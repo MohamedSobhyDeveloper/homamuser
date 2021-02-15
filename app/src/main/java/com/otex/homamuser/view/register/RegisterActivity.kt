@@ -29,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
 
+
         binding.backbtn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
