@@ -6,7 +6,7 @@
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
     android:elevation="10dp"
-    android:background="@drawable/drwable_corner_white"
+    android:background="@drawable/buttoncornerwhitebackground"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
-            android:background="@drawable/drwable_corner_white"
+            android:background="@drawable/buttoncornerwhitebackground"
             android:text="@string/open"
             android:id="@+id/btn_open"
             android:textSize="11sp"

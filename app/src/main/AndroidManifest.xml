@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.myorder.MyOrderListActivity"></activity>
+        <activity android:name=".view.restaurantitem.RestaurantItemActivity" />
+        <activity android:name=".view.myorder.MyOrderListActivity" />
         <activity android:name=".view.restaurantprofile.RestaurantProfileActivity" />
         <activity android:name=".view.myprofile.MyProfileActivity" />
         <activity android:name=".view.editprofile.EditProfileActivity" />

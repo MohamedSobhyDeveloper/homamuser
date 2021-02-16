@@ -4,19 +4,23 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ItemMenuBinding
+import com.otex.homamuser.databinding.ItemAdditionBinding
+import com.otex.homamuser.databinding.ItemBestdishesBinding
+import com.otex.homamuser.databinding.ItemCountryHomeBinding
+import com.otex.homamuser.databinding.ItemSpecialOffersBinding
+import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.model.FoodLoveModel
-import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
+import com.otex.homamuser.view.register.RegisterActivity
+import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
 
 
-class MenuResProfileAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?,var onclik:OnItemClick)
-    : RecyclerView.Adapter<MenuResProfileAdapter.MyViewHolder>() {
+class AdditionsAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+    : RecyclerView.Adapter<AdditionsAdapter.MyViewHolder>() {
 
-    var itemBinding: ItemMenuBinding?=null
+    var itemBinding: ItemAdditionBinding?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        itemBinding = ItemMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        itemBinding = ItemAdditionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
 
          return MyViewHolder(itemBinding!!)
@@ -25,15 +29,6 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-
-         itemBinding?.conMenu?.setOnClickListener {
-
-             onclik.onClick("best dishes")
-             itemBinding?.conMenu?.setBackgroundResource(R.drawable.round_circle_fayroze)
-         }
-
-
 
 
 
@@ -60,7 +55,7 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
 
 
 
-    class MyViewHolder(private val itemBinding: ItemMenuBinding) :
+    class MyViewHolder(private val itemBinding: ItemAdditionBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
 

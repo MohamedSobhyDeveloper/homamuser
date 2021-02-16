@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".view.MainActivity"
         >
 
         <androidx.constraintlayout.widget.Guideline
@@ -81,7 +80,7 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:context=".view.login.LoginActivity">
+            >
 
 
 
@@ -93,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/register_layout"
-            android:background="@drawable/drwable_corner_white"
+            android:background="@drawable/buttoncornerwhitebackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_box"
@@ -101,7 +100,7 @@
             android:layout_marginStart="20dp"
             android:elevation="15dp"
             android:layout_marginEnd="20dp"
-            tools:context=".view.login.LoginActivity">
+            >
 
             <TextView
                 app:layout_constraintTop_toTopOf="parent"
@@ -115,7 +114,8 @@
                 android:fontFamily="@font/rubikmedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                tools:ignore="RtlHardcoded" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:paddingLeft="10dp"
-                    tools:ignore="Autofill,RtlSymmetry" />
+                    tools:ignore="Autofill,RtlHardcoded,RtlSymmetry" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:paddingLeft="10dp"
-                    tools:ignore="Autofill,RtlSymmetry" />
+                    tools:ignore="Autofill,RtlHardcoded,RtlSymmetry" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -215,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:paddingLeft="10dp"
-                    tools:ignore="Autofill,RtlSymmetry" />
+                    tools:ignore="Autofill,RtlHardcoded,RtlSymmetry" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -230,7 +230,7 @@
                 android:id="@+id/lin_msg"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
-                android:background="@drawable/drwable_corner_white_border_gray"
+                android:background="@drawable/buttonwhitebordergray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -252,7 +252,7 @@
                         android:outlineSpotShadowColor="@color/white"
                         android:textColor="@color/gray"
                         android:textSize="12sp"
-                        tools:ignore="Autofill,RtlSymmetry" />
+                        tools:ignore="Autofill,RtlHardcoded,RtlSymmetry,UnusedAttribute" />
 
 
 
@@ -264,7 +264,8 @@
                     android:text="0/100"
                     android:padding="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
 
@@ -279,7 +280,7 @@
                 android:id="@+id/btn_registe"
                 android:fontFamily="@font/rubikmedium"
                 android:textColor="@color/white"
-                android:background="@drawable/darwable_corner_orangebutton"
+                android:background="@drawable/roundorangebutton"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
@@ -295,7 +296,8 @@
                   app:layout_constraintEnd_toEndOf="parent"
                   android:src="@drawable/undrawpersonal"
                   android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"/>
+                  android:layout_height="wrap_content"
+                  tools:ignore="ContentDescription" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

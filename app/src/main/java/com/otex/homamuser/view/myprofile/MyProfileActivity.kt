@@ -11,6 +11,7 @@ import com.otex.homamuser.view.editprofile.EditProfileActivity
 import com.otex.homamuser.view.editprofile.EditProfileViewModel
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
+import com.otex.homamuser.view.myorder.MyOrderListActivity
 
 class MyProfileActivity : AppCompatActivity() {
     private var loginviewmodel : EditProfileViewModel? = null
@@ -29,6 +30,10 @@ class MyProfileActivity : AppCompatActivity() {
     private fun click() {
         binding.backbtn.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
+        binding.myorders.setOnClickListener {
+            startActivity(Intent(this, MyOrderListActivity::class.java))
             finish()
         }
         binding.btnEdit.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,8 @@ import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.databinding.ItemCountryResturantBinding
 import com.otex.homamuser.databinding.ItemMyorderBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
+import com.otex.homamuser.view.myorder.MyOrderListActivity
+import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
 
 
 class MyOrderListAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
@@ -25,6 +28,9 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 
+        itemBinding?.btnOrdernow?.setOnClickListener {
+           context.startActivity(Intent(context, RestaurantItemActivity::class.java))
+        }
 
 
     }

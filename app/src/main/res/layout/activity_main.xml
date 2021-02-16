@@ -94,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/register_layout"
-        android:background="@drawable/drwable_corner_white"
+        android:background="@drawable/buttoncornerwhitebackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline2"
@@ -144,7 +144,7 @@
             android:paddingStart="10dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/rubikregular"
-            android:background="@drawable/drwable_corner_white_border_gray"
+            android:background="@drawable/buttonwhitebordergray"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:paddingLeft="10dp" />
@@ -161,7 +161,7 @@
             android:paddingStart="10dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/rubikregular"
-            android:background="@drawable/drwable_corner_white_border_gray"
+            android:background="@drawable/buttoncornerwhitebackground"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:paddingLeft="10dp" />
@@ -178,7 +178,7 @@
             android:paddingStart="10dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/rubikregular"
-            android:background="@drawable/drwable_corner_white_border_gray"
+            android:background="@drawable/buttonwhitebordergray"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:paddingLeft="10dp" />
@@ -213,7 +213,7 @@
                 android:textSize="10sp"
                 android:paddingStart="10dp"
                 android:fontFamily="@font/rubikregular"
-                android:background="@drawable/drwable_corner_white_border_gray"
+                android:background="@drawable/buttonwhitebordergray"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:paddingLeft="10dp" />
@@ -249,7 +249,7 @@
                 android:textSize="10sp"
                 android:paddingStart="10dp"
                 android:fontFamily="@font/rubikregular"
-                android:background="@drawable/drwable_corner_white_border_gray"
+                android:background="@drawable/buttonwhitebordergray"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:paddingLeft="10dp" />
@@ -268,7 +268,7 @@
             android:id="@+id/btn_registe"
             android:fontFamily="@font/rubikmedium"
             android:textColor="@color/white"
-            android:background="@drawable/darwable_corner_orangebutton"
+            android:background="@drawable/roundorangebutton"
             android:layout_marginTop="30dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"

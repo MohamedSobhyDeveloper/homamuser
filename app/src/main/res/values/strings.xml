@@ -48,5 +48,10 @@
     <string name="best_dishes">Best Dishes</string>
     <string name="my_order">My Order</string>
     <string name="menu">Menu</string>
+    <string name="choose_the_size">Choose the Size</string>
+    <string name="additions">Additions</string>
+    <string name="special_comments">Special comments</string>
+    <string name="example_please_don_t_add_onions">Example:please don\'t add onions</string>
+    <string name="add_to_cart">Add to Cart</string>
 
 </resources>

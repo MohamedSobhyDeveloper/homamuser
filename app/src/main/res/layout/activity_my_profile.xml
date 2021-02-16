@@ -96,7 +96,7 @@
             android:id="@+id/btn_edit"
             android:fontFamily="@font/rubikmedium"
             android:textColor="@color/eyecolor"
-            android:background="@drawable/drwable_corner_white"
+            android:background="@drawable/buttoncornerwhitebackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
