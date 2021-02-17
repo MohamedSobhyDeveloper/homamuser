@@ -10,6 +10,7 @@ import com.otex.homamuser.databinding.ItemCountryResturantBinding
 import com.otex.homamuser.databinding.ItemMyorderBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.myorder.MyOrderListActivity
+import com.otex.homamuser.view.orderdetail.OrderDetailsActivity
 import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
 
 
@@ -29,7 +30,7 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
 
 
         itemBinding?.btnOrdernow?.setOnClickListener {
-           context.startActivity(Intent(context, RestaurantItemActivity::class.java))
+           context.startActivity(Intent(context, OrderDetailsActivity::class.java))
         }
 
 

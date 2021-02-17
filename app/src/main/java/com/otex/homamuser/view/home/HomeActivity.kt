@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityHomeBinding
 import com.otex.homamuser.view.aboutus.AboutUsActivity
+import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.contactus.ContactUsActivity
 import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
@@ -67,6 +68,10 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.txtSellAllSpecial.setOnClickListener {
             val intent = Intent(this, SpecialOrdesActivity::class.java)
+            startActivity(intent)
+        }
+        binding.drawer.layoutCart.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)
         }
     }

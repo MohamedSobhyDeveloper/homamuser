@@ -58,5 +58,8 @@
     <string name="total">Total</string>
     <string name="delivery">Delivery</string>
     <string name="tax">Tax</string>
+    <string name="order_now">Order Now</string>
+    <string name="order_Details">Order Details</string>
+    <string name="address">Address</string>
 
 </resources>

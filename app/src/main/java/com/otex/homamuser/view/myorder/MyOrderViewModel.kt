@@ -10,5 +10,7 @@ class MyOrderViewModel : ViewModel() {
     fun getRestaurant(){
         myOrderViewModel.postValue("done")
     }
-
+    fun getprice(){
+        myOrderViewModel.postValue("done")
+    }
 }
