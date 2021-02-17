@@ -56,5 +56,8 @@
     <string name="add_to_cart">Add to Cart</string>
     <string name="cart">Cart</string>
     <string name="order_details">Order details</string>
+    <string name="total">Total</string>
+    <string name="delivery">Delivery</string>
+    <string name="tax">Tax</string>
 
 </resources>

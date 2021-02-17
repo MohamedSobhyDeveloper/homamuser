@@ -65,8 +65,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginStart="2dp"
             android:src="@drawable/pasta"
             android:scaleType="centerCrop"
@@ -96,7 +96,8 @@
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
-                    android:layout_height="0dp"/>
+                    android:layout_height="0dp"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:text="Happy Bones"
@@ -106,7 +107,8 @@
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
-                    android:layout_height="0dp"/>
+                    android:layout_height="0dp"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -130,9 +132,145 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_orderdetails"
         android:layout_marginTop="20dp"
         android:padding="20dp"
-        android:visibility="invisible"
-        tools:listitem="@layout/item_cart"
+        android:id="@+id/rec_order_cart"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@+id/rec_order_cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/buttonwhitebordergray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/total"
+            android:id="@+id/txt_total_first"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/txt_total_first"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_total_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="170.00"
+            android:id="@+id/txt_price_total_first"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/txt_total_first"
+            app:layout_constraintStart_toStartOf="@+id/txt_total_first"
+            android:text="@string/delivery"
+            android:id="@+id/txt_delivery"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/txt_delivery"
+            app:layout_constraintStart_toStartOf="@+id/txt_delivery"
+            android:text="@string/tax"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/txt_tax"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/txt_delivery"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="75.00 X1"
+            android:id="@+id/txt_price_delivery"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/txt_tax"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_tax"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="98.00 x1"
+            android:id="@+id/txt_price_tax"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+        <View
+            app:layout_constraintTop_toBottomOf="@+id/txt_tax"
+            android:layout_marginTop="10dp"
+            android:id="@+id/view"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/offwhite"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:text="@string/total"
+            android:id="@+id/txt_total_end"
+            android:textSize="17sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/black"
+            android:layout_marginTop="13dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@+id/txt_total_end"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_total_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="170.00"
+            android:id="@+id/txt_price_total_end"
+            android:textSize="15sp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/eyecolor"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
