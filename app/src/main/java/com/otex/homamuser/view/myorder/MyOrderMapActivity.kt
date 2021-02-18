@@ -2,6 +2,7 @@ package com.otex.homamuser.view.myorder
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -26,6 +27,7 @@ import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityMyOrderMapBinding
 import com.otex.homamuser.utlitites.GPSTracker
 import com.otex.homamuser.view.cart.CartActivity
+import com.otex.homamuser.view.selectaddress.SelectAddressActivity
 import java.util.*
 
 class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -38,6 +40,8 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mylocation: LatLng
     private lateinit var streetStart: String
     private lateinit var geocode : Geocoder
+    var result:String=""
+    private lateinit var my_select_location: LatLng
     var addresses:List<Address>?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,20 +120,9 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.isMyLocationEnabled=true
 
         mMap.setOnMapClickListener { latLng ->
-
-//            mMap.clear()
-//            mylocation=latLng
-//            mMap.addMarker(MarkerOptions().position(mylocation)//.title("Marker in Sydney"))
-////                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
-//            )
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
-//            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
-//
-//
-//                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
-//                binding.txtAddress.setText(streetStart)
-
-
+            val LAUNCH_SECOND_ACTIVITY = 1
+            val intent= Intent(this, SelectAddressActivity::class.java)
+            startActivityForResult(intent,LAUNCH_SECOND_ACTIVITY)
         }
     }
 
@@ -142,6 +135,30 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                 result = data?.getStringExtra("result").toString()
+                val latitude:String = data?.getStringExtra("latitude").toString()
+                val longitude:String = data?.getStringExtra("longitude").toString()
+                my_select_location = LatLng(latitude.toDouble(), longitude.toDouble())
+                mMap.clear()
+                mMap.addMarker(MarkerOptions().position(my_select_location)//.title("Marker in Sydney"))
+//                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
+                )
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(my_select_location))
+                addresses = geocode.getFromLocation(my_select_location.latitude, my_select_location.longitude, 1)
+
+
+                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+                binding.txtAddress.setText(streetStart)
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }
 }
 
 
