@@ -69,7 +69,7 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
             if (addresses != null && addresses!!.isNotEmpty()) {
                 streetStart = addresses!![0].getAddressLine(0)//thoroughfare
-                binding.txtAddress.text=streetStart
+                binding.txtAddress.setText(streetStart);
             }else{
                 streetStart=""
             }
@@ -103,7 +103,7 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
             currentLocation = LatLng(gpsTracker!!.latitude, gpsTracker!!.longitude)
         }
         mMap.addMarker(
-            this!!.currentLocation?.let {
+            this.currentLocation?.let {
                 MarkerOptions().position(it)
                     .icon(bitmapDescriptorFromVector(this, R.drawable.baseline_room_black_18))
             })
@@ -117,17 +117,19 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.setOnMapClickListener { latLng ->
 
-            mMap.clear()
-            mylocation=latLng
-            mMap.addMarker(MarkerOptions().position(mylocation)//.title("Marker in Sydney"))
-//                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
-            )
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
-            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
+//            mMap.clear()
+//            mylocation=latLng
+//            mMap.addMarker(MarkerOptions().position(mylocation)//.title("Marker in Sydney"))
+////                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
+//            )
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
+//            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
+//
+//
+//                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+//                binding.txtAddress.setText(streetStart)
 
 
-                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
-                binding.txtAddress.text=streetStart
         }
     }
 
