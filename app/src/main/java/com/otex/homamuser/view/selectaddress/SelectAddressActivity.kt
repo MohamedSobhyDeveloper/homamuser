@@ -24,10 +24,12 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.model.RectangularBounds
 import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivitySelectAddressBinding
 import com.otex.homamuser.utlitites.GPSTracker
+import java.io.IOException
 import java.util.*
 
 class SelectAddressActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -52,9 +54,8 @@ class SelectAddressActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     private fun click() {
 
-
         binding.editaddress.setOnClickListener {
-            Places.initialize(this.applicationContext, "AIzaSyA_IUA7wNx4fsKZP0NE3KhxDtEI3XVu8sA")
+            Places.initialize(this.applicationContext, "AIzaSyAQpYyD4auxymJQthsGsQoKtm6lcYTT0kU")
             val fields = Arrays.asList(Place.Field.LAT_LNG, Place.Field.ADDRESS, Place.Field.NAME)
             var intent: Intent
             if (currentLocation != null) {
@@ -157,6 +158,53 @@ class SelectAddressActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                val place = Autocomplete.getPlaceFromIntent(data!!)
+                mylocation = place.latLng!!
+                if (mylocation != null) {
+                   val lat: Double = mylocation.latitude
+                    val lng :Double = mylocation.longitude
+                    val geocoder: Geocoder
+                    val addresses: List<Address>
+                    geocoder = Geocoder(this, Locale("ar"))
+                    try {
+                        addresses = geocoder.getFromLocation(lat, lng, 1)
+                        if (addresses.size > 0) {
+                            val city = addresses[0].locality
+                            val state = addresses[0].adminArea
+                            val subLocality = addresses[0].subLocality
+                            val country = addresses[0].countryName
+                            val postalCode = addresses[0].postalCode
+                            val knownName = addresses[0].featureName
+                            streetStart = if (place.address != null && place.address!!.contains(",")) {
+                                val addressAr = place.address!!.split(",".toRegex()).toTypedArray()
+                                "$city, $state" + ", " + country
+                            } else {
+                                "$subLocality, $state" + ", " + country
+                            }
+                        }
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    if (streetStart == null) streetStart = place.address.toString()
+                    if (streetStart != null && streetStart!!.contains("null,")) {
+                        streetStart = streetStart!!.replace("null,", "")
+                        streetStart = streetStart!!.replace("null", "")
+                    }
+                    binding.txtAddress.text = streetStart + ""
+                                       mMap.clear()
+                    mMap!!.addMarker(MarkerOptions().position(mylocation).title(place.name + ""))
+                            .setIcon(BitmapDescriptorFactory.fromResource(R.drawable.location))
+                    mMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 10f))
 
+                }
+            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                // TODO: Handle the error.
+                val status = Autocomplete.getStatusFromIntent(data!!)
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+            }
+        }
     }
+
 }
