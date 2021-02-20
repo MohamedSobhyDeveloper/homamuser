@@ -87,31 +87,31 @@
              />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_happy"
             app:layout_constraintStart_toEndOf="@+id/img_pasta"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="Happy"
             android:textSize="15sp"
-            android:id="@+id/txt_happy"
             android:textColor="@color/bluefateh"
             android:fontFamily="@font/josefinsansbold"
             app:layout_constraintTop_toTopOf="@+id/img_pasta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             tools:ignore="HardcodedText" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_Bakery"
             app:layout_constraintStart_toEndOf="@+id/img_pasta"
             android:layout_marginStart="10dp"
             android:text="Bakery and pasta"
             android:textSize="13sp"
-            android:id="@+id/txt_Bakery"
             android:textColor="@color/whiteblue"
             android:fontFamily="@font/robotoregular"
             app:layout_constraintTop_toBottomOf="@+id/txt_happy"
             app:layout_constraintBottom_toBottomOf="@+id/img_pasta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             tools:ignore="HardcodedText" />
 
 

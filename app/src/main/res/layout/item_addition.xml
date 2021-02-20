@@ -4,11 +4,12 @@
     android:background="@drawable/rounddrawablewhiteoval"
     android:elevation="5dp"
     android:id="@+id/con_addition"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_marginStart="15dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+   >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -19,6 +20,9 @@
         android:layout_height="85dp">
 
         <TextView
+            android:id="@+id/txt_name_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +31,11 @@
             android:textColor="@color/black"
             android:fontFamily="@font/robotobold"
             android:textSize="11sp"
-            android:id="@+id/txt_name_food"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+           />
         <TextView
+            android:id="@+id/txt_salary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/txt_name_food"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,9 +44,7 @@
             android:textColor="@color/orangefateh"
             android:fontFamily="@font/robotobold"
             android:textSize="11sp"
-            android:id="@+id/txt_salary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+           />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

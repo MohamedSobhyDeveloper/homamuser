@@ -98,6 +98,7 @@
             app:layout_constraintTop_toBottomOf="@id/img_box"
             android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
+            android:elevation="5dp"
             android:layout_marginEnd="20dp"
             tools:context=".view.login.LoginActivity">
 

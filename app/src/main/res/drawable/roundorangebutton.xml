@@ -8,4 +8,9 @@
         android:bottom="0dp" />
     <corners android:radius="6dp" />
     <solid android:color="@color/orangebutton" />
+    <gradient
+        android:startColor="@color/orangefateh"
+        android:centerColor="@color/orangefateh"
+        android:endColor="@color/yellowfateh"
+        android:angle="270" />
 </shape>

@@ -6,32 +6,34 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:id="@+id/con_menu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/con_menu"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/backgmenu"
-        android:layout_width="100dp"
-        android:layout_height="55dp">
+        >
 
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_menu"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Italia"
             android:textSize="13sp"
-            android:id="@+id/txt_menu"
             android:textColor="@color/white"
             android:fontFamily="@font/robotobold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            />
 
 
 
