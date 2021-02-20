@@ -63,5 +63,14 @@
     <string name="address">Address</string>
     <string name="select_address">Select Address</string>
     <string name="search">search</string>
+    <string name="enter_email_phone">Enter email or phone</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_phone">Enter phone</string>
+    <string name="confirm_not_equal_password">Confirm Password not equal Password</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_new_pass">Enter New password</string>
+    <string name="enter_retype_pass">Retype password</string>
+    <string name="dosent_match">The password does not match the new password</string>
 
 </resources>

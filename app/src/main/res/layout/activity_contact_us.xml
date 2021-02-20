@@ -18,6 +18,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@id/img_box"
             android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
-            android:elevation="15dp"
+            android:elevation="5dp"
             android:layout_marginEnd="20dp"
             >
 
@@ -133,7 +139,7 @@
                 app:boxCornerRadiusBottomStart="6dp"
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
-                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidth="0.5dp"
                 android:textColorHint="@color/gray"
                 >
                 <EditText
@@ -168,7 +174,7 @@
                 app:boxCornerRadiusBottomStart="6dp"
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
-                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidth="0.5dp"
                 android:textColorHint="@color/gray"
                 >
                 <EditText
@@ -200,7 +206,7 @@
                 app:boxCornerRadiusBottomStart="6dp"
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
-                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidth="0.5dp"
                 android:textColorHint="@color/gray"
 
                 >
@@ -291,12 +297,14 @@
 
 
               <ImageView
-                  app:layout_constraintTop_toBottomOf="@+id/register_layout"
+                  app:layout_constraintTop_toBottomOf="@+id/guideline_two"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
                   android:src="@drawable/undrawpersonal"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  android:layout_marginTop="45dp"
+                  android:elevation="10dp"
                   tools:ignore="ContentDescription" />
 
 

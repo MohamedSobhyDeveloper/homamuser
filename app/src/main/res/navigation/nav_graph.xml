@@ -18,9 +18,16 @@
         <action
             android:id="@+id/action_fragmentForgetAddOTP_to_fragmentUpdatePassword"
             app:destination="@id/fragmentUpdatePassword" />
+        <action
+            android:id="@+id/action_fragmentForgetAddOTP_to_fragmentForgetPasswordAddEmail"
+            app:destination="@id/fragmentForgetPasswordAddEmail" />
     </fragment>
     <fragment
         android:id="@+id/fragmentUpdatePassword"
         android:name="com.otex.homamuser.view.forgetpassword.updatepass.FragmentUpdatePassword"
-        android:label="FragmentUpdatePassword" />
+        android:label="FragmentUpdatePassword" >
+        <action
+            android:id="@+id/action_fragmentUpdatePassword_to_fragmentForgetAddOTP"
+            app:destination="@id/fragmentForgetAddOTP" />
+    </fragment>
 </navigation>

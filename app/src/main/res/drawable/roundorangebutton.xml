@@ -12,5 +12,5 @@
         android:startColor="@color/orangefateh"
         android:centerColor="@color/orangefateh"
         android:endColor="@color/yellowfateh"
-        android:angle="270" />
+        android:angle="0.5" />
 </shape>

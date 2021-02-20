@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.HomeActivity
@@ -13,7 +14,8 @@ class LoginActivity : AppCompatActivity() {
 
     private var loginviewmodel : LoginActivityViewModel? = null
     lateinit var binding: ActivityLoginBinding
-
+    var email_or_phone:String=""
+    var password:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -41,9 +43,24 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+            email_or_phone=binding.editEmailPhone.text.toString()
+            password=binding.editPassword.text.toString()
+            if(email_or_phone.equals("")){
+                binding.editEmailPhone.setError(getString(R.string.enter_email_phone))
+            }else if(password.equals("")){
+                binding.editPassword.setError(getString(R.string.enter_password))
+            }else{
+
+                login(email_or_phone,password)
+            }
         }
+    }
+
+    private fun login(emailOrPhone: String, password: String) {
+
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+
     }
 
     private fun initialize() {

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5"/>
+            app:layout_constraintGuide_percent="0.6"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,6 +88,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,9 +97,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_box"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="100dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:elevation="10dp"
+            android:elevation="5dp"
             android:layout_marginTop="40dp"
             tools:context=".view.login.LoginActivity"
             tools:ignore="UnusedAttribute">
@@ -108,7 +111,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:id="@+id/txt_welcom"
                 android:text="@string/forget_password"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
@@ -120,14 +123,16 @@
             <TextView
                 app:layout_constraintTop_toBottomOf="@+id/txt_welcom"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
                 android:id="@+id/txt_please_login"
                 android:text="@string/verification_code_has_been_sent_to_your_email_addresse"
                 android:textSize="15sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
+                android:textColor="@color/eyecolor"
+                android:layout_marginTop="15sp"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/rubikregular"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp" />
 
@@ -137,8 +142,8 @@
                 android:id="@+id/txt_email_view"
                 android:text="ms@gmail.com"
                 android:textSize="15sp"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
+                android:textColor="@color/eyecolor"
+                android:layout_marginTop="15sp"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/rubikregular"
                 android:layout_width="wrap_content"
@@ -148,7 +153,7 @@
 
 
             <com.mukesh.OtpView
-                android:id="@+id/reset_confirm_password"
+                android:id="@+id/edit_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -157,7 +162,9 @@
                 android:textSize="22sp"
                 app:OtpViewType="rectangle"
                 app:OtpItemCount="4"
-                app:OtpItemSpacing="40dp"
+                android:text="2"
+                android:gravity="center"
+                app:OtpItemSpacing="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_email_view"
@@ -166,8 +173,8 @@
 
 
             <TextView
-                app:layout_constraintTop_toBottomOf="@+id/reset_confirm_password"
-                app:layout_constraintStart_toStartOf="@+id/reset_confirm_password"
+                app:layout_constraintTop_toBottomOf="@+id/edit_otp"
+                app:layout_constraintStart_toStartOf="@+id/edit_otp"
                 android:id="@+id/txt_resend_code"
                 android:text="@string/resent_code"
                 android:textSize="17sp"
@@ -185,7 +192,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 app:layout_constraintTop_toBottomOf="@+id/txt_resend_code"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="70dp"
+                android:layout_marginBottom="30dp"
                 android:text="@string/next"
                 android:textAllCaps="false"
                 android:textSize="14sp"
@@ -193,9 +200,9 @@
                 android:fontFamily="@font/rubikmedium"
                 android:textColor="@color/white"
                 android:background="@drawable/roundorangebutton"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"/>
 
@@ -205,4 +212,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
