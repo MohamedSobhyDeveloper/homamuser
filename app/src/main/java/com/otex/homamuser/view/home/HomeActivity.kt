@@ -8,7 +8,6 @@ import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityHomeBinding
 import com.otex.homamuser.view.aboutus.AboutUsActivity
