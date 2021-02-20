@@ -11,14 +11,7 @@ import com.otex.homamuser.view.home.model.FoodLoveModel
 class FoodLoveAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
     : RecyclerView.Adapter<FoodLoveAdapter.MyViewHolder>() {
 
-    var itemBinding: ItemCountryHomeBinding?=null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        itemBinding = ItemCountryHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-         return MyViewHolder(itemBinding!!)
-
-
-    }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
@@ -48,9 +41,11 @@ class FoodLoveAdapter(private val context: Context, val chartList: MutableList<F
 
 
 
-    class MyViewHolder(private val itemBinding: ItemCountryHomeBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
+    class MyViewHolder(var binding: ItemCountryHomeBinding) : RecyclerView.ViewHolder(binding.root)
 
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val layoutInflater = LayoutInflater.from(context)
+        return MyViewHolder(ItemCountryHomeBinding.inflate(layoutInflater))
     }
 }
