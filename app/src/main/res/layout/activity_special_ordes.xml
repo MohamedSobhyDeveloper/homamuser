@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:text="@string/restaurants"
+                android:text="@string/special_offers"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:fontFamily="@font/robotobold"

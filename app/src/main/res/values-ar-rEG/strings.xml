@@ -73,5 +73,7 @@
     <string name="enter_new_pass">Enter New password</string>
     <string name="enter_retype_pass">Retype password</string>
     <string name="dosent_match">The password does not match the new password</string>
+    <string name="enter_subject">Enter Subject</string>
+    <string name="enter_message">Enter Message</string>
 
 </resources>

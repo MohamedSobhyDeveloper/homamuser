@@ -16,6 +16,12 @@ class EditProfileActivity : AppCompatActivity() {
     private var loginviewmodel : EditProfileViewModel? = null
     lateinit var binding: ActivityEditProfileBinding
 
+    var username:String=""
+    var email_or_phone:String=""
+    var phone:String=""
+    var password:String=""
+    var confirm_pass:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)

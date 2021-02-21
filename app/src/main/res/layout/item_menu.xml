@@ -17,7 +17,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/backgmenu"
+        android:background="@drawable/round_circle_fayroze"
         >
 
 
@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="Italia"
             android:textSize="13sp"
-            android:textColor="@color/white"
+            android:textColor="@drawable/custom_txt_color"
             android:fontFamily="@font/robotobold"
             />
 

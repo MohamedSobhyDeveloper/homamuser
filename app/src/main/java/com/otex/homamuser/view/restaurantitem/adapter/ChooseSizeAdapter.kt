@@ -4,10 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.otex.homamuser.databinding.ItemBestdishesBinding
-import com.otex.homamuser.databinding.ItemCountryHomeBinding
-import com.otex.homamuser.databinding.ItemSizeBinding
-import com.otex.homamuser.databinding.ItemSpecialOffersBinding
+import com.otex.homamuser.R
+import com.otex.homamuser.databinding.*
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.register.RegisterActivity
@@ -17,18 +15,25 @@ import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
 class ChooseSizeAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
     : RecyclerView.Adapter<ChooseSizeAdapter.MyViewHolder>() {
 
-    var itemBinding: ItemSizeBinding?=null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        itemBinding = ItemSizeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    private var selectedItemPosition: Int = 0
 
-
-         return MyViewHolder(itemBinding!!)
-
-
-    }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        holder.binding.conCheckbox.setOnClickListener {
+            selectedItemPosition=position
+            holder.binding.checkboc.isChecked=true
+            notifyDataSetChanged()
+        }
+        if(selectedItemPosition == position) {
+            holder.binding.checkboc.isChecked=true
+        }
+        else{
+            holder.binding.checkboc.isChecked=false
+        }
+
+
 
 
 
@@ -47,18 +52,19 @@ class ChooseSizeAdapter(private val context: Context, val chartList: MutableList
 
     override fun getItemCount(): Int {
         if (chartList?.size== null) {
-            return 10
+            return 5
         } else {
-            return chartList?.size!!
+            return chartList.size
         }
     }
 
 
 
-    class MyViewHolder(private val itemBinding: ItemSizeBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
 
+    class MyViewHolder(var binding: ItemSizeBinding) : RecyclerView.ViewHolder(binding.root)
 
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val layoutInflater = LayoutInflater.from(context)
+        return MyViewHolder(ItemSizeBinding.inflate(layoutInflater))
     }
 }

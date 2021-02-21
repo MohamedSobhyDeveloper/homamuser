@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRestaurantItemBinding
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
+import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.myorder.MyOrderListActivity
+import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
 import com.otex.homamuser.view.restaurantprofile.ResturantProfileViewModel
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.AdditionsAdapter
@@ -31,7 +33,11 @@ class RestaurantItemActivity : AppCompatActivity() {
     }
     private fun click() {
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, SpecialOrdesActivity::class.java))
+            startActivity(Intent(this, RestaurantProfileActivity::class.java))
+            finish()
+        }
+        binding.addToCart.setOnClickListener {
+            startActivity(Intent(this,CartActivity::class.java))
             finish()
         }
 

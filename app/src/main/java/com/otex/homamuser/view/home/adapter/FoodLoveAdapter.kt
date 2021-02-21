@@ -11,8 +11,6 @@ import com.otex.homamuser.view.home.model.FoodLoveModel
 class FoodLoveAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
     : RecyclerView.Adapter<FoodLoveAdapter.MyViewHolder>() {
 
-
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 

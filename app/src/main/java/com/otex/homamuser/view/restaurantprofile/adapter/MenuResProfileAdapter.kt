@@ -1,10 +1,14 @@
 package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.Color
+import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
+import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.databinding.ItemMenuBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
@@ -13,26 +17,28 @@ import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 class MenuResProfileAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?,var onclik:OnItemClick)
     : RecyclerView.Adapter<MenuResProfileAdapter.MyViewHolder>() {
 
-    var itemBinding: ItemMenuBinding?=null
+    private var selectedItemPosition: Int = 0
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        itemBinding = ItemMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-
-         return MyViewHolder(itemBinding!!)
-
-
-    }
-
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 
-         itemBinding?.conMenu?.setOnClickListener {
-
+         holder.binding?.conMenu?.setOnClickListener {
+              selectedItemPosition=position
+             notifyDataSetChanged()
              onclik.onClick("best dishes")
-             itemBinding?.conMenu?.setBackgroundResource(R.drawable.round_circle_fayroze)
-         }
+             holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
+             holder.binding.txtMenu.setTextColor(R.color.white)
 
+         }
+        if(selectedItemPosition == position) {
+            holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
+            holder.binding.txtMenu.setTextColor(R.color.white)
+        }
+        else{
+            holder.binding.conMenu.setBackgroundResource(R.drawable.round_circle_fayroze)
+            holder.binding.txtMenu.setTextColor(R.color.eyecolor)
+        }
 
 
 
@@ -59,11 +65,10 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
     }
 
 
+    class MyViewHolder(var binding: ItemMenuBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class MyViewHolder(private val itemBinding: ItemMenuBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
-
-
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val layoutInflater = LayoutInflater.from(context)
+        return MyViewHolder(ItemMenuBinding.inflate(layoutInflater))
     }
 }

@@ -2,10 +2,16 @@ package com.otex.homamuser.view.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.postDelayed
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
+import androidx.core.view.size
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
@@ -18,7 +24,12 @@ import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.FoodLoveAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.SpecialOrderAdapter
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -102,6 +113,7 @@ class HomeActivity : AppCompatActivity() {
             val adapter =
                     FoodLoveAdapter(this,null)
             binding.recFoodLOve.adapter = adapter
+           hanldeAutoScroll()
 
         }
         homeActivityViewModel!!.countryhomelivedata.observe(this) {
@@ -125,6 +137,26 @@ class HomeActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+    private fun hanldeAutoScroll() {
+        var position = 0
+        val duration = 2000
+        //final int pixelsToMove = 90;
+        val mHandler = Handler(Looper.getMainLooper())
+        val SCROLLING_RUNNABLE: Runnable = object : Runnable {
+            override fun run() {
+                position++
+                if (position <=position) {
+                    binding.recFoodLOve.scrollToPosition(position)
+                } else if (position == binding.recFoodLOve.size) {
+                    position = -1
+                }
+
+                // recyclerView.smoothScrollBy(pixelsToMove, 0);
+                mHandler.postDelayed(this, 2000)
+            }
+        }
+        mHandler.postDelayed(SCROLLING_RUNNABLE, 2000)
     }
 }
 

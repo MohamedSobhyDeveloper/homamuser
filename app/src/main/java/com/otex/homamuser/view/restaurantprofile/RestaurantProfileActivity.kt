@@ -32,10 +32,7 @@ class RestaurantProfileActivity : AppCompatActivity(), OnItemClick {
             startActivity(Intent(this, SpecialOrdesActivity::class.java))
             finish()
         }
-        binding.imgPastaprofile.setOnClickListener {
-            startActivity(Intent(this, MyOrderListActivity::class.java))
-            finish()
-        }
+
     }
     private fun initialize() {
         resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
@@ -48,15 +45,15 @@ class RestaurantProfileActivity : AppCompatActivity(), OnItemClick {
             binding.recMenu.adapter = adapter
 
         }
-//        resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
-//
-//            val layoutManager = LinearLayoutManager(this)
-//            binding.recBestdishes.layoutManager = layoutManager
-//            val adapter =
-//                BestDishesAdapter(this, null)
-//            binding.recBestdishes.adapter = adapter
-//
-//        }
+        resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
+
+            val layoutManager = LinearLayoutManager(this)
+            binding.recBestdishes.layoutManager = layoutManager
+            val adapter =
+                BestDishesAdapter(this, null)
+            binding.recBestdishes.adapter = adapter
+
+        }
 
     }
 

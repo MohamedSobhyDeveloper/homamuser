@@ -70,7 +70,8 @@ class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         binding.conOrderNow.setOnClickListener {
-
+            val intent = Intent(this, MyOrderListActivity::class.java)
+            startActivity(intent)
             if (addresses != null && addresses!!.isNotEmpty()) {
                 streetStart = addresses!![0].getAddressLine(0)//thoroughfare
                 binding.txtAddress.setText(streetStart);

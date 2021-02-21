@@ -319,6 +319,7 @@
         android:id="@+id/con_order_now"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttonorange_yellow"
         android:layout_width="match_parent"
         android:layout_height="55dp">
