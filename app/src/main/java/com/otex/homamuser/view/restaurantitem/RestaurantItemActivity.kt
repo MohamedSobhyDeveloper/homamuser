@@ -22,7 +22,7 @@ import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuRe
 class RestaurantItemActivity : AppCompatActivity() {
     private var resturantProfileViewModel: ResturantProfileViewModel? = null
     lateinit var binding: ActivityRestaurantItemBinding
-
+    var num:Int=1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantItemBinding.inflate(layoutInflater)
@@ -39,6 +39,14 @@ class RestaurantItemActivity : AppCompatActivity() {
         binding.addToCart.setOnClickListener {
             startActivity(Intent(this,CartActivity::class.java))
             finish()
+        }
+        binding.add.setOnClickListener {
+            binding.numOrder.setText((num++).toString())
+            binding.txtSalary.setText((120*num).toString()+"L.E")
+        }
+        binding.minues.setOnClickListener {
+            binding.numOrder.setText((num--).toString())
+            binding.txtSalary.setText((120*num).toString()+"L.E")
         }
 
     }

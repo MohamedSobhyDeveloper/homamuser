@@ -19,7 +19,7 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
 
     private var selectedItemPosition: Int = 0
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "NewApi")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 
@@ -28,16 +28,16 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
              notifyDataSetChanged()
              onclik.onClick("best dishes")
              holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
-             holder.binding.txtMenu.setTextColor(R.color.white)
+             holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))
 
          }
         if(selectedItemPosition == position) {
             holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
-            holder.binding.txtMenu.setTextColor(R.color.white)
+            holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))
         }
         else{
             holder.binding.conMenu.setBackgroundResource(R.drawable.round_circle_fayroze)
-            holder.binding.txtMenu.setTextColor(R.color.eyecolor)
+            holder.binding.txtMenu.setTextColor(context.getColor(R.color.eyecolor))
         }
 
 

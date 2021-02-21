@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="Italia"
             android:textSize="13sp"
-            android:textColor="@drawable/custom_txt_color"
+            android:textColor="@color/eyecolor"
             android:fontFamily="@font/robotobold"
             />
 

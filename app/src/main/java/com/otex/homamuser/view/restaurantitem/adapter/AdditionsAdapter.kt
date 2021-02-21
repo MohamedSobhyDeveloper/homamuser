@@ -1,5 +1,6 @@
 package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -19,18 +20,26 @@ class AdditionsAdapter(private val context: Context, val chartList: MutableList<
     var itemBinding: ItemAdditionBinding?=null
 
 
+    @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.conAddition.setOnClickListener {
             selectedItemPosition=position
             holder.binding.conAddition.setBackgroundResource(R.drawable.circleback)
+            holder.binding.txtNameFood.setTextColor(context.getColor(R.color.white))
+            holder.binding.txtSalary.setTextColor(context.getColor(R.color.white))
             notifyDataSetChanged()
         }
         if(selectedItemPosition == position) {
             holder.binding.conAddition.setBackgroundResource(R.drawable.circleback)
+            holder.binding.txtNameFood.setTextColor(context.getColor(R.color.white))
+            holder.binding.txtSalary.setTextColor(context.getColor(R.color.white))
         }
         else{
             holder.binding.conAddition.setBackgroundResource(R.drawable.rounddrawablewhiteoval)
+            holder.binding.txtNameFood.setTextColor(context.getColor(R.color.black))
+            holder.binding.txtSalary.setTextColor(context.getColor(R.color.orangefateh))
+
         }
 
 

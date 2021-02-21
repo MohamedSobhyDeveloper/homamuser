@@ -204,16 +204,18 @@
                         android:textSize="14sp"
                         android:padding="10dp"
                         android:gravity="center"
+                        android:id="@+id/minues"
                         android:fontFamily="@font/robotoregular"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
                         tools:ignore="HardcodedText" />
                     <TextView
-                        android:text="1"
+                        android:text="0"
                         android:textColor="@color/orangefateh"
                         android:textSize="14sp"
                         android:gravity="center"
+                        android:id="@+id/num_order"
                         android:background="@drawable/rounddrawablewhiteoval"
                         android:fontFamily="@font/robotobold"
                         android:layout_width="0dp"
@@ -231,7 +233,7 @@
                         android:fontFamily="@font/robotoregular"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-
+                        android:id="@+id/add"
                         android:layout_height="match_parent"
                         tools:ignore="HardcodedText" />
 
