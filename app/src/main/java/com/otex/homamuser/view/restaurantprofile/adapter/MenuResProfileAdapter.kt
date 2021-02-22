@@ -3,11 +3,13 @@ package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
+import com.otex.homamuser.databinding.ItemBestdishesBinding
 import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.databinding.ItemMenuBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
@@ -65,10 +67,15 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
     }
 
 
-    class MyViewHolder(var binding: ItemMenuBinding) : RecyclerView.ViewHolder(binding.root)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(context)
-        return MyViewHolder(ItemMenuBinding.inflate(layoutInflater))
+        return MyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.item_menu, parent, false)
+        )
+    }
+
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemMenuBinding.bind(view)
     }
 }

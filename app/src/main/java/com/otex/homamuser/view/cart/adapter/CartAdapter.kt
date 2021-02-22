@@ -2,8 +2,10 @@ package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemCartBinding
 import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
@@ -12,14 +14,7 @@ import com.otex.homamuser.view.home.model.FoodLoveModel
 class CartAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
     : RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
 
-    var itemBinding: ItemCartBinding?=null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        itemBinding = ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-         return MyViewHolder(itemBinding!!)
-
-
-    }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
@@ -49,9 +44,15 @@ class CartAdapter(private val context: Context, val chartList: MutableList<FoodL
 
 
 
-    class MyViewHolder(private val itemBinding: ItemCartBinding) : RecyclerView.ViewHolder(itemBinding.root) {
 
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        return MyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.item_cart, parent, false)
+        )
+    }
 
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemCartBinding.bind(view)
     }
 }

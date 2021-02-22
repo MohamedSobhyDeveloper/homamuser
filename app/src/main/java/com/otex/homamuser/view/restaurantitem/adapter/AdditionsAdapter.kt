@@ -3,6 +3,7 @@ package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
@@ -67,10 +68,15 @@ class AdditionsAdapter(private val context: Context, val chartList: MutableList<
 
 
 
-    class MyViewHolder(var binding: ItemAdditionBinding) : RecyclerView.ViewHolder(binding.root)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(context)
-        return MyViewHolder(ItemAdditionBinding.inflate(layoutInflater))
+        return MyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.item_addition, parent, false)
+        )
+    }
+
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemAdditionBinding.bind(view)
     }
 }

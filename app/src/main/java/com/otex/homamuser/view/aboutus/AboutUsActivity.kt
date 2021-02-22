@@ -7,10 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityAboutUsBinding
 import com.otex.homamuser.databinding.ActivityLoginBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivityViewModel
 
-class AboutUsActivity : AppCompatActivity() {
+class AboutUsActivity : BaseActivity() {
     private var aboutUsViewModel : AboutUsViewModel? = null
     lateinit var binding: ActivityAboutUsBinding
 

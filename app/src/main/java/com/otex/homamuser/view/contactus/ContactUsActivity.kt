@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityContactUsBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import kotlin.math.roundToInt
 
 
-class ContactUsActivity : AppCompatActivity() {
+class ContactUsActivity : BaseActivity() {
 
 
     private var contactUsViewModel: ContactUsViewModel? = null

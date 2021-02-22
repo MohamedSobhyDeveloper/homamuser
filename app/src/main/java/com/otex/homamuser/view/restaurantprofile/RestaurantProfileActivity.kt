@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.myorder.MyOrderListActivity
@@ -15,7 +16,7 @@ import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
 
-class RestaurantProfileActivity : AppCompatActivity(), OnItemClick {
+class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     private var resturantProfileViewModel: ResturantProfileViewModel? = null
     lateinit var binding: ActivityRestaurantProfileBinding
 

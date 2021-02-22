@@ -6,10 +6,11 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRegisterBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivity() {
     private var registerActivityViewModel : RegisterActivityViewModel? = null
     lateinit var binding: ActivityRegisterBinding
     var email_or_phone:String=""

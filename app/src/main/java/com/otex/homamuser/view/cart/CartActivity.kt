@@ -6,19 +6,13 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityCartBinding
-import com.otex.homamuser.databinding.ActivityLoginBinding
-import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
-import com.otex.homamuser.view.login.LoginActivityViewModel
 import com.otex.homamuser.view.myorder.MyOrderMapActivity
-import com.otex.homamuser.view.register.RegisterActivity
-import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CartAdapter
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.FoodLoveAdapter
 
-class CartActivity : AppCompatActivity() {
+class CartActivity : BaseActivity() {
     private var cartViewModel : CartViewModel? = null
     lateinit var binding: ActivityCartBinding
 

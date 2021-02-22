@@ -3,11 +3,14 @@ package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemBestdishesBinding
 import com.otex.homamuser.databinding.ItemCountryHomeBinding
+import com.otex.homamuser.databinding.ItemSizeBinding
 import com.otex.homamuser.databinding.ItemSpecialOffersBinding
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.model.FoodLoveModel
@@ -21,20 +24,11 @@ import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 class BestDishesAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
     : RecyclerView.Adapter<BestDishesAdapter.MyViewHolder>() {
 
-    var itemBinding: ItemBestdishesBinding?=null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        itemBinding = ItemBestdishesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
-
-         return MyViewHolder(itemBinding!!)
-
-
-    }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        itemBinding!!.imgAdd.setOnClickListener {
+        holder.binding!!.imgAdd.setOnClickListener {
 
             context.startActivity(Intent(context, RestaurantItemActivity::class.java))
 
@@ -64,10 +58,15 @@ class BestDishesAdapter(private val context: Context, val chartList: MutableList
 
 
 
-    class MyViewHolder(private val itemBinding: ItemBestdishesBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
 
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        return MyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.item_bestdishes, parent, false)
+        )
+    }
 
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemBestdishesBinding.bind(view)
     }
 }

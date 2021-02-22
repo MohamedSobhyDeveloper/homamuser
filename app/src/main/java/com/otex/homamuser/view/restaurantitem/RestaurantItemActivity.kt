@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRestaurantItemBinding
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.myorder.MyOrderListActivity
 import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
@@ -19,7 +20,7 @@ import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDi
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.ChooseSizeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
 
-class RestaurantItemActivity : AppCompatActivity() {
+class RestaurantItemActivity : BaseActivity() {
     private var resturantProfileViewModel: ResturantProfileViewModel? = null
     lateinit var binding: ActivityRestaurantItemBinding
     var num:Int=1

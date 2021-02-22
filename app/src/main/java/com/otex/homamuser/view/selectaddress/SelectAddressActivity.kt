@@ -29,10 +29,11 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivitySelectAddressBinding
 import com.otex.homamuser.utlitites.GPSTracker
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import java.io.IOException
 import java.util.*
 
-class SelectAddressActivity : AppCompatActivity(), OnMapReadyCallback {
+class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
     lateinit var binding: ActivitySelectAddressBinding
     private var mapFragment: SupportMapFragment? = null
     private lateinit var mMap: GoogleMap

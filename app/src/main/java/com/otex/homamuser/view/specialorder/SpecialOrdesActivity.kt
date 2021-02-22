@@ -6,15 +6,13 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ActivityHomeBinding
 import com.otex.homamuser.databinding.ActivitySpecialOrdesBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.home.HomeActivityViewModel
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.FoodLoveAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.SpecialOrderAdapter
 
-class SpecialOrdesActivity : AppCompatActivity() {
+class SpecialOrdesActivity : BaseActivity() {
     private lateinit var binding : ActivitySpecialOrdesBinding
 
     private var homeActivityViewModel : HomeActivityViewModel? = null

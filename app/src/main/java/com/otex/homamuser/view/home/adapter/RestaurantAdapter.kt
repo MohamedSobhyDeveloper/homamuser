@@ -2,14 +2,16 @@ package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
 
 
-class FoodLoveAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
-    : RecyclerView.Adapter<FoodLoveAdapter.MyViewHolder>() {
+class RestaurantAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+    : RecyclerView.Adapter<RestaurantAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
@@ -33,17 +35,22 @@ class FoodLoveAdapter(private val context: Context, val chartList: MutableList<F
         if (chartList?.size== null) {
             return 10
         } else {
-            return chartList?.size!!
+            return chartList.size
         }
     }
 
 
 
 
-    class MyViewHolder(var binding: ItemCountryHomeBinding) : RecyclerView.ViewHolder(binding.root)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(context)
-        return MyViewHolder(ItemCountryHomeBinding.inflate(layoutInflater))
+        return MyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.item_country_home, parent, false)
+        )
+    }
+
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemCountryHomeBinding.bind(view)
     }
 }

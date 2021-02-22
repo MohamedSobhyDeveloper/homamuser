@@ -26,11 +26,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityMyOrderMapBinding
 import com.otex.homamuser.utlitites.GPSTracker
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
 import java.util.*
 
-class MyOrderMapActivity : AppCompatActivity(), OnMapReadyCallback {
+class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     private var myOrderViewModel: MyOrderViewModel? = null
     lateinit var binding: ActivityMyOrderMapBinding
     private var mapFragment: SupportMapFragment? = null

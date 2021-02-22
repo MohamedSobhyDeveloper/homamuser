@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityCartBinding
 import com.otex.homamuser.databinding.ActivityOrderDetailsBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartViewModel
 import com.otex.homamuser.view.home.HomeActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CartAdapter
 
-class OrderDetailsActivity : AppCompatActivity() {
+class OrderDetailsActivity : BaseActivity() {
     private var cartViewModel : CartViewModel? = null
     lateinit var binding: ActivityOrderDetailsBinding
 

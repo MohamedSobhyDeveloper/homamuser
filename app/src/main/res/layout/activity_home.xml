@@ -87,7 +87,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rec_foodLOve"
+                android:id="@+id/rec_restaurants"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -104,7 +104,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
-                app:layout_constraintTop_toBottomOf="@+id/rec_foodLOve"
+                app:layout_constraintTop_toBottomOf="@+id/rec_restaurants"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rec_special_orders"
+                android:id="@+id/rec_special_restaurant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"

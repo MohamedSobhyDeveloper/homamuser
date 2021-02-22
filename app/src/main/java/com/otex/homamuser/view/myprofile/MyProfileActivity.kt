@@ -7,13 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityEditProfileBinding
 import com.otex.homamuser.databinding.ActivityMyProfileBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.editprofile.EditProfileActivity
 import com.otex.homamuser.view.editprofile.EditProfileViewModel
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.myorder.MyOrderListActivity
 
-class MyProfileActivity : AppCompatActivity() {
+class MyProfileActivity : BaseActivity() {
     private var loginviewmodel : EditProfileViewModel? = null
     lateinit var binding: ActivityMyProfileBinding
 

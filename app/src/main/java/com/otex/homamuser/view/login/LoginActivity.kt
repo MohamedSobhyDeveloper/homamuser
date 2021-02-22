@@ -6,11 +6,12 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.register.RegisterActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private var loginviewmodel : LoginActivityViewModel? = null
     lateinit var binding: ActivityLoginBinding

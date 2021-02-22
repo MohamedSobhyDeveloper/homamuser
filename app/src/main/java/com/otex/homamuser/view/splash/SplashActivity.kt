@@ -8,9 +8,10 @@ import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
 import com.otex.homamuser.databinding.ActivitySplashBinding
 import com.otex.homamuser.view.MainActivity
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.login.LoginActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     lateinit var binding: ActivitySplashBinding
 

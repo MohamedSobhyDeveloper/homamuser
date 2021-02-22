@@ -19,7 +19,8 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.selectaddress.SelectAddressActivity"></activity>
+        <activity android:name=".view.baseActivity.BaseActivity"></activity>
+        <activity android:name=".view.selectaddress.SelectAddressActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

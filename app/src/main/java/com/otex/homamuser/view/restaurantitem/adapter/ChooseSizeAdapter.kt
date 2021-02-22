@@ -2,6 +2,7 @@ package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
@@ -61,10 +62,14 @@ class ChooseSizeAdapter(private val context: Context, val chartList: MutableList
 
 
 
-    class MyViewHolder(var binding: ItemSizeBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(context)
-        return MyViewHolder(ItemSizeBinding.inflate(layoutInflater))
+        return MyViewHolder(
+                LayoutInflater.from(context).inflate(R.layout.item_size, parent, false)
+        )
+    }
+
+    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemSizeBinding.bind(view)
     }
 }

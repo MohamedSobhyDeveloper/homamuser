@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityMyOrderListBinding
 import com.otex.homamuser.databinding.ActivityResturantBinding
+import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.home.HomeActivityViewModel
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CountrySpecialAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrderListAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.SpecialOrderAdapter
 
-class MyOrderListActivity : AppCompatActivity() {
+class MyOrderListActivity : BaseActivity() {
     private lateinit var binding : ActivityMyOrderListBinding
 
     private var myOrderViewModel : MyOrderViewModel? = null
