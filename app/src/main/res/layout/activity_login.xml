@@ -121,6 +121,7 @@
             <TextView
                 app:layout_constraintTop_toBottomOf="@+id/txt_welcom"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:id="@+id/txt_please_login"
                 android:text="@string/please_login_or_sign_up_to_continue_using_our_app"
                 android:textSize="12sp"
@@ -128,9 +129,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/rubikregular"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginEnd="15dp"
+
+                />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -173,6 +176,7 @@
                 android:textColor="@color/red"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="22dp"
+                android:visibility="gone"
                 android:fontFamily="@font/rubikregular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
