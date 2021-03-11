@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.*
-import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.model.FoodLoveModel
-import com.otex.homamuser.view.register.RegisterActivity
-import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
+import com.otex.homamuser.view.restaurantitem.model.Option
 
 
-class ChooseSizeAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+class ChooseSizeAdapter(private val context: Context, val chartList: List<Option>)
     : RecyclerView.Adapter<ChooseSizeAdapter.MyViewHolder>() {
 
 
@@ -21,6 +19,9 @@ class ChooseSizeAdapter(private val context: Context, val chartList: MutableList
 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        holder.binding.checkboc.text=chartList.get(position).name
+        holder.binding.txtSalary.text= chartList.get(position).price.toString()+" "+"L.E"
 
         holder.binding.conCheckbox.setOnClickListener {
             selectedItemPosition=position
@@ -44,7 +45,7 @@ class ChooseSizeAdapter(private val context: Context, val chartList: MutableList
 
     fun addList(movielist: MutableList<FoodLoveModel>) {
 
-        this.chartList?.addAll(movielist)
+        //this.chartList?.addAll(movielist)
         notifyDataSetChanged()
     }
 

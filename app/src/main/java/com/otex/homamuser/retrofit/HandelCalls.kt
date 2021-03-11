@@ -8,6 +8,7 @@ import com.otex.homamuser.interfaces.HandleRetrofitRespAdapter
 import com.otex.homamuser.utlitites.DataEnum
 import com.otex.homamuser.utlitites.HelpMe
 import com.otex.homamuser.utlitites.Loading
+import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
 import es.dmoral.toasty.Toasty
 import org.json.JSONException
 import org.json.JSONObject
@@ -38,11 +39,16 @@ class HandelCalls {
     fun call(flag: String, meMap: HashMap<String, String?>?, ShowLoadingDialog: Boolean, onRespnseSucess: HandleRetrofitResp) {
         onRespnse = onRespnseSucess
 
-        if (flag== DataEnum.moviephoto.name){
-            callRetrofit(restRetrofit!!.getClientService().getPhotos(meMap), flag, ShowLoadingDialog)
-        }
+       if (flag == DataEnum.menuDetails.name) {
+            var id=meMap?.get("id")
+            callRetrofit(restRetrofit?.getClientService()?.getRestaurantDetails("3"), flag, ShowLoadingDialog)
+        }else if(flag==DataEnum.RestMenu.name){
+           callRetrofit(restRetrofit?.getClientService()?.getRestaurantMenu("3","3"), flag, ShowLoadingDialog)
+
+       }
 
     }
+
 
 
 

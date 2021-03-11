@@ -134,7 +134,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="20dp"
-            android:id="@+id/txt_happy"
+            android:id="@+id/txt_name_profile"
             android:text="Happy Bouns"
             android:textColor="@color/bluefateh"
             android:textSize="21sp"
@@ -160,7 +160,7 @@
 
 
         <TextView
-            app:layout_constraintTop_toBottomOf="@+id/txt_happy"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name_profile"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="20dp"
             android:id="@+id/txt_Bakery"

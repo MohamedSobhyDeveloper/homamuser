@@ -1,16 +1,12 @@
 package com.otex.homamuser.view.restaurantprofile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.otex.homamuser.view.home.model.FoodLoveModel
-import com.otex.homamuser.view.login.LoginActivity
-import com.otex.homamuser.view.myorder.MyOrderListActivity
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
@@ -24,9 +20,11 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getRestaurant_details()
         initialize()
+        getRestaurant_details()
+
         click()
-        getrestaurant()
     }
     private fun click() {
         binding.backbtn.setOnClickListener {
@@ -39,10 +37,13 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
         resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
 
+            binding.txtNameProfile.text=it.data.name
+            binding.txtAddress.text=it.data.address+" "+it.data.district
+
             val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
             binding.recMenu.layoutManager = layoutManager
             val adapter =
-                MenuResProfileAdapter(this,null,this)
+                MenuResProfileAdapter(this,it.data.menus,this)
             binding.recMenu.adapter = adapter
 
         }
@@ -58,9 +59,9 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
 
     }
 
-    private fun getrestaurant() {
+    private fun getRestaurant_details() {
 
-        resturantProfileViewModel?.getRestaurant()
+        resturantProfileViewModel?.getItemMenu(this)
 
     }
 

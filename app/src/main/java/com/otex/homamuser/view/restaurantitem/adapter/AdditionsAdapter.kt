@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.*
-import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.model.FoodLoveModel
-import com.otex.homamuser.view.register.RegisterActivity
-import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
+import com.otex.homamuser.view.restaurantitem.model.Addition
 
 
-class AdditionsAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+class AdditionsAdapter(private val context: Context, val chartList: List<Addition>)
     : RecyclerView.Adapter<AdditionsAdapter.MyViewHolder>() {
     private var selectedItemPosition: Int = 0
 
@@ -23,6 +21,9 @@ class AdditionsAdapter(private val context: Context, val chartList: MutableList<
 
     @SuppressLint("NewApi")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        holder.binding.txtNameFood.text=chartList.get(position).name
+        holder.binding.txtSalary.text= chartList.get(position).price.toString()+" "+"L.E"
 
         holder.binding.conAddition.setOnClickListener {
             selectedItemPosition=position
@@ -50,7 +51,7 @@ class AdditionsAdapter(private val context: Context, val chartList: MutableList<
 
     fun addList(movielist: MutableList<FoodLoveModel>) {
 
-        this.chartList?.addAll(movielist)
+    //    this.chartList?.addAll(movielist)
         notifyDataSetChanged()
     }
 
