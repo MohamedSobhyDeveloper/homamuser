@@ -23,7 +23,7 @@ class AdditionsAdapter(private val context: Context, val chartList: List<Additio
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.txtNameFood.text=chartList.get(position).name
-        holder.binding.txtSalary.text= chartList.get(position).price.toString()+" "+"L.E"
+        holder.binding.txtSalary.text= chartList.get(position).price.toString()+" "+"ج"
 
         holder.binding.conAddition.setOnClickListener {
             selectedItemPosition=position

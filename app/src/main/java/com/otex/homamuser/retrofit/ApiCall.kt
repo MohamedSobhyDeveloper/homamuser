@@ -19,4 +19,7 @@ interface ApiCall {
 
     @GET("restaurants/{restaurant_id}/{menu_id}")
     fun getRestaurantMenu(@Path("restaurant_id") id: String?,@Path("menu_id") menu_id: String?):Call<ModelRestaurantMenu?>?
+    
+
+
 }

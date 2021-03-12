@@ -7,7 +7,9 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
+import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
+import com.otex.homamuser.view.restaurantprofile.model.Menu
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
@@ -20,7 +22,6 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        getRestaurant_details()
         initialize()
         getRestaurant_details()
 
@@ -40,37 +41,51 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
 
-            val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            binding.recMenu.layoutManager = layoutManager
-            val adapter =
-                MenuResProfileAdapter(this,it.data.menus,this)
-            binding.recMenu.adapter = adapter
+            setUpMenu(it.data.menus)
+
+
 
         }
-        resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
+        resturantProfileViewModel!!.restaurantMenudata.observe(this) {
 
             val layoutManager = LinearLayoutManager(this)
             binding.recBestdishes.layoutManager = layoutManager
             val adapter =
-                BestDishesAdapter(this, null)
+                    BestDishesAdapter(this, it.data.products as ArrayList<Product>)
             binding.recBestdishes.adapter = adapter
 
         }
 
     }
 
-    private fun getRestaurant_details() {
-
-        resturantProfileViewModel?.getItemMenu(this)
+    private fun setUpMenu(menus: List<Menu>) {
+        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        binding.recMenu.layoutManager = layoutManager
+        val adapter =
+                MenuResProfileAdapter(this,menus,this)
+        binding.recMenu.adapter = adapter
+        getMenuItem("3",menus[0].id.toString())
 
     }
 
+    private fun getMenuItem(restId: String, menuId: String) {
+        val map = HashMap<String, String?>()
+        map.put("restId",restId)
+        map.put("menuId",menuId)
+        resturantProfileViewModel?.getRestaurantMenuItem(this,map)
+
+    }
+
+    private fun getRestaurant_details() {
+        val map = HashMap<String, String?>()
+        map.put("id","3")
+        resturantProfileViewModel?.getRestaurantDetails(this,map)
+
+    }
+
+
     override fun onClick(value: String?) {
-        val layoutManager = LinearLayoutManager(this)
-        binding.recBestdishes.layoutManager = layoutManager
-        val adapter =
-                BestDishesAdapter(this, null)
-        binding.recBestdishes.adapter = adapter
+       getMenuItem("3", value!!)
     }
 
 

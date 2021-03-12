@@ -1,36 +1,41 @@
 package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemBestdishesBinding
-import com.otex.homamuser.databinding.ItemCountryHomeBinding
-import com.otex.homamuser.databinding.ItemSizeBinding
-import com.otex.homamuser.databinding.ItemSpecialOffersBinding
-import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
-import com.otex.homamuser.view.home.model.FoodLoveModel
-import com.otex.homamuser.view.myorder.MyOrderListActivity
-import com.otex.homamuser.view.register.RegisterActivity
 import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
-import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
-import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
+import com.otex.homamuser.view.restaurantitem.model.Product
 
 
-class BestDishesAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>)
     : RecyclerView.Adapter<BestDishesAdapter.MyViewHolder>() {
 
 
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.binding!!.imgAdd.setOnClickListener {
+        holder.binding.productName.text=menuItemList[position].name
+        holder.binding.description.text=menuItemList[position].description
+        if(menuItemList[position].image_path!=null){
+        Glide.with(context).load(menuItemList[position].image_path).into(holder.binding.imgFood)
+        }else{
+            Glide.with(context).load(context.getDrawable(R.drawable.food)).into(holder.binding.imgFood)
+        }
+        holder.binding.imgAdd.setOnClickListener {
+            menuItemList = ArrayList<Product>()
 
-            context.startActivity(Intent(context, RestaurantItemActivity::class.java))
+            var intent:Intent=Intent(context,RestaurantItemActivity::class.java)
+            intent.putExtra("menuItemList", menuItemList)
+            intent.putExtra("position", position.toString())
+            context.startActivity(intent)
 
         }
 
@@ -39,21 +44,20 @@ class BestDishesAdapter(private val context: Context, val chartList: MutableList
 
 
 
-    fun addList(movielist: MutableList<FoodLoveModel>) {
-
-        this.chartList?.addAll(movielist)
-        notifyDataSetChanged()
-    }
+//    fun addList(movielist: MutableList<FoodLoveModel>) {
+//
+//        this.menuItemList?.addAll(movielist)
+//        notifyDataSetChanged()
+//    }
 
 
 
 
     override fun getItemCount(): Int {
-        if (chartList?.size== null) {
-            return 10
-        } else {
-            return chartList?.size!!
-        }
+
+
+            return menuItemList.size
+
     }
 
 

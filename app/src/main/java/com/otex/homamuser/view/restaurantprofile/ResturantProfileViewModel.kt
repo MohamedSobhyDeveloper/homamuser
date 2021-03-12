@@ -8,6 +8,7 @@ import com.otex.homamuser.retrofit.HandelCalls
 import com.otex.homamuser.utlitites.DataEnum
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
 import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
+import java.util.HashMap
 
 class ResturantProfileViewModel : ViewModel() ,HandleRetrofitResp{
 
@@ -19,19 +20,19 @@ class ResturantProfileViewModel : ViewModel() ,HandleRetrofitResp{
   fun  getRestauran(context: Context){
 
   }
-    fun getItemMenu(context: Context){
+    fun getRestaurantDetails(context: Context,meMap: HashMap<String, String?>?){
 
-        HandelCalls.getInstance(context)?.call(DataEnum.menuDetails.name, null, true, this)
+        HandelCalls.getInstance(context)?.call(DataEnum.RestaurantDetails.name, meMap, true, this)
 
     }
-    fun getRestaurantMenu(context: Context){
+    fun getRestaurantMenuItem(context: Context,meMap: HashMap<String, String?>?){
 
-        HandelCalls.getInstance(context)?.call(DataEnum.RestMenu.name, null, true, this)
+        HandelCalls.getInstance(context)?.call(DataEnum.RestMenu.name, meMap, false, this)
 
     }
     override fun onResponseSuccess(flag: String?, o: Any?) {
 
-        if (flag == DataEnum.menuDetails.name) {
+        if (flag == DataEnum.RestaurantDetails.name) {
             val modelRestaurantDetails: ModelRestaurantDetails = o as ModelRestaurantDetails
             restaurantProfilelivedata.setValue(modelRestaurantDetails)
         }else if(flag==DataEnum.RestMenu.name){

@@ -39,11 +39,15 @@ class HandelCalls {
     fun call(flag: String, meMap: HashMap<String, String?>?, ShowLoadingDialog: Boolean, onRespnseSucess: HandleRetrofitResp) {
         onRespnse = onRespnseSucess
 
-       if (flag == DataEnum.menuDetails.name) {
-            var id=meMap?.get("id")
-            callRetrofit(restRetrofit?.getClientService()?.getRestaurantDetails("3"), flag, ShowLoadingDialog)
+       if (flag == DataEnum.RestaurantDetails.name) {
+
+            val id=meMap?.get("id")
+            callRetrofit(restRetrofit?.getClientService()?.getRestaurantDetails(id), flag, ShowLoadingDialog)
         }else if(flag==DataEnum.RestMenu.name){
-           callRetrofit(restRetrofit?.getClientService()?.getRestaurantMenu("3","3"), flag, ShowLoadingDialog)
+           val id=meMap?.get("restId")
+           val menu_id=meMap?.get("menuId")
+
+           callRetrofit(restRetrofit?.getClientService()?.getRestaurantMenu(id,menu_id), flag, ShowLoadingDialog)
 
        }
 

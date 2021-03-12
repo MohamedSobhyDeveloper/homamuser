@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityRestaurantItemBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
+import com.otex.homamuser.view.restaurantitem.model.Addition
+import com.otex.homamuser.view.restaurantitem.model.Option
+import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
 import com.otex.homamuser.view.restaurantprofile.ResturantProfileViewModel
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.AdditionsAdapter
@@ -21,9 +24,12 @@ class RestaurantItemActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initialize()
+        val i = intent
+        var id=i.extras?.getString("position")
+        val list: ArrayList<Product>? = i
+                .getSerializableExtra("menuItemList") as ArrayList<Product>?
+        initialize(list,id)
         click()
-        getrestaurant()
     }
     private fun click() {
         binding.backbtn.setOnClickListener {
@@ -36,46 +42,46 @@ class RestaurantItemActivity : BaseActivity() {
         }
         binding.add.setOnClickListener {
             binding.numOrder.setText((num++).toString())
-            binding.txtSalary.setText((120*num).toString()+"L.E")
+            binding.txtSalary.setText((120*num).toString()+"ج")
         }
         binding.minues.setOnClickListener {
             binding.numOrder.setText((num--).toString())
-            binding.txtSalary.setText((120*num).toString()+"L.E")
+            binding.txtSalary.setText((120*num).toString()+"ج")
         }
 
     }
-    private fun initialize() {
-        resturantMenuViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
-        resturantMenuViewModel!!.restaurantMenudata.observe(this) {
+    private fun initialize(list: ArrayList<Product>?, id: String?) {
 
-            binding.foodName.text=it.data.products[0].name
-            binding.description.text=it.data.products[0].description
+            binding.foodName.text= list!!.get(id!!.toInt()).toString()
+         //   binding.description.text=list!![id!!.toInt()].description
 
-            val layoutManager = LinearLayoutManager(this)
-            binding.recyclerSize.layoutManager = layoutManager
-            val adapter =
-                    ChooseSizeAdapter(this,it.data.products[0].options)
-            binding.recyclerSize.adapter = adapter
+            setUpRecyclerSize(list!![id!!.toInt()].options)
 
-        }
-        resturantMenuViewModel!!.restaurantMenudata.observe(this) {
+            setUpRecyclerAdditions(list!![id!!.toInt()].additions)
 
-            val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            binding.recyclerAddition.layoutManager = layoutManager
-            val adapter =
-                AdditionsAdapter(this, it.data.products[0].additions)
-            binding.recyclerAddition.adapter = adapter
 
-        }
+
+
 
     }
 
-    private fun getrestaurant() {
+    private fun setUpRecyclerAdditions(additions: List<Addition>) {
 
-        resturantMenuViewModel?.getRestaurantMenu(this)
+        val layoutManager_horizontal = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        binding.recyclerAddition.layoutManager = layoutManager_horizontal
+        val adapter_addition =
+                AdditionsAdapter(this, additions)
+        binding.recyclerAddition.adapter = adapter_addition
 
     }
 
+    private fun setUpRecyclerSize(options: List<Option>) {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerSize.layoutManager = layoutManager
+        val adapter =
+                ChooseSizeAdapter(this,options)
+        binding.recyclerSize.adapter = adapter
+    }
 
 
 }
