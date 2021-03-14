@@ -27,7 +27,7 @@ class ResturantProfileViewModel : ViewModel() ,HandleRetrofitResp{
     }
     fun getRestaurantMenuItem(context: Context,meMap: HashMap<String, String?>?){
 
-        HandelCalls.getInstance(context)?.call(DataEnum.RestMenu.name, meMap, false, this)
+        HandelCalls.getInstance(context)?.call(DataEnum.RestMenu.name, meMap, true, this)
 
     }
     override fun onResponseSuccess(flag: String?, o: Any?) {

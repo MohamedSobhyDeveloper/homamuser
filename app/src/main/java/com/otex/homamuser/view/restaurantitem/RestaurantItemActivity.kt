@@ -1,9 +1,8 @@
 package com.otex.homamuser.view.restaurantitem
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityRestaurantItemBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
@@ -12,25 +11,21 @@ import com.otex.homamuser.view.restaurantitem.model.Addition
 import com.otex.homamuser.view.restaurantitem.model.Option
 import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
-import com.otex.homamuser.view.restaurantprofile.ResturantProfileViewModel
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.AdditionsAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.ChooseSizeAdapter
 
 class RestaurantItemActivity : BaseActivity() {
-    private var resturantMenuViewModel: ResturantProfileViewModel? = null
     lateinit var binding: ActivityRestaurantItemBinding
     var num:Int=1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val i = intent
-        var id=i.extras?.getString("position")
-        val list: ArrayList<Product>? = i
-                .getSerializableExtra("menuItemList") as ArrayList<Product>?
-        initialize(list,id)
+        initialize()
         click()
     }
+    @SuppressLint("SetTextI18n")
     private fun click() {
         binding.backbtn.setOnClickListener {
             startActivity(Intent(this, RestaurantProfileActivity::class.java))
@@ -50,14 +45,16 @@ class RestaurantItemActivity : BaseActivity() {
         }
 
     }
-    private fun initialize(list: ArrayList<Product>?, id: String?) {
+    private fun initialize() {
 
-            binding.foodName.text= list!!.get(id!!.toInt()).toString()
-         //   binding.description.text=list!![id!!.toInt()].description
+            val list = intent.getParcelableExtra<Product>("menuItemList")
 
-            setUpRecyclerSize(list!![id!!.toInt()].options)
+            binding.foodName.text= list?.name
+            binding.description.text=list?.description
 
-            setUpRecyclerAdditions(list!![id!!.toInt()].additions)
+            setUpRecyclerSize(list?.options!!)
+
+            setUpRecyclerAdditions(list.additions)
 
 
 

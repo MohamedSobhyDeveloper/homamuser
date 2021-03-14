@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemBestdishesBinding
 import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
@@ -24,16 +23,15 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
         holder.binding.productName.text=menuItemList[position].name
         holder.binding.description.text=menuItemList[position].description
-        if(menuItemList[position].image_path!=null){
-        Glide.with(context).load(menuItemList[position].image_path).into(holder.binding.imgFood)
-        }else{
-            Glide.with(context).load(context.getDrawable(R.drawable.food)).into(holder.binding.imgFood)
-        }
+//        if(menuItemList[position].image_path!=null){
+//        Glide.with(context).load(menuItemList[position].image_path).into(holder.binding.imgFood)
+//        }else{
+//            Glide.with(context).load(context.getDrawable(R.drawable.food)).into(holder.binding.imgFood)
+//        }
         holder.binding.imgAdd.setOnClickListener {
-            menuItemList = ArrayList<Product>()
 
-            var intent:Intent=Intent(context,RestaurantItemActivity::class.java)
-            intent.putExtra("menuItemList", menuItemList)
+            val intent=Intent(context,RestaurantItemActivity::class.java)
+            intent.putExtra("menuItemList", menuItemList[position])
             intent.putExtra("position", position.toString())
             context.startActivity(intent)
 

@@ -1,5 +1,6 @@
 package com.otex.homamuser.view.restaurantprofile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -34,6 +35,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         }
 
     }
+    @SuppressLint("SetTextI18n")
     private fun initialize() {
         resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
         resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
