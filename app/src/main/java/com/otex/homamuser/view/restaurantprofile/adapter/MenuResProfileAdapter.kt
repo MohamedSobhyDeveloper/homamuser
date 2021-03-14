@@ -5,18 +5,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.graphics.Color
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ItemBestdishesBinding
-import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.databinding.ItemMenuBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
+import com.otex.homamuser.view.restaurantprofile.model.Menu
+import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
 
 
-class MenuResProfileAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?,var onclik:OnItemClick)
+class MenuResProfileAdapter(private val context: Context, val meulList: List<Menu>, var onclik:OnItemClick)
     : RecyclerView.Adapter<MenuResProfileAdapter.MyViewHolder>() {
 
     private var selectedItemPosition: Int = 0
@@ -24,11 +22,12 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
     @SuppressLint("ResourceAsColor", "NewApi")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+        holder.binding?.txtMenu.text=meulList.get(position).name
 
          holder.binding?.conMenu?.setOnClickListener {
               selectedItemPosition=position
              notifyDataSetChanged()
-             onclik.onClick("best dishes")
+             onclik.onClick(meulList[position].id.toString())
              holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
              holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))
 
@@ -49,9 +48,8 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
 
 
 
-    fun addList(movielist: MutableList<FoodLoveModel>) {
+    fun addList(movielist: List<ModelRestaurantDetails>) {
 
-        this.chartList?.addAll(movielist)
         notifyDataSetChanged()
     }
 
@@ -59,11 +57,9 @@ class MenuResProfileAdapter(private val context: Context, val chartList: Mutable
 
 
     override fun getItemCount(): Int {
-        if (chartList?.size== null) {
-            return 10
-        } else {
-            return chartList?.size!!
-        }
+
+            return meulList?.size!!
+
     }
 
 

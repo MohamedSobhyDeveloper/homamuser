@@ -1,36 +1,35 @@
 package com.otex.homamuser.view.restaurantitem
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRestaurantItemBinding
-import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
-import com.otex.homamuser.view.myorder.MyOrderListActivity
+import com.otex.homamuser.view.restaurantitem.model.Addition
+import com.otex.homamuser.view.restaurantitem.model.Option
+import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
 import com.otex.homamuser.view.restaurantprofile.ResturantProfileViewModel
-import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.AdditionsAdapter
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.ChooseSizeAdapter
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
 
 class RestaurantItemActivity : BaseActivity() {
-    private var resturantProfileViewModel: ResturantProfileViewModel? = null
+    private var resturantMenuViewModel: ResturantProfileViewModel? = null
     lateinit var binding: ActivityRestaurantItemBinding
     var num:Int=1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initialize()
+        val i = intent
+        var id=i.extras?.getString("position")
+        val list: ArrayList<Product>? = i
+                .getSerializableExtra("menuItemList") as ArrayList<Product>?
+        initialize(list,id)
         click()
-        getrestaurant()
     }
     private fun click() {
         binding.backbtn.setOnClickListener {
@@ -43,43 +42,46 @@ class RestaurantItemActivity : BaseActivity() {
         }
         binding.add.setOnClickListener {
             binding.numOrder.setText((num++).toString())
-            binding.txtSalary.setText((120*num).toString()+"L.E")
+            binding.txtSalary.setText((120*num).toString()+"ج")
         }
         binding.minues.setOnClickListener {
             binding.numOrder.setText((num--).toString())
-            binding.txtSalary.setText((120*num).toString()+"L.E")
+            binding.txtSalary.setText((120*num).toString()+"ج")
         }
 
     }
-    private fun initialize() {
-        resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
-        resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
+    private fun initialize(list: ArrayList<Product>?, id: String?) {
 
-            val layoutManager = LinearLayoutManager(this)
-            binding.recyclerSize.layoutManager = layoutManager
-            val adapter =
-                    ChooseSizeAdapter(this,null)
-            binding.recyclerSize.adapter = adapter
+            binding.foodName.text= list!!.get(id!!.toInt()).toString()
+         //   binding.description.text=list!![id!!.toInt()].description
 
-        }
-        resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
+            setUpRecyclerSize(list!![id!!.toInt()].options)
 
-            val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-            binding.recyclerAddition.layoutManager = layoutManager
-            val adapter =
-                AdditionsAdapter(this, null)
-            binding.recyclerAddition.adapter = adapter
+            setUpRecyclerAdditions(list!![id!!.toInt()].additions)
 
-        }
+
+
+
 
     }
 
-    private fun getrestaurant() {
+    private fun setUpRecyclerAdditions(additions: List<Addition>) {
 
-        resturantProfileViewModel?.getRestaurant()
+        val layoutManager_horizontal = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        binding.recyclerAddition.layoutManager = layoutManager_horizontal
+        val adapter_addition =
+                AdditionsAdapter(this, additions)
+        binding.recyclerAddition.adapter = adapter_addition
 
     }
 
+    private fun setUpRecyclerSize(options: List<Option>) {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerSize.layoutManager = layoutManager
+        val adapter =
+                ChooseSizeAdapter(this,options)
+        binding.recyclerSize.adapter = adapter
+    }
 
 
 }
