@@ -1,14 +1,16 @@
 package com.otex.homamuser.view.register
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRegisterBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
+import java.util.*
 
 class RegisterActivity : BaseActivity() {
     private var registerActivityViewModel : RegisterActivityViewModel? = null
@@ -28,6 +30,13 @@ class RegisterActivity : BaseActivity() {
 
     private fun initialize() {
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
+        registerActivityViewModel!!.registerLivedata.observe(this) {
+
+             startActivity(Intent(this, HomeActivity::class.java))
+             finish()
+             Toast.makeText(this,"تم تسجيل حساب جديد",Toast.LENGTH_SHORT).show()
+
+        }
     }
 
     private fun click() {
@@ -55,7 +64,7 @@ class RegisterActivity : BaseActivity() {
                 binding.editPasswordConfirm.setError(getString(R.string.enter_password))
             }else{
                 if(confirm_password==password){
-                    register(username,email_or_phone,phone,password,confirm_password)
+                    register(username,email_or_phone,password,)
                 }else{
                     binding.editPasswordConfirm.setError(getString(R.string.confirm_not_equal_password))
                 }
@@ -69,8 +78,14 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-    private fun register(username: String, emailOrPhone: String, phone: String, password: String, confirmPassword: String) {
-        startActivity(Intent(this, HomeActivity::class.java))
-        finish()
+    private fun register(username: String, emailOrPhone: String, password: String) {
+
+        val map = HashMap<String, String?>()
+        map.put("email",emailOrPhone)
+        map.put("password",password)
+        map.put("name",username)
+        registerActivityViewModel!!.makeRegister(this, map)
+
+
     }
 }

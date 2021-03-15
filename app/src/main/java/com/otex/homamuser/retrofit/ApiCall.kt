@@ -1,5 +1,7 @@
 package com.otex.homamuser.retrofit
 
+import com.otex.homamuser.view.login.model.ModelLogin
+import com.otex.homamuser.view.register.model.ModelRegister
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
 import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
 import retrofit2.Call
@@ -19,7 +21,13 @@ interface ApiCall {
 
     @GET("restaurants/{restaurant_id}/{menu_id}")
     fun getRestaurantMenu(@Path("restaurant_id") id: String?,@Path("menu_id") menu_id: String?):Call<ModelRestaurantMenu?>?
-    
 
+    @FormUrlEncoded
+    @POST("user/login")
+    fun login(@FieldMap map: Map<String,String>): Call<ModelLogin?>?
+
+    @FormUrlEncoded
+    @POST("user/register")
+    fun register(@FieldMap map: HashMap<String, String?>?): Call<ModelRegister?>?
 
 }
