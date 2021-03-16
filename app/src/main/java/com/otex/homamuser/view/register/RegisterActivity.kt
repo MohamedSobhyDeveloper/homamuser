@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRegisterBinding
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
+import com.otex.homamuser.utlitites.UserInfo
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
@@ -15,11 +18,12 @@ import java.util.*
 class RegisterActivity : BaseActivity() {
     private var registerActivityViewModel : RegisterActivityViewModel? = null
     lateinit var binding: ActivityRegisterBinding
-    var email_or_phone:String=""
-    var password:String=""
-    var confirm_password:String=""
-    var phone:String=""
-    var username:String=""
+    private  var emailOrPhone:String=""
+    private var password:String=""
+    private var confirmPassword:String=""
+    private  var phone:String=""
+    private var username:String=""
+    private var userInfo:UserInfo?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -31,7 +35,9 @@ class RegisterActivity : BaseActivity() {
     private fun initialize() {
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
         registerActivityViewModel!!.registerLivedata.observe(this) {
-
+            PrefsUtil.with(this).add(Constant.token,it.token).apply()
+             userInfo= UserInfo(this)
+             userInfo?.setUserSignSate(true)
              startActivity(Intent(this, HomeActivity::class.java))
              finish()
              Toast.makeText(this,"تم تسجيل حساب جديد",Toast.LENGTH_SHORT).show()
@@ -47,29 +53,7 @@ class RegisterActivity : BaseActivity() {
         }
 
         binding.btnRegiste.setOnClickListener {
-            username=binding.editUsername.text.toString()
-            email_or_phone=binding.editEmailPhone.text.toString()
-            phone=binding.editPhone.text.toString()
-            password=binding.editPassword.text.toString()
-            confirm_password=binding.editPasswordConfirm.text.toString()
-            if(username.equals("")){
-                binding.editUsername.setError(getString(R.string.enter_username))
-            }else if(email_or_phone.equals("")){
-                binding.editEmailPhone.setError(getString(R.string.enter_email_phone))
-            }else if(phone.equals("")){
-                binding.editPhone.setError(getString(R.string.enter_phone))
-            }else if(password.equals("")){
-                binding.editPassword.setError(getString(R.string.enter_password))
-            }else if(confirm_password.equals("")){
-                binding.editPasswordConfirm.setError(getString(R.string.enter_password))
-            }else{
-                if(confirm_password==password){
-                    register(username,email_or_phone,password,)
-                }else{
-                    binding.editPasswordConfirm.setError(getString(R.string.confirm_not_equal_password))
-                }
-            }
-
+            makeRegister()
         }
 
         binding.backbtn.setOnClickListener {
@@ -78,12 +62,37 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
+    private fun makeRegister() {
+        username=binding.editUsername.text.toString()
+        emailOrPhone=binding.editEmailPhone.text.toString()
+        phone=binding.editPhone.text.toString()
+        password=binding.editPassword.text.toString()
+        confirmPassword=binding.editPasswordConfirm.text.toString()
+        if(username == ""){
+            binding.editUsername.error = getString(R.string.enter_username)
+        }else if(emailOrPhone == ""){
+            binding.editEmailPhone.error = getString(R.string.enter_email_phone)
+        }else if(phone == ""){
+            binding.editPhone.error = getString(R.string.enter_phone)
+        }else if(password == ""){
+            binding.editPassword.error = getString(R.string.enter_password)
+        }else if(confirmPassword == ""){
+            binding.editPasswordConfirm.error = getString(R.string.enter_password)
+        }else{
+            if(confirmPassword==password){
+                register(username,emailOrPhone,password,)
+            }else{
+                binding.editPasswordConfirm.error = getString(R.string.confirm_not_equal_password)
+            }
+        }
+    }
+
     private fun register(username: String, emailOrPhone: String, password: String) {
 
         val map = HashMap<String, String?>()
-        map.put("email",emailOrPhone)
-        map.put("password",password)
-        map.put("name",username)
+        map["email"] = emailOrPhone
+        map["password"] = password
+        map["name"] = username
         registerActivityViewModel!!.makeRegister(this, map)
 
 

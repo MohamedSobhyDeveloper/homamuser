@@ -68,6 +68,8 @@ class RestRetrofit private constructor() {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(interceptor)
 
+
+
         val httpClient = builder.build()
         val retrofit = Retrofit.Builder()
                 .baseUrl(Constant.baseUrl)

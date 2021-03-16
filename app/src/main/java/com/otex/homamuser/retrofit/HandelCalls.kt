@@ -45,13 +45,17 @@ class HandelCalls {
             callRetrofit(restRetrofit?.getClientService()?.getRestaurantDetails(id), flag, ShowLoadingDialog)
         }else if(flag==DataEnum.RestMenu.name){
            val id=meMap?.get("restId")
-           val menu_id=meMap?.get("menuId")
+           val menuId=meMap?.get("menuId")
 
-           callRetrofit(restRetrofit?.getClientService()?.getRestaurantMenu(id,menu_id), flag, ShowLoadingDialog)
+           callRetrofit(restRetrofit?.getClientService()?.getRestaurantMenu(id,menuId), flag, ShowLoadingDialog)
 
        }else if(flag==DataEnum.register.name){
 
            callRetrofit(restRetrofit?.getClientService()?.register(meMap), flag, ShowLoadingDialog)
+
+       }else if(flag==DataEnum.login.name){
+
+           callRetrofit(restRetrofit?.getClientService()?.login(meMap), flag, ShowLoadingDialog)
 
        }
 

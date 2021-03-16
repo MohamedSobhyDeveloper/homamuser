@@ -24,7 +24,7 @@ interface ApiCall {
 
     @FormUrlEncoded
     @POST("user/login")
-    fun login(@FieldMap map: Map<String,String>): Call<ModelLogin?>?
+    fun login(@FieldMap map: HashMap<String, String?>?): Call<ModelLogin?>?
 
     @FormUrlEncoded
     @POST("user/register")

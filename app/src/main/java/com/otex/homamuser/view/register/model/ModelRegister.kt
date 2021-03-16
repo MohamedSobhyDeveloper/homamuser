@@ -1,9 +1,8 @@
 package com.otex.homamuser.view.register.model
 
-class ModelRegister {
-
-    var email:String=""
-    var password:String=""
-    var name:String=""
-
-}
+data class ModelRegister(
+    val expires_in: Int,
+    val token: String,
+    val token_type: String,
+    val user: User
+)

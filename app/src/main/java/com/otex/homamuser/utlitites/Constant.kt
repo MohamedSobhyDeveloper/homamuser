@@ -27,6 +27,10 @@ class Constant {
         @JvmField
         var baseUrl ="http://homam.otextech.net/api/"
 
+        var token = "token"
+
+
+
 
         fun getInstance(context: Context?): Constant? {
             Companion.context = context
