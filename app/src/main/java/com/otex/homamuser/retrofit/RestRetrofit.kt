@@ -3,10 +3,13 @@ package com.otex.homamuser.retrofit
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.DataEnum
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.utlitites.PrefsUtil.with
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -62,6 +65,27 @@ class RestRetrofit private constructor() {
         val builder = OkHttpClient.Builder()
                 .readTimeout(6, TimeUnit.MINUTES)
                 .connectTimeout(1, TimeUnit.MINUTES)
+
+        builder.addInterceptor { chain ->
+            val request = chain.request()
+            val newRequest: Request
+            val token = with(mcontext!!).get("token","")
+
+            if (token!!.isNotEmpty()) {
+
+                newRequest = request.newBuilder()
+                        .header(Authorization, token)
+                        .method(request.method, request.body)
+                        .build()
+                chain.proceed(newRequest)
+            } else {
+                newRequest = request.newBuilder()
+                        .method(request.method, request.body)
+                        .build()
+                chain.proceed(newRequest)
+            }
+        }
+
 
 
         val interceptor =  HttpLoggingInterceptor()

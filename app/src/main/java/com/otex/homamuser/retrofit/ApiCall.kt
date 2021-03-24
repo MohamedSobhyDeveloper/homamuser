@@ -30,4 +30,8 @@ interface ApiCall {
     @POST("user/register")
     fun register(@FieldMap map: HashMap<String, String?>?): Call<ModelRegister?>?
 
+    @GET
+    fun getUsers(@Url url: String?): Call<ModelRegister?>?
+
+
 }
