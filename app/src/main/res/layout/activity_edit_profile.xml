@@ -225,6 +225,7 @@
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
                 app:boxStrokeWidth="0.5dp"
+                android:visibility="gone"
                 android:textColorHint="@color/gray"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/eyecolor"
@@ -260,6 +261,7 @@
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
                 app:boxStrokeWidth="0.5dp"
+                android:visibility="gone"
                 android:textColorHint="@color/gray"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/eyecolor"
@@ -306,7 +308,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/undrawpersonal"
-            android:layout_marginTop="45dp"
             android:elevation="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
+import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
@@ -14,6 +15,7 @@ import com.otex.homamuser.view.restaurantprofile.model.Menu
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
+import com.squareup.picasso.Picasso
 
 class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     private var resturantProfileViewModel: ResturantProfileViewModel? = null
@@ -42,9 +44,10 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
 
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
-
-            setUpMenu(it.data.menus)
-
+            Picasso.get().load(intent.getStringExtra("image")).into(binding.imgCoverphoto)
+            if(it.data.menus.isNotEmpty()) {
+                setUpMenu(it.data.menus)
+            }
 
 
         }
@@ -66,7 +69,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         val adapter =
                 MenuResProfileAdapter(this,menus,this)
         binding.recMenu.adapter = adapter
-        getMenuItem("3",menus[0].id.toString())
+        getMenuItem(intent.getStringExtra(Constant.restID)!!,menus[0].id.toString())
 
     }
 
@@ -80,14 +83,14 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
 
     private fun getRestaurant_details() {
         val map = HashMap<String, String?>()
-        map.put("id","3")
+        map.put(Constant.restID,intent.getStringExtra(Constant.restID))
         resturantProfileViewModel?.getRestaurantDetails(this,map)
 
     }
 
 
     override fun onClick(value: String?) {
-       getMenuItem("3", value!!)
+       getMenuItem(intent.getStringExtra(Constant.restID)!!, value!!)
     }
 
 

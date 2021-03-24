@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityEditProfileBinding
 import com.otex.homamuser.databinding.ActivityMyProfileBinding
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.editprofile.EditProfileActivity
 import com.otex.homamuser.view.editprofile.EditProfileViewModel
@@ -48,6 +50,9 @@ class MyProfileActivity : BaseActivity() {
     }
 
     private fun initialize() {
+        binding.username.text= PrefsUtil.with(this)[Constant.username, ""].toString()
+        binding.useremail.text= PrefsUtil.with(this)[Constant.email, ""].toString()
+
         loginviewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
     }
 }

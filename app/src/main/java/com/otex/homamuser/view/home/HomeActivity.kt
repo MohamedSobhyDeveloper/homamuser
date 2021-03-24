@@ -3,22 +3,24 @@ package com.otex.homamuser.view.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityHomeBinding
+import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.aboutus.AboutUsActivity
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.contactus.ContactUsActivity
+import com.otex.homamuser.view.home.model.Category
+import com.otex.homamuser.view.home.model.Data
 import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantAdapter
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.SpecialOrderAdapter
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
 import java.util.*
 
 
@@ -30,7 +32,7 @@ class HomeActivity : BaseActivity() {
 
     var timer: Timer? = null
     var recommendCount = 0
-    var restaurantAdapter: RestaurantAdapter? = null
+    var restaurantAdapter: CategoryHomeAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,13 +45,14 @@ class HomeActivity : BaseActivity() {
 
         click()
 
-        getrestaurant()
+        getRestaurant()
 
     }
 
-    private fun getrestaurant() {
-
-        homeActivityViewModel?.getRestaurant()
+    private fun getRestaurant() {
+        val map = HashMap<String, String?>()
+        map.put("category_id","0")
+        homeActivityViewModel?.getRestaurant_category(this,map)
 
     }
 
@@ -67,11 +70,13 @@ class HomeActivity : BaseActivity() {
             startActivity(intent)
         }
         binding.txtSellAllFoodlove.setOnClickListener {
-            val intent = Intent(this, ResturantActivity::class.java)
+            val intent=Intent(this,ResturantActivity::class.java)
+            intent.putExtra(Constant.categoryID,"0")
             startActivity(intent)
         }
         binding.txtSellAllSpecial.setOnClickListener {
-            val intent = Intent(this, SpecialOrdesActivity::class.java)
+            val intent=Intent(this,ResturantActivity::class.java)
+            intent.putExtra(Constant.categoryID,"0")
             startActivity(intent)
         }
         binding.drawer.layoutCart.setOnClickListener {
@@ -100,55 +105,32 @@ class HomeActivity : BaseActivity() {
 
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
-        homeActivityViewModel!!.restaurantLiveData.observe(this) {
+        homeActivityViewModel!!.restaurantCategoryLiveData.observe(this) {
 
-            val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
-            binding.recRestaurants.layoutManager = layoutManager
-            restaurantAdapter =
-                    RestaurantAdapter(this,null)
-            binding.recRestaurants.adapter = restaurantAdapter
-
-            recyclerSwitcher(1)
-        }
-        homeActivityViewModel!!.countryhomelivedata.observe(this) {
-
-            val layoutManager = LinearLayoutManager(this)
-            binding.recSpecialRestaurant.layoutManager = layoutManager
-            val adapter =
-                    SpecialOrderAdapter(this,null)
-            binding.recSpecialRestaurant.adapter = adapter
+            setupRecyclerCategoryHome(it.categories)
+            setupRecyclerRestaurantHome(it.restaurants.data)
 
         }
 
+
     }
 
-    fun recyclerSwitcher(seconds: Int) {
-        timer = Timer() // At this line a new Thread will be created
-        timer!!.scheduleAtFixedRate(RecyclerTask(), 0, seconds * 3500.toLong()) // delay
-        //         in
-//         milliseconds
+    private fun setupRecyclerRestaurantHome(restaurants: List<Data>) {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recSpecialRestaurantHome.layoutManager = layoutManager
+        val adapter =
+                RestaurantHomeAdapter(this,restaurants)
+        binding.recSpecialRestaurantHome.adapter = adapter
     }
 
-
-    internal inner class RecyclerTask : TimerTask() {
-        override fun run() {
-
-            // As the TimerTask run on a seprate thread from UI thread we have
-            // to call runOnUiThread to do work on UI thread.
-            runOnUiThread {
-                if (recommendCount > restaurantAdapter!!.itemCount - 1) { // In my case the number of pages are 5
-                    recommendCount = 0
-                } else {
-                    binding.recRestaurants.post {
-                        // Call smooth scroll
-                        binding.recRestaurants.smoothScrollToPosition(recommendCount)
-                    }
-                    recommendCount++
-                }
-
-            }
-        }
+    private fun setupRecyclerCategoryHome(categories: List<Category>) {
+        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        binding.recCategoryHome.layoutManager = layoutManager
+        restaurantAdapter =
+                CategoryHomeAdapter(this,categories)
+        binding.recCategoryHome.adapter = restaurantAdapter
     }
+
 
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {

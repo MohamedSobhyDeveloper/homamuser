@@ -1,21 +1,21 @@
 package com.otex.homamuser.view.editprofile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityEditProfileBinding
-import com.otex.homamuser.databinding.ActivityLoginBinding
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.otex.homamuser.view.home.HomeActivity
-import com.otex.homamuser.view.login.LoginActivity
-import com.otex.homamuser.view.login.LoginActivityViewModel
 import com.otex.homamuser.view.myprofile.MyProfileActivity
+import java.util.HashMap
 
 class EditProfileActivity : BaseActivity() {
-    private var loginviewmodel : EditProfileViewModel? = null
+    private var updateProfileviewmodel : EditProfileViewModel? = null
     lateinit var binding: ActivityEditProfileBinding
 
     var username:String=""
@@ -41,11 +41,8 @@ class EditProfileActivity : BaseActivity() {
             finish()
         }
         binding.btnSave.setOnClickListener {
-            username=binding.editUsername.text.toString()
-            email_or_phone=binding.editEmailPhone.text.toString()
-            phone=binding.editPhone.text.toString()
-            password=binding.editPassword.text.toString()
-            confirm_pass=binding.editPasswordConfirm.text.toString()
+
+            assimentVariable()
 
             if(username.equals("")){
                 binding.editUsername.setError(getString(R.string.enter_username))
@@ -54,31 +51,53 @@ class EditProfileActivity : BaseActivity() {
             }else if(phone.equals("")){
                 binding.editPhone.setError(getString(R.string.enter_phone))
 
-            }else if( password.equals("")){
-                binding.editPassword.setError(getString(R.string.enter_password))
-
-            }else if(confirm_pass.equals("")){
-                binding.editPasswordConfirm.setError(getString(R.string.enter_retype_pass))
-
             }else{
-                if(confirm_pass==password){
-                    update_profile()
-                }else{
-                    binding.editPasswordConfirm.setError(getString(R.string.dosent_match))
-                }
+                    update_profile(username,email_or_phone,phone)
+
             }
 
         }
 
     }
 
-    private fun update_profile() {
+    private fun assimentVariable() {
+        username=binding.editUsername.text.toString()
+        email_or_phone=binding.editEmailPhone.text.toString()
+        phone=binding.editPhone.text.toString()
+        password=binding.editPassword.text.toString()
+        confirm_pass=binding.editPasswordConfirm.text.toString()
+    }
 
-        Toast.makeText(this,"Done!",Toast.LENGTH_LONG).show()
+    private fun update_profile(
+        username: String,
+        emailOrPhone: String,
+        phone: String
+    ) {
+
+        val map = HashMap<String, String?>()
+        map.put("email",emailOrPhone)
+        map.put("phone",phone)
+        map.put("name",username)
+        updateProfileviewmodel!!.updateProfile(this, map)
+
+
+
     }
 
     private fun initialize() {
-        loginviewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
+        binding.editUsername.setText(PrefsUtil.with(this)[Constant.username, ""]
+            , TextView.BufferType.EDITABLE)
+        binding.editEmailPhone.setText(PrefsUtil.with(this)[Constant.email, ""],
+            TextView.BufferType.EDITABLE)
+
+        updateProfileviewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
+        updateProfileviewmodel!!.updateProfileLiveData.observe(this) {
+
+            Toast.makeText(this,it.message+"",Toast.LENGTH_SHORT).show()
+
+             finish()
+
+        }
     }
 
 }

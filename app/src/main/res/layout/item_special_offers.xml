@@ -6,6 +6,7 @@
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
     android:elevation="3dp"
+    android:id="@+id/parentLayout"
     android:background="@drawable/buttoncornerwhitebackground"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
@@ -71,7 +72,7 @@
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/img_pasta"
+            android:id="@+id/img_restaurant"
             android:layout_marginTop="20dp"
             android:src="@drawable/pasta"
             app:civ_border_color="@color/white"
@@ -89,29 +90,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_happy"
-            app:layout_constraintStart_toEndOf="@+id/img_pasta"
+            android:id="@+id/name_restaurant"
+            app:layout_constraintStart_toEndOf="@+id/img_restaurant"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="Happy"
             android:textSize="15sp"
             android:textColor="@color/bluefateh"
             android:fontFamily="@font/josefinsansbold"
-            app:layout_constraintTop_toTopOf="@+id/img_pasta"
+            app:layout_constraintTop_toTopOf="@+id/img_restaurant"
             tools:ignore="HardcodedText" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_Bakery"
-            app:layout_constraintStart_toEndOf="@+id/img_pasta"
+            android:id="@+id/txt_address"
+            app:layout_constraintStart_toEndOf="@+id/img_restaurant"
             android:layout_marginStart="10dp"
             android:text="Bakery and pasta"
             android:textSize="13sp"
             android:textColor="@color/whiteblue"
             android:fontFamily="@font/robotoregular"
-            app:layout_constraintTop_toBottomOf="@+id/txt_happy"
-            app:layout_constraintBottom_toBottomOf="@+id/img_pasta"
+            app:layout_constraintTop_toBottomOf="@+id/name_restaurant"
+            app:layout_constraintBottom_toBottomOf="@+id/img_restaurant"
             tools:ignore="HardcodedText" />
 
 

@@ -27,7 +27,7 @@ class MenuResProfileAdapter(private val context: Context, val meulList: List<Men
          holder.binding?.conMenu?.setOnClickListener {
               selectedItemPosition=position
              notifyDataSetChanged()
-             onclik.onClick(meulList[position].id.toString())
+             onclik.onClick(meulList[position].id)
              holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
              holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))
 

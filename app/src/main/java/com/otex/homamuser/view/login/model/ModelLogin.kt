@@ -1,8 +1,8 @@
 package com.otex.homamuser.view.login.model
 
-class ModelLogin {
-
-     var email:String=""
-     var password:String=""
-
-}
+data class ModelLogin(
+    val expires_in: Int,
+    val token: String,
+    val token_type: String,
+    val user: User
+)

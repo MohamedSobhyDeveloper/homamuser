@@ -8,10 +8,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.utlitites.UserInfo
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.home.HomeActivity
+import com.otex.homamuser.view.login.model.ModelLogin
 import com.otex.homamuser.view.register.RegisterActivity
 import java.util.HashMap
 
@@ -75,13 +78,20 @@ class LoginActivity : BaseActivity() {
         loginviewmodel = ViewModelProvider(this).get(LoginActivityViewModel::class.java)
         loginviewmodel!!.loginLivedata.observe(this) {
 
-            userInfo=UserInfo(this)
-            userInfo?.setUserSignSate(true)
+            saveDataInShared(it)
+
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
-            Toast.makeText(this,"تم تسجيل الدخول بنجاح", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
 
         }
+    }
+
+    private fun saveDataInShared(it: ModelLogin?) {
+        PrefsUtil.with(this).add(Constant.token,it!!.token).apply()
+        PrefsUtil.with(this).add(Constant.userid,it.user.id).apply()
+        PrefsUtil.with(this).add(Constant.username,it.user.name).apply()
+        PrefsUtil.with(this).add(Constant.email,it.user.email).apply()
     }
 
 

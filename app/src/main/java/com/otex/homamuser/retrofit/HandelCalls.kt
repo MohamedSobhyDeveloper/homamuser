@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import com.otex.homamuser.interfaces.HandleRetrofitResp
 import com.otex.homamuser.interfaces.HandleRetrofitRespAdapter
+import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.DataEnum
 import com.otex.homamuser.utlitites.HelpMe
 import com.otex.homamuser.utlitites.Loading
@@ -39,9 +40,13 @@ class HandelCalls {
 
         onRespnse = onRespnseSucess
 
-       if (flag == DataEnum.RestaurantDetails.name) {
+        if(flag==DataEnum.homerestaurant.name){
+            val id=meMap?.get("category_id")
+            callRetrofit(restRetrofit?.getClientService()?.getRestaurantHome(id), flag, ShowLoadingDialog)
 
-            val id=meMap?.get("id")
+        }else if (flag == DataEnum.RestaurantDetails.name) {
+
+            val id=meMap?.get(Constant.restID)
             callRetrofit(restRetrofit?.getClientService()?.getRestaurantDetails(id), flag, ShowLoadingDialog)
         }else if(flag==DataEnum.RestMenu.name){
            val id=meMap?.get("restId")
@@ -57,7 +62,10 @@ class HandelCalls {
 
            callRetrofit(restRetrofit?.getClientService()?.login(meMap), flag, ShowLoadingDialog)
 
-       }
+       }else if(flag==DataEnum.updateProfile.name){
+            callRetrofit(restRetrofit?.getClientService()?.updateProfile(meMap), flag, ShowLoadingDialog)
+
+        }
 
     }
 

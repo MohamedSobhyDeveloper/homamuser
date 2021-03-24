@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit
 // end comment
 class RestRetrofit private constructor() {
     var apiKey = "api-key"
-    var Authorization = "authorization-token"
+    var Authorization = "Authorization"
     private val deviceKey = "device"
 
     private var deviceValue: String? = ""
@@ -69,12 +69,12 @@ class RestRetrofit private constructor() {
         builder.addInterceptor { chain ->
             val request = chain.request()
             val newRequest: Request
-            val token = with(mcontext!!).get("token","")
+            val token = with(mcontext!!)[Constant.token, ""]
 
             if (token!!.isNotEmpty()) {
 
                 newRequest = request.newBuilder()
-                        .header(Authorization, token)
+                        .header(Authorization, "Bearer "+token)
                         .method(request.method, request.body)
                         .build()
                 chain.proceed(newRequest)

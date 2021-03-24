@@ -35,12 +35,10 @@ class RegisterActivity : BaseActivity() {
     private fun initialize() {
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
         registerActivityViewModel!!.registerLivedata.observe(this) {
-            PrefsUtil.with(this).add(Constant.token,it.token).apply()
-             userInfo= UserInfo(this)
-             userInfo?.setUserSignSate(true)
-             startActivity(Intent(this, HomeActivity::class.java))
+
+             startActivity(Intent(this, LoginActivity::class.java))
              finish()
-             Toast.makeText(this,"تم تسجيل حساب جديد",Toast.LENGTH_SHORT).show()
+             Toast.makeText(this,it.message+"",Toast.LENGTH_SHORT).show()
 
         }
     }
@@ -63,11 +61,7 @@ class RegisterActivity : BaseActivity() {
     }
 
     private fun makeRegister() {
-        username=binding.editUsername.text.toString()
-        emailOrPhone=binding.editEmailPhone.text.toString()
-        phone=binding.editPhone.text.toString()
-        password=binding.editPassword.text.toString()
-        confirmPassword=binding.editPasswordConfirm.text.toString()
+        assimentVariable()
         if(username == ""){
             binding.editUsername.error = getString(R.string.enter_username)
         }else if(emailOrPhone == ""){
@@ -85,6 +79,14 @@ class RegisterActivity : BaseActivity() {
                 binding.editPasswordConfirm.error = getString(R.string.confirm_not_equal_password)
             }
         }
+    }
+
+    private fun assimentVariable() {
+        username=binding.editUsername.text.toString()
+        emailOrPhone=binding.editEmailPhone.text.toString()
+        phone=binding.editPhone.text.toString()
+        password=binding.editPassword.text.toString()
+        confirmPassword=binding.editPasswordConfirm.text.toString()
     }
 
     private fun register(username: String, emailOrPhone: String, password: String) {

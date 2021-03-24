@@ -28,6 +28,11 @@ class Constant {
         var baseUrl ="http://homam.otextech.net/api/"
 
         var token = "token"
+        var email = "email"
+        var username = "username"
+        var userid = "userId"
+        var categoryID = "category_id"
+        var restID = "id"
 
 
 

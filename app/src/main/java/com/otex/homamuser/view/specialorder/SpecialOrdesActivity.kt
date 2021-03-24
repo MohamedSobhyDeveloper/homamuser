@@ -1,16 +1,14 @@
 package com.otex.homamuser.view.specialorder
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivitySpecialOrdesBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.home.HomeActivityViewModel
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.SpecialOrderAdapter
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
 
 class SpecialOrdesActivity : BaseActivity() {
     private lateinit var binding : ActivitySpecialOrdesBinding
@@ -35,7 +33,7 @@ class SpecialOrdesActivity : BaseActivity() {
     }
     private fun getrestaurant() {
 
-        homeActivityViewModel?.getRestaurant()
+        homeActivityViewModel?.getRestaurant_category(this,null)
 
     }
     private fun initialize() {
@@ -43,15 +41,15 @@ class SpecialOrdesActivity : BaseActivity() {
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
 
-        homeActivityViewModel!!.countryhomelivedata.observe(this) {
-
-            val layoutManager = LinearLayoutManager(this)
-            binding.recSpecialOrders.layoutManager = layoutManager
-            val adapter =
-                SpecialOrderAdapter(this,null)
-            binding.recSpecialOrders.adapter = adapter
-
-        }
+//        homeActivityViewModel!!.countryhomelivedata.observe(this) {
+//
+//            val layoutManager = LinearLayoutManager(this)
+//            binding.recSpecialOrders.layoutManager = layoutManager
+//            val adapter =
+//                RestaurantHomeAdapter(this,null)
+//            binding.recSpecialOrders.adapter = adapter
+//
+//        }
 
     }
 }

@@ -1,5 +1,7 @@
 package com.otex.homamuser.retrofit
 
+import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
+import com.otex.homamuser.view.home.model.ModelHomeScreen
 import com.otex.homamuser.view.login.model.ModelLogin
 import com.otex.homamuser.view.register.model.ModelRegister
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
@@ -15,11 +17,13 @@ interface ApiCall {
     fun getPhotos(@QueryMap requestBody: HashMap<String, String?>?): Call<String?>?
 
 
-    @GET("restaurants/{id}")
-    fun getRestaurantDetails(@Path("id") id: String?):Call<ModelRestaurantDetails?>?
+    @GET("user/restaurants/{restaurant_id}")
+    fun getRestaurantDetails(@Path("restaurant_id") id: String?):Call<ModelRestaurantDetails?>?
 
+    @GET("user/home/{category_id}")
+    fun getRestaurantHome(@Path("category_id") id: String?):Call<ModelHomeScreen?>?
 
-    @GET("restaurants/{restaurant_id}/{menu_id}")
+    @GET("user/restaurants/{restaurant_id}/{menu_id}")
     fun getRestaurantMenu(@Path("restaurant_id") id: String?,@Path("menu_id") menu_id: String?):Call<ModelRestaurantMenu?>?
 
     @FormUrlEncoded
@@ -29,6 +33,10 @@ interface ApiCall {
     @FormUrlEncoded
     @POST("user/register")
     fun register(@FieldMap map: HashMap<String, String?>?): Call<ModelRegister?>?
+
+    @FormUrlEncoded
+    @POST("user/update-profile")
+    fun updateProfile(@FieldMap map: HashMap<String, String?>?): Call<ModelUpdateProfile?>?
 
     @GET
     fun getUsers(@Url url: String?): Call<ModelRegister?>?

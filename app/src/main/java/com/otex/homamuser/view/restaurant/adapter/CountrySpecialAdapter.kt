@@ -6,20 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ItemCountryHomeBinding
 import com.otex.homamuser.databinding.ItemCountryResturantBinding
-import com.otex.homamuser.databinding.ItemMyorderBinding
+import com.otex.homamuser.view.home.model.Category
 import com.otex.homamuser.view.home.model.FoodLoveModel
+import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 
 
-class CountrySpecialAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+class CountrySpecialAdapter(private val context: Context, val chartList: List<Category>, var onclik: OnItemClick)
     : RecyclerView.Adapter<CountrySpecialAdapter.MyViewHolder>() {
 
 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+              holder.binding.nameCountry.text=chartList[position].name
 
+        holder.binding.conCountry.setOnClickListener {
+            notifyDataSetChanged()
+            onclik.onClick(chartList[position].id)
+        }
 
 
     }
@@ -28,7 +33,7 @@ class CountrySpecialAdapter(private val context: Context, val chartList: Mutable
 
     fun addList(movielist: MutableList<FoodLoveModel>) {
 
-        this.chartList?.addAll(movielist)
+      //  this.chartList?.addAll(movielist)
         notifyDataSetChanged()
     }
 
@@ -36,11 +41,9 @@ class CountrySpecialAdapter(private val context: Context, val chartList: Mutable
 
 
     override fun getItemCount(): Int {
-        if (chartList?.size== null) {
-            return 10
-        } else {
+
             return chartList?.size!!
-        }
+
     }
 
 

@@ -75,5 +75,6 @@
     <string name="dosent_match">كلمة المرور لا تتطابق مع كلمة المرور الجديدة</string>
     <string name="enter_subject">أدخل الموضوع</string>
     <string name="enter_message">أدخل رسالة</string>
+    <string name="login_success">تم تسجيل الدخول بنجاح</string>
 
 </resources>

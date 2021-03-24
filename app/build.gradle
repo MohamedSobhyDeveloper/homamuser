@@ -79,7 +79,8 @@ dependencies {
 
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
 
-
+    //Image Caching & Downloading library
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.tuyenmonkey:mkloader:1.4.0'
     debugImplementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
     implementation 'com.google.maps:google-maps-services:0.2.5'
@@ -87,4 +88,6 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.4.0'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'ru.alexbykov:nopaginate:0.9.9'
+
 }

@@ -17,9 +17,7 @@ class ResturantProfileViewModel : ViewModel() ,HandleRetrofitResp{
     var restaurantMenudata = MutableLiveData<ModelRestaurantMenu>()
 
 
-  fun  getRestauran(context: Context){
 
-  }
     fun getRestaurantDetails(context: Context,meMap: HashMap<String, String?>?){
 
         HandelCalls.getInstance(context)?.call(DataEnum.RestaurantDetails.name, meMap, true, this)
