@@ -43,8 +43,8 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
 
 
 
-    fun addList(movielist: MutableList<FoodLoveModel>) {
-
+    fun addList(list: List<Data>) {
+        this.mList.toMutableList().addAll(list)
         notifyDataSetChanged()
     }
 

@@ -27,6 +27,7 @@ class RestaurantItemActivity : BaseActivity() {
     }
     @SuppressLint("SetTextI18n")
     private fun click() {
+        binding.numOrder.setText((num++).toString())
         binding.backbtn.setOnClickListener {
             startActivity(Intent(this, RestaurantProfileActivity::class.java))
             finish()

@@ -39,7 +39,7 @@ interface ApiCall {
     fun updateProfile(@FieldMap map: HashMap<String, String?>?): Call<ModelUpdateProfile?>?
 
     @GET
-    fun getUsers(@Url url: String?): Call<ModelRegister?>?
+    fun getURL(@Url url: String?): Call<ModelHomeScreen?>?
 
 
 }

@@ -65,6 +65,11 @@ class HandelCalls {
        }else if(flag==DataEnum.updateProfile.name){
             callRetrofit(restRetrofit?.getClientService()?.updateProfile(meMap), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.URLpagination.name){
+            val url=meMap?.get("url")
+
+            callRetrofit(restRetrofit?.getClientService()?.getURL(url), flag, ShowLoadingDialog)
+
         }
 
     }

@@ -16,15 +16,22 @@ class HomeActivityViewModel:ViewModel(),HandleRetrofitResp {
     @JvmField
     var restaurantCategoryLiveData = MutableLiveData<ModelHomeScreen>()
 
+    var urlPaginationLiveData = MutableLiveData<ModelHomeScreen>()
 
     fun getRestaurant_category(context: Context, meMap: HashMap<String, String?>?){
         HandelCalls.getInstance(context)?.call(DataEnum.homerestaurant.name, meMap, true, this)
+    }
+    fun getUrlPagination(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.URLpagination.name, meMap, true, this)
     }
 
     override fun onResponseSuccess(flag: String?, o: Any?) {
         if(flag==DataEnum.homerestaurant.name){
             val modelHomeScreen: ModelHomeScreen = o as ModelHomeScreen
             restaurantCategoryLiveData.setValue(modelHomeScreen)
+        }else if(flag==DataEnum.URLpagination.name){
+            val modelHomeScreen: ModelHomeScreen = o as ModelHomeScreen
+            urlPaginationLiveData.setValue(modelHomeScreen)
         }
     }
 

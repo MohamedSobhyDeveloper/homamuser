@@ -18,7 +18,6 @@ import com.otex.homamuser.view.home.model.Category
 import com.otex.homamuser.view.home.model.Data
 import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
-import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
 import java.util.*
@@ -87,7 +86,7 @@ class HomeActivity : BaseActivity() {
 
     private fun setuptoolbar() {
         setSupportActionBar(binding.toolbar)
-        Objects.requireNonNull(supportActionBar)!!.setDisplayShowTitleEnabled(false)
+        Objects.requireNonNull(supportActionBar)?.setDisplayShowTitleEnabled(false)
         binding.toolbar.setNavigationIcon(R.drawable.ic_menu)
 
         binding.toolbar.setNavigationOnClickListener { view: View? ->
@@ -114,6 +113,10 @@ class HomeActivity : BaseActivity() {
 
 
     }
+
+
+
+
 
     private fun setupRecyclerRestaurantHome(restaurants: List<Data>) {
         val layoutManager = LinearLayoutManager(this)

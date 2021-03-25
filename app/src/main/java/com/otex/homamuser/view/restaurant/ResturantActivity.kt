@@ -2,6 +2,8 @@ package com.otex.homamuser.view.restaurant
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +18,6 @@ import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CountrySpecialAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
-import ru.alexbykov.nopaginate.callback.OnLoadMoreListener
-import ru.alexbykov.nopaginate.paginate.NoPaginate
 import java.util.*
 
 class ResturantActivity : BaseActivity() ,OnItemClick{
@@ -26,7 +26,9 @@ class ResturantActivity : BaseActivity() ,OnItemClick{
     private var homeActivityViewModel : HomeActivityViewModel? = null
 
     var categoryAdapter: CategoryHomeAdapter? = null
-
+    private var loading = true
+    private var nextPage = ""
+    var adapter:RestaurantHomeAdapter?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityResturantBinding.inflate(layoutInflater)
@@ -53,22 +55,58 @@ class ResturantActivity : BaseActivity() ,OnItemClick{
 
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
+
+        binding.nestedScroll!!.viewTreeObserver.addOnScrollChangedListener {
+            val view = binding.nestedScroll!!.getChildAt(binding.nestedScroll!!.childCount - 1)
+            val diff = view.bottom - (binding.nestedScroll!!.height + binding.nestedScroll!!
+                    .getScrollY())
+            if (loading) {
+                if (diff == 0) {
+                    setupPagination()
+                    loading = false
+                }
+            }
+        }
+
         homeActivityViewModel!!.restaurantCategoryLiveData.observe(this) {
 
             setupRecyclerCategoryHome(it.categories)
             setupRecyclerRestaurantHome(it.restaurants.data)
 
+            if(it.restaurants.next_page_url!=null && it.restaurants.next_page_url .isNotEmpty() ){
+
+                loading=true
+                nextPage=it.restaurants.next_page_url
+
+            }
 
         }
 
+        homeActivityViewModel!!.urlPaginationLiveData.observe(this) {
 
+          adapter?.addList(it.restaurants.data)
 
+            if(it.restaurants.next_page_url!=null && it.restaurants.next_page_url .isNotEmpty() ){
+
+                loading=true
+                nextPage=it.restaurants.next_page_url
+
+            }
+
+        }
+
+    }
+    private fun setupPagination() {
+        val map = HashMap<String, String?>()
+        map.put("url",nextPage)
+        homeActivityViewModel?.getUrlPagination(this,map)
 
     }
     private fun setupRecyclerRestaurantHome(restaurants: List<Data>) {
         val layoutManager = LinearLayoutManager(this)
         binding.recRestaurants.layoutManager = layoutManager
-        val adapter =
+        binding.recRestaurants.setNestedScrollingEnabled(false);
+         adapter =
             RestaurantHomeAdapter(this,restaurants)
         binding.recRestaurants.adapter = adapter
     }
