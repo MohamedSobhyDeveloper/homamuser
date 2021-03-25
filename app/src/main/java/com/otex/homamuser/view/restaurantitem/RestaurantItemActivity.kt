@@ -27,7 +27,7 @@ class RestaurantItemActivity : BaseActivity() {
     }
     @SuppressLint("SetTextI18n")
     private fun click() {
-        binding.numOrder.setText((num++).toString())
+        binding.numOrder.text = (num++).toString()
         binding.backbtn.setOnClickListener {
             startActivity(Intent(this, RestaurantProfileActivity::class.java))
             finish()
@@ -37,12 +37,12 @@ class RestaurantItemActivity : BaseActivity() {
             finish()
         }
         binding.add.setOnClickListener {
-            binding.numOrder.setText((num++).toString())
-            binding.txtSalary.setText((120*num).toString()+"ج")
+            binding.numOrder.text = (num++).toString()
+            binding.txtSalary.text = (120*num).toString()+"ج"
         }
         binding.minues.setOnClickListener {
-            binding.numOrder.setText((num--).toString())
-            binding.txtSalary.setText((120*num).toString()+"ج")
+            binding.numOrder.text = (num--).toString()
+            binding.txtSalary.text = (120*num).toString()+"ج"
         }
 
     }

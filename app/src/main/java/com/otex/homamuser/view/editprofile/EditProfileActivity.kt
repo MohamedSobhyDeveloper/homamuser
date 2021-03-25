@@ -89,9 +89,14 @@ class EditProfileActivity : BaseActivity() {
             , TextView.BufferType.EDITABLE)
         binding.editEmailPhone.setText(PrefsUtil.with(this)[Constant.email, ""],
             TextView.BufferType.EDITABLE)
-
+        binding.editPhone.setText(PrefsUtil.with(this)["phone", ""],
+                TextView.BufferType.EDITABLE)
         updateProfileviewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
         updateProfileviewmodel!!.updateProfileLiveData.observe(this) {
+
+            PrefsUtil.with(this).add(Constant.email,it.user.email).apply()
+            PrefsUtil.with(this).add(Constant.username,it.user.name).apply()
+            PrefsUtil.with(this).add("phone",it.user.phone).apply()
 
             Toast.makeText(this,it.message+"",Toast.LENGTH_SHORT).show()
 
