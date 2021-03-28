@@ -27,7 +27,6 @@ class SpecialOrdesActivity : BaseActivity() {
     }
     private fun click() {
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }

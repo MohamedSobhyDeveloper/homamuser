@@ -34,8 +34,7 @@ class CartActivity : BaseActivity() {
     private fun click() {
 
         binding.backbtn.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            finish()
         }
         binding.conOrderNow.setOnClickListener {
             val intent = Intent(this, MyOrderMapActivity::class.java)

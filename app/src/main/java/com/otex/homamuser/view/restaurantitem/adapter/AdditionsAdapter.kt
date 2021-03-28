@@ -13,10 +13,10 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.restaurantitem.model.Addition
 
 
-class AdditionsAdapter(private val context: Context, val list: List<Addition>)
+class AdditionsAdapter(private val context: Context, val list: List<Addition>,val clicvalue:Clickvaluelistener)
     : RecyclerView.Adapter<AdditionsAdapter.MyViewHolder>() {
-    private var selectedItemPosition: Int = 0
 
+     val listid= ArrayList<Addition>()
 
     @SuppressLint("NewApi", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -25,13 +25,20 @@ class AdditionsAdapter(private val context: Context, val list: List<Addition>)
         holder.binding.txtSalary.text= list.get(position).price.toString()+" "+"ج"
 
         holder.binding.conAddition.setOnClickListener {
-            selectedItemPosition=position
-            holder.binding.conAddition.setBackgroundResource(R.drawable.circleback)
-            holder.binding.txtNameFood.setTextColor(context.getColor(R.color.white))
-            holder.binding.txtSalary.setTextColor(context.getColor(R.color.white))
+//            selectedItemPosition=position
+            list[position].isChecked = !list[position].isChecked
+               for (i in list.indices){
+                   if (list[i].isChecked){
+                       listid?.add(list[i])
+                   }
+               }
+
+            clicvalue.click(listid!!)
+
+
             notifyDataSetChanged()
         }
-        if(selectedItemPosition == position) {
+        if(list[position].isChecked) {
             PrefsUtil.with(context).add(Constant.additionId,list[position].id).apply()
             holder.binding.conAddition.setBackgroundResource(R.drawable.circleback)
             holder.binding.txtNameFood.setTextColor(context.getColor(R.color.white))
@@ -58,7 +65,9 @@ class AdditionsAdapter(private val context: Context, val list: List<Addition>)
 
 
 
-
+    interface Clickvaluelistener{
+        fun click(idlist:ArrayList<Addition>)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(

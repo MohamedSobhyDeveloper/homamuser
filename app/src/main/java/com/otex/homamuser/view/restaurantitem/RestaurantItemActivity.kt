@@ -23,7 +23,10 @@ class RestaurantItemActivity : BaseActivity() {
     lateinit var binding: ActivityRestaurantItemBinding
     var num:Int=1
     var productId=""
+    var pricevalue:Int=0
+
     private var resturantItemViewModel: ResturantItemViewModel? = null
+    var listid:ArrayList<Addition>?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +37,11 @@ class RestaurantItemActivity : BaseActivity() {
     }
     @SuppressLint("SetTextI18n")
     private fun click() {
-        binding.quantity.text = (num++).toString()
+        binding.quantity.text = (num).toString()
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, RestaurantProfileActivity::class.java))
             finish()
         }
+
         binding.addToCart.setOnClickListener {
 //            startActivity(Intent(this,CartActivity::class.java))
 //            finish()
@@ -50,21 +53,27 @@ class RestaurantItemActivity : BaseActivity() {
                 map.put("options[0]",PrefsUtil.with(this).get(Constant.optionId,"0"))
 
             }
-            if (!PrefsUtil.with(this).get(Constant.additionId,"0").equals("0")){
-                map.put("additions[0]",PrefsUtil.with(this).get(Constant.additionId,"0"))
 
+
+            for (i in listid?.indices!!){
+                map.put("additions[$i]", listid!![i].id)
             }
+
 
             resturantItemViewModel?.addToBasket(this,map)
 
         }
+
         binding.add.setOnClickListener {
             binding.quantity.text = (num++).toString()
-            binding.txtSalary.text = (120*num).toString()+"ج"
+            binding.txtPrice.text=(num*pricevalue).toString()+"ج"
         }
         binding.minues.setOnClickListener {
-            binding.quantity.text = (num--).toString()
-            binding.txtSalary.text = (120*num).toString()+"ج"
+            if (num>1){
+                binding.quantity.text = (num--).toString()
+
+            }
+            binding.txtPrice.text = (pricevalue*num).toString()+"ج"
         }
 
     }
@@ -100,7 +109,12 @@ class RestaurantItemActivity : BaseActivity() {
         val layoutManager_horizontal = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.recyclerAddition.layoutManager = layoutManager_horizontal
         val adapter_addition =
-                AdditionsAdapter(this, additions)
+                AdditionsAdapter(this, additions,object : AdditionsAdapter.Clickvaluelistener {
+                    override fun click(idlist: ArrayList<Addition>) {
+                        listid=idlist
+                    }
+
+                })
         binding.recyclerAddition.adapter = adapter_addition
 
     }
@@ -109,9 +123,18 @@ class RestaurantItemActivity : BaseActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerSize.layoutManager = layoutManager
         val adapter =
-                ChooseSizeAdapter(this,options)
+                ChooseSizeAdapter(this,options,object : ChooseSizeAdapter.Clickvaluelistener {
+                    @SuppressLint("SetTextI18n")
+                    override fun click(price: Int) {
+                        pricevalue=price
+                        binding.txtPrice.text=price.toString()+"ج"
+                    }
+
+                })
         binding.recyclerSize.adapter = adapter
     }
+
+
 
 
 }

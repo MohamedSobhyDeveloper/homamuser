@@ -13,7 +13,7 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.restaurantitem.model.Option
 
 
-class ChooseSizeAdapter(private val context: Context, val list: List<Option>)
+class ChooseSizeAdapter(private val context: Context, val list: List<Option>,val clicvalue:Clickvaluelistener)
     : RecyclerView.Adapter<ChooseSizeAdapter.MyViewHolder>() {
 
 
@@ -32,6 +32,7 @@ class ChooseSizeAdapter(private val context: Context, val list: List<Option>)
         }
 
         if(selectedItemPosition == position) {
+            clicvalue.click(list[position].price)
             holder.binding.selectedsize.setBackgroundResource(R.drawable.circleback)
             PrefsUtil.with(context).add(Constant.optionId,list[position].id).apply()
         }
@@ -56,7 +57,9 @@ class ChooseSizeAdapter(private val context: Context, val list: List<Option>)
         return list.size
     }
 
-
+    interface Clickvaluelistener{
+        fun click(price:Int)
+    }
 
 
 

@@ -52,7 +52,6 @@ class ContactUsActivity : BaseActivity() {
 
     private fun click() {
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
         binding.btnNext.setOnClickListener {

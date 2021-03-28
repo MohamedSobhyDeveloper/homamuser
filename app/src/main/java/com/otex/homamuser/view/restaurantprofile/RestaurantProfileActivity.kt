@@ -32,7 +32,6 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     }
     private fun click() {
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, SpecialOrdesActivity::class.java))
             finish()
         }
 

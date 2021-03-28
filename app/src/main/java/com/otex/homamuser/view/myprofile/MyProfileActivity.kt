@@ -29,21 +29,19 @@ class MyProfileActivity : BaseActivity() {
 
     private fun click() {
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
         binding.myorders.setOnClickListener {
             startActivity(Intent(this, MyOrderListActivity::class.java))
-            finish()
         }
         binding.btnEdit.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
-            finish()
         }
         binding.logout.setOnClickListener {
             PrefsUtil.with(this).add(Constant.token,"").apply()
             val intent =Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
              startActivity(intent)
         }
     }

@@ -37,7 +37,6 @@ class EditProfileActivity : BaseActivity() {
     private fun click() {
 
         binding.backbtn.setOnClickListener {
-            startActivity(Intent(this, MyProfileActivity::class.java))
             finish()
         }
         binding.btnSave.setOnClickListener {

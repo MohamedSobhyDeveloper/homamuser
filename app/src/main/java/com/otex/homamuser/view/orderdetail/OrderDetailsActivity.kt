@@ -37,8 +37,7 @@ class OrderDetailsActivity : BaseActivity() {
     private fun click() {
 
         binding.backbtn.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+         finish()
         }
 
     }
