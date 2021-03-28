@@ -11,23 +11,19 @@ data class Addition(
         val price: Int,
         var isChecked: Boolean=false
 ):Parcelable {
-    @RequiresApi(Build.VERSION_CODES.Q)
     constructor(parcel: Parcel) : this(
-            parcel.readString()!!,
-            parcel.readString()!!,
-            parcel.readInt(),
-            parcel.readBoolean()
-
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readInt(),
+        parcel.readByte() != 0.toByte()
     ) {
     }
 
-    @RequiresApi(Build.VERSION_CODES.Q)
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeInt(price)
-        parcel.writeBoolean(isChecked)
-
+        parcel.writeByte(if (isChecked) 1 else 0)
     }
 
     override fun describeContents(): Int {

@@ -111,7 +111,7 @@
 
                 <TextView
                     android:text="Happy Bones"
-                    android:id="@+id/order"
+                    android:id="@+id/rest_name"
                     android:textSize="18sp"
                     android:fontFamily="@font/robotobold"
                     android:textColor="@color/black"
@@ -137,7 +137,7 @@
         android:fontFamily="@font/robotobold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    
+
     <androidx.recyclerview.widget.RecyclerView
         app:layout_constraintTop_toBottomOf="@+id/txt_orderdetails"
         android:layout_marginTop="20dp"
@@ -221,7 +221,7 @@
             app:layout_constraintTop_toTopOf="@+id/txt_delivery"
             app:layout_constraintBottom_toBottomOf="@+id/txt_delivery"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="75.00 X1"
+            android:text="0.0 X1"
             android:id="@+id/txt_price_delivery"
             android:textSize="15sp"
             android:fontFamily="@font/robotoregular"
@@ -234,7 +234,7 @@
             app:layout_constraintTop_toTopOf="@+id/txt_tax"
             app:layout_constraintBottom_toBottomOf="@+id/txt_tax"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="98.00 x1"
+            android:text="0.0 x1"
             android:id="@+id/txt_price_tax"
             android:textSize="15sp"
             android:fontFamily="@font/robotoregular"

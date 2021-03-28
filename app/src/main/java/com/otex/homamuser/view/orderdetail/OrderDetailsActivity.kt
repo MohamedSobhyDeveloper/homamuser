@@ -1,17 +1,11 @@
 package com.otex.homamuser.view.orderdetail
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ActivityCartBinding
 import com.otex.homamuser.databinding.ActivityOrderDetailsBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartViewModel
-import com.otex.homamuser.view.home.HomeActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CartAdapter
 
 class OrderDetailsActivity : BaseActivity() {
@@ -31,7 +25,7 @@ class OrderDetailsActivity : BaseActivity() {
 
     private fun getcart() {
 
-        cartViewModel?.getcart()
+    //    cartViewModel?.getMyCart(this,null)
 
     }
     private fun click() {
@@ -44,14 +38,14 @@ class OrderDetailsActivity : BaseActivity() {
 
     private fun initialize() {
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
-        cartViewModel!!.cartlivedata.observe(this) {
-
-            val layoutManager = LinearLayoutManager(this)
-            binding.recOrderCart.layoutManager = layoutManager
-            val adapter =
-                    CartAdapter(this,null)
-            binding.recOrderCart.adapter = adapter
-
-        }
+//        cartViewModel!!.cartlivedata.observe(this) {
+//
+//            val layoutManager = LinearLayoutManager(this)
+//            binding.recOrderCart.layoutManager = layoutManager
+//            val adapter =
+//                    CartAdapter(this,null)
+//            binding.recOrderCart.adapter = adapter
+//
+//        }
     }
 }

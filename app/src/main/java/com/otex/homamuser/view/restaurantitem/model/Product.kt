@@ -19,11 +19,12 @@ data class Product(
             parcel.createTypedArrayList(Option)!!)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeTypedList(additions)
-        parcel.writeString(description)
-        parcel.writeInt(id)
-        parcel.writeString(name)
-        parcel.writeTypedList(options)
+            parcel.writeTypedList(additions)
+            parcel.writeString(description)
+            parcel.writeInt(id)
+            parcel.writeString(name)
+            parcel.writeTypedList(options)
+
     }
 
     override fun describeContents(): Int {

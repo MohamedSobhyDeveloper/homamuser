@@ -75,6 +75,12 @@ class HandelCalls {
 
             callRetrofit(restRetrofit?.getClientService()?.addToBasket(meMap,id), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.myProfile.name){
+            callRetrofit(restRetrofit?.getClientService()?.myProfile(), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.mycart.name){
+            callRetrofit(restRetrofit?.getClientService()?.myCart(), flag, ShowLoadingDialog)
+
         }
 
     }

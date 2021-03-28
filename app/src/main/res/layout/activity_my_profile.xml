@@ -88,8 +88,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <TextView
             app:layout_constraintTop_toBottomOf="@+id/useremail"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/phone"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:elevation="15dp"
+            android:visibility="gone"
+            android:id="@+id/userPhone"
+            android:fontFamily="@font/robotoregular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            app:layout_constraintTop_toBottomOf="@+id/userPhone"
             android:text="@string/edit"
             android:textAllCaps="false"
             android:textSize="14sp"

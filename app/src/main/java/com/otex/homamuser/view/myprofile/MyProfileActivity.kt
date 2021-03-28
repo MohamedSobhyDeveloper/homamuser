@@ -2,7 +2,9 @@ package com.otex.homamuser.view.myprofile
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.otex.homamuser.databinding.ActivityMyProfileBinding
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.PrefsUtil
@@ -14,16 +16,23 @@ import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.myorder.MyOrderListActivity
 
 class MyProfileActivity : BaseActivity() {
-    private var loginviewmodel : EditProfileViewModel? = null
+    private var myProfileViewModel : MyProfileViewModel? = null
     lateinit var binding: ActivityMyProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initialize()
 
+        initialize()
+        getMyProfile()
         click()
+
+    }
+
+    private fun getMyProfile() {
+
+        myProfileViewModel!!.myProfile(this, null)
 
     }
 
@@ -47,9 +56,22 @@ class MyProfileActivity : BaseActivity() {
     }
 
     private fun initialize() {
-        binding.username.text= PrefsUtil.with(this)[Constant.username, ""].toString()
-        binding.useremail.text= PrefsUtil.with(this)[Constant.email, ""].toString()
 
-        loginviewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
-    }
+        myProfileViewModel = ViewModelProvider(this).get(MyProfileViewModel::class.java)
+        myProfileViewModel!!.myProfileLiveData.observe(this) {
+
+
+            binding.username.text= it.user.name
+            binding.useremail.text= it.user.email
+
+            if(it.user.phone.isNotEmpty()){
+
+                binding.userPhone.text= it.user.phone
+                binding.userPhone.visibility= View.VISIBLE
+
+            }
+
+        }
+
+        }
 }

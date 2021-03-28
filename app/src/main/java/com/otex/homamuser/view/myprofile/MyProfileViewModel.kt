@@ -1,4 +1,4 @@
-package com.otex.homamuser.view.cart
+package com.otex.homamuser.view.myprofile
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -6,23 +6,23 @@ import androidx.lifecycle.ViewModel
 import com.otex.homamuser.interfaces.HandleRetrofitResp
 import com.otex.homamuser.retrofit.HandelCalls
 import com.otex.homamuser.utlitites.DataEnum
-import com.otex.homamuser.view.cart.model.ModelCart
+import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
+import com.otex.homamuser.view.home.model.ModelHomeScreen
 import com.otex.homamuser.view.myprofile.model.ModelProfile
 import java.util.HashMap
 
-class CartViewModel : ViewModel(),HandleRetrofitResp {
+class MyProfileViewModel : ViewModel(),HandleRetrofitResp {
 
-    var mycartlivedata = MutableLiveData<ModelCart>()
+    var myProfileLiveData = MutableLiveData<ModelProfile>()
 
-    fun getMyCart(context: Context, meMap: HashMap<String, String?>?){
-
-        HandelCalls.getInstance(context)?.call(DataEnum.mycart.name, meMap, true, this)
+    fun myProfile(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.myProfile.name, meMap, true, this)
     }
 
     override fun onResponseSuccess(flag: String?, o: Any?) {
-        if(flag==DataEnum.mycart.name){
-            val modelCart: ModelCart = o as ModelCart
-            mycartlivedata.value = modelCart
+        if(flag==DataEnum.myProfile.name){
+            val modelProfile: ModelProfile = o as ModelProfile
+            myProfileLiveData.setValue(modelProfile)
         }
     }
 
@@ -37,6 +37,5 @@ class CartViewModel : ViewModel(),HandleRetrofitResp {
     override fun onBadRequest(flag: String?, o: Any?) {
         TODO("Not yet implemented")
     }
-
 
 }

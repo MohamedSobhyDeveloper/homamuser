@@ -1,8 +1,10 @@
 package com.otex.homamuser.retrofit
 
+import com.otex.homamuser.view.cart.model.ModelCart
 import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
 import com.otex.homamuser.view.home.model.ModelHomeScreen
 import com.otex.homamuser.view.login.model.ModelLogin
+import com.otex.homamuser.view.myprofile.model.ModelProfile
 import com.otex.homamuser.view.register.model.ModelRegister
 import com.otex.homamuser.view.restaurantitem.ModelResponeBasket
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
@@ -46,5 +48,12 @@ interface ApiCall {
     @FormUrlEncoded
     @POST("user/restaurants/{restaurant_id}/basket")
     fun addToBasket(@FieldMap map: HashMap<String, String?>?,@Path("restaurant_id") id: String?): Call<ModelResponeBasket?>?
+
+    @GET("user/profile")
+    fun myProfile():Call<ModelProfile?>?
+
+    @GET("user/cart")
+    fun myCart():Call<ModelCart?>?
+
 
 }
