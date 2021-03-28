@@ -1,26 +1,36 @@
 package com.otex.homamuser.view.restaurantitem.model
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.RequiresApi
 
 data class Option(
-    val feature_id: Int,
-    val id: Int,
-    val name: String,
-    val price: Int
+        val feature_id: Int,
+        val id: Int,
+        val name: String,
+        val price: Int,
+        var isChecked:Boolean=false
 ):Parcelable {
+    @SuppressLint("NewApi")
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readInt(),
             parcel.readString()!!,
-            parcel.readInt()) {
-    }
+            parcel.readInt(),
+            parcel.readBoolean()
 
+    )
+
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(feature_id)
         parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeInt(price)
+        parcel.writeBoolean(isChecked)
+
     }
 
     override fun describeContents(): Int {

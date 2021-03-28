@@ -70,6 +70,11 @@ class HandelCalls {
 
             callRetrofit(restRetrofit?.getClientService()?.getURL(url), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.addToBasket.name){
+            val id=meMap?.get("restId")
+
+            callRetrofit(restRetrofit?.getClientService()?.addToBasket(meMap,id), flag, ShowLoadingDialog)
+
         }
 
     }

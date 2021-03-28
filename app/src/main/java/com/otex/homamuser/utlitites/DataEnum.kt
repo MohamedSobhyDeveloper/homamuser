@@ -5,5 +5,5 @@ package com.otex.homamuser.utlitites
  */
 enum class DataEnum {
     shversionName,moviephoto,RestaurantDetails,RestMenu,register,login,homerestaurant,homeCategory
-     ,updateProfile,URLpagination
+     ,updateProfile,URLpagination,addToBasket
 }

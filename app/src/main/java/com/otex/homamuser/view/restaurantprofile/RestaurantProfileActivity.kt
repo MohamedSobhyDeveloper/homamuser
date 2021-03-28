@@ -56,7 +56,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
             val layoutManager = LinearLayoutManager(this)
             binding.recBestdishes.layoutManager = layoutManager
             val adapter =
-                    BestDishesAdapter(this, it.data.products as ArrayList<Product>)
+                    BestDishesAdapter(this, it.data.products as ArrayList<Product>,intent.getStringExtra(Constant.restID)!!)
             binding.recBestdishes.adapter = adapter
 
         }

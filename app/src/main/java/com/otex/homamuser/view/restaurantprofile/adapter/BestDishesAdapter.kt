@@ -6,15 +6,17 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.unit.Constraints
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemBestdishesBinding
+import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
 import com.otex.homamuser.view.restaurantitem.model.Product
 import com.squareup.picasso.Picasso
 
 
-class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>)
+class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>,val restauranrId:String)
     : RecyclerView.Adapter<BestDishesAdapter.MyViewHolder>() {
 
 
@@ -30,7 +32,7 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
             val intent=Intent(context,RestaurantItemActivity::class.java)
             intent.putExtra("menuItemList", menuItemList[position])
-            intent.putExtra("position", position.toString())
+            intent.putExtra(Constant.restID, restauranrId)
             context.startActivity(intent)
 
         }

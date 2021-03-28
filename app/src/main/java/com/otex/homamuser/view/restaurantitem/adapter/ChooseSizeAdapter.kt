@@ -1,5 +1,6 @@
 package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,45 +8,41 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.*
-import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.restaurantitem.model.Option
 
 
-class ChooseSizeAdapter(private val context: Context, val chartList: List<Option>)
+class ChooseSizeAdapter(private val context: Context, val list: List<Option>)
     : RecyclerView.Adapter<ChooseSizeAdapter.MyViewHolder>() {
 
 
     private var selectedItemPosition: Int = 0
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.binding.checkboc.text=chartList.get(position).name
-        holder.binding.txtSalary.text= chartList.get(position).price.toString()+" "+"ج"
+        holder.binding.checkboc.text= list[position].name
+        holder.binding.txtSalary.text= list[position].price.toString()+" "+"ج"
 
         holder.binding.conCheckbox.setOnClickListener {
             selectedItemPosition=position
-            holder.binding.checkboc.isChecked=true
             notifyDataSetChanged()
         }
+
         if(selectedItemPosition == position) {
-            holder.binding.checkboc.isChecked=true
+            holder.binding.selectedsize.setBackgroundResource(R.drawable.circleback)
         }
         else{
-            holder.binding.checkboc.isChecked=false
+            holder.binding.selectedsize.setBackgroundResource(R.drawable.rounddrawablegrayoval)
+
         }
-
-
-
-
 
     }
 
 
 
-    fun addList(movielist: MutableList<FoodLoveModel>) {
-
-        //this.chartList?.addAll(movielist)
+    fun addList(list: MutableList<Option>) {
+        this.list.toMutableList().addAll(list)
         notifyDataSetChanged()
     }
 
@@ -53,11 +50,7 @@ class ChooseSizeAdapter(private val context: Context, val chartList: List<Option
 
 
     override fun getItemCount(): Int {
-        if (chartList?.size== null) {
-            return 5
-        } else {
-            return chartList.size
-        }
+        return list.size
     }
 
 

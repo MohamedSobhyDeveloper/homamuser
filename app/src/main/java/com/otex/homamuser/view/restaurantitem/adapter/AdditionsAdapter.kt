@@ -19,7 +19,7 @@ class AdditionsAdapter(private val context: Context, val chartList: List<Additio
     var itemBinding: ItemAdditionBinding?=null
 
 
-    @SuppressLint("NewApi")
+    @SuppressLint("NewApi", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.txtNameFood.text=chartList.get(position).name
