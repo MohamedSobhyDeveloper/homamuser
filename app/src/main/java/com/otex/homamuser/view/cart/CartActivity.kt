@@ -13,6 +13,8 @@ import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CartAd
 class CartActivity : BaseActivity() {
     private var cartViewModel : CartViewModel? = null
     lateinit var binding: ActivityCartBinding
+    var total:String=""
+    var restname:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class CartActivity : BaseActivity() {
         }
         binding.conOrderNow.setOnClickListener {
             val intent = Intent(this, MyOrderMapActivity::class.java)
+            intent.putExtra("total",total)
+            intent.putExtra("restname",restname)
             startActivity(intent)
         }
 
@@ -47,10 +51,12 @@ class CartActivity : BaseActivity() {
 
 
             binding.restName.text=it.data.restaurant
-            binding.txtTotalFirst.text=it.data.total.toString()
-            binding.txtTotalEnd.text=it.data.total.toString()
+            binding.txtPriceTotalFirst.text=it.data.total.toString()
+            binding.txtPriceTotalEnd.text=it.data.total.toString()
             binding.txtConNumorder.text=it.data.items.size.toString()
-
+            binding.txtConTotal.text=it.data.total.toString()
+            total=it.data.total.toString()
+            restname=it.data.restaurant
             val layoutManager = LinearLayoutManager(this)
             binding.recOrderCart.layoutManager = layoutManager
             val adapter =

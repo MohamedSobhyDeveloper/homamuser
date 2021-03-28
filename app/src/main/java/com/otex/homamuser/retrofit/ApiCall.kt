@@ -4,6 +4,8 @@ import com.otex.homamuser.view.cart.model.ModelCart
 import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
 import com.otex.homamuser.view.home.model.ModelHomeScreen
 import com.otex.homamuser.view.login.model.ModelLogin
+import com.otex.homamuser.view.myorder.model.ModelMakeOrder
+import com.otex.homamuser.view.myorder.myorderModel.ModelMyOrderList
 import com.otex.homamuser.view.myprofile.model.ModelProfile
 import com.otex.homamuser.view.register.model.ModelRegister
 import com.otex.homamuser.view.restaurantitem.ModelResponeBasket
@@ -55,5 +57,14 @@ interface ApiCall {
     @GET("user/cart")
     fun myCart():Call<ModelCart?>?
 
+    @FormUrlEncoded
+    @POST("user/make_order")
+    fun makeorder(@FieldMap map: HashMap<String, String?>?): Call<ModelMakeOrder?>?
 
+
+    @GET("user/orders")
+    fun myOrderList():Call<ModelMyOrderList?>?
+
+    @GET
+    fun getURLMyOrder(@Url url: String?): Call<ModelMyOrderList?>?
 }

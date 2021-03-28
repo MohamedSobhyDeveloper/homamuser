@@ -10,11 +10,13 @@ import android.graphics.Canvas
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,7 +27,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityMyOrderMapBinding
+import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.GPSTracker
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
@@ -59,28 +63,40 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun getprice() {
 
-        myOrderViewModel?.getprice()
+        binding.txtPriceTotalFirst.text=intent.getStringExtra("total")
+        binding.txtConTotal.text=intent.getStringExtra("total")
+        binding.txtPriceTotalEnd.text=intent.getStringExtra("total")
+        binding.restName.text=intent.getStringExtra("restname")
 
     }
 
     private fun click() {
 
         binding.backbtn.setOnClickListener {
-            val intent = Intent(this, CartActivity::class.java)
-            startActivity(intent)
+            finish()
         }
 
         binding.conOrderNow.setOnClickListener {
-            val intent = Intent(this, MyOrderListActivity::class.java)
-            startActivity(intent)
+
+
             if (addresses != null && addresses!!.isNotEmpty()) {
                 streetStart = addresses!![0].getAddressLine(0)//thoroughfare
                 binding.txtAddress.setText(streetStart);
             }else{
                 streetStart=""
             }
+                make_order(streetStart,PrefsUtil.with(this).get("msg",""))
         }
 
+    }
+
+    private fun make_order(streetStart: String, get: String?) {
+        val map = HashMap<String, String?>()
+        map.put("address",streetStart)
+        map.put("note",get)
+        myOrderViewModel?.makeOrder(this,map)
+        val intent = Intent(this, MyOrderListActivity::class.java)
+        startActivity(intent)
     }
 
     private fun initialize() {
@@ -88,6 +104,12 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
         mylocation= LatLng(0.0,0.0)
         geocode = Geocoder(this, Locale("ar"))//.getDefault())
         myOrderViewModel = ViewModelProvider(this).get(MyOrderViewModel::class.java)
+        myOrderViewModel!!.makeOrderlivedtat.observe(this) {
+
+            Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MyOrderListActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

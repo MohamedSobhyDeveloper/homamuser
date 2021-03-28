@@ -11,6 +11,8 @@ import com.otex.homamuser.databinding.ActivityRestaurantItemBinding
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
+import com.otex.homamuser.view.cart.CartActivity
+import com.otex.homamuser.view.myorder.MyOrderMapActivity
 import com.otex.homamuser.view.restaurantitem.model.Addition
 import com.otex.homamuser.view.restaurantitem.model.Option
 import com.otex.homamuser.view.restaurantitem.model.Product
@@ -24,7 +26,7 @@ class RestaurantItemActivity : BaseActivity() {
     var num:Int=1
     var productId=""
     var pricevalue:Int=0
-
+    var message:String=""
     private var resturantItemViewModel: ResturantItemViewModel? = null
     var listid:ArrayList<Addition>?=null
 
@@ -43,24 +45,14 @@ class RestaurantItemActivity : BaseActivity() {
         }
 
         binding.addToCart.setOnClickListener {
-//            startActivity(Intent(this,CartActivity::class.java))
-//            finish()
-            val map = HashMap<String, String?>()
-            map.put("restId",intent.getStringExtra(Constant.restID)!!)
-            map.put("product_id",productId)
-            map.put("quantity",binding.quantity.text.toString())
-            if (!PrefsUtil.with(this).get(Constant.optionId,"0").equals("0")){
-                map.put("options[0]",PrefsUtil.with(this).get(Constant.optionId,"0"))
 
+             message=binding.editMessage.text.toString()
+
+            if(message==""){
+                binding.editMessage.error="Add Message"
+            }else{
+                make_Order()
             }
-
-
-            for (i in listid?.indices!!){
-                map.put("additions[$i]", listid!![i].id)
-            }
-
-
-            resturantItemViewModel?.addToBasket(this,map)
 
         }
 
@@ -77,6 +69,28 @@ class RestaurantItemActivity : BaseActivity() {
         }
 
     }
+
+    private fun make_Order() {
+        PrefsUtil.with(this).add("msg",message).apply()
+        val map = HashMap<String, String?>()
+        map.put("restId",intent.getStringExtra(Constant.restID)!!)
+        map.put("product_id",productId)
+        map.put("quantity",binding.quantity.text.toString())
+        if (!PrefsUtil.with(this).get(Constant.optionId,"0").equals("0")){
+            map.put("options[0]",PrefsUtil.with(this).get(Constant.optionId,"0"))
+
+        }
+
+
+        for (i in listid?.indices!!){
+            map.put("additions[$i]", listid!![i].id)
+        }
+
+
+
+        resturantItemViewModel?.addToBasket(this,map)
+    }
+
     private fun initialize() {
         PrefsUtil.with(this).add(Constant.additionId,"0").apply()
         PrefsUtil.with(this).add(Constant.optionId,"0").apply()
@@ -87,7 +101,8 @@ class RestaurantItemActivity : BaseActivity() {
 
 
             Toasty.success(this, it.message, Toast.LENGTH_SHORT, true).show()
-
+            val intent = Intent(this,CartActivity::class.java)
+            startActivity(intent)
 
 
 

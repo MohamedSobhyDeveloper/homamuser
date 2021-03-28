@@ -306,7 +306,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="170.00"
+            android:text="ج"
             android:fontFamily="@font/robotobold"
             android:textSize="15sp"
             android:id="@+id/txt_con_total"

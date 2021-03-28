@@ -81,6 +81,17 @@ class HandelCalls {
         }else if(flag==DataEnum.mycart.name){
             callRetrofit(restRetrofit?.getClientService()?.myCart(), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.makeOrder.name){
+            callRetrofit(restRetrofit?.getClientService()?.makeorder(meMap), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.myOrderList.name){
+            callRetrofit(restRetrofit?.getClientService()?.myOrderList(), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.urlMyOrderList.name){
+            val url=meMap?.get("url")
+
+            callRetrofit(restRetrofit?.getClientService()?.getURLMyOrder(url), flag, ShowLoadingDialog)
+
         }
 
     }

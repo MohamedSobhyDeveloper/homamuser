@@ -52,7 +52,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/big_zak"
+                android:id="@+id/rest_name"
                 android:text="Big zak"
                 android:textSize="18sp"
                 android:singleLine="true"
@@ -107,6 +107,7 @@
                     android:id="@+id/num_order"
                     android:text="#320vmbjh"
                     android:textSize="12sp"
+                    android:lines="1"
                     android:fontFamily="@font/robotoregular"
                     android:textColor="@color/pencil"
                     tools:ignore="HardcodedText,NestedWeights" />
@@ -117,6 +118,7 @@
                     android:id="@+id/txt_date"
                     android:text="2/11/2012"
                     android:textSize="12sp"
+                    android:lines="1"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/robotoregular"
                     android:textColor="@color/pencil"

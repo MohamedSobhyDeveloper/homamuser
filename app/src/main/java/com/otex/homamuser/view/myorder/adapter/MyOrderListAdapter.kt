@@ -7,17 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ItemCountryHomeBinding
-import com.otex.homamuser.databinding.ItemCountryResturantBinding
 import com.otex.homamuser.databinding.ItemMyorderBinding
-import com.otex.homamuser.databinding.ItemSpecialOffersBinding
 import com.otex.homamuser.view.home.model.FoodLoveModel
-import com.otex.homamuser.view.myorder.MyOrderListActivity
+import com.otex.homamuser.view.myorder.myorderModel.Data
 import com.otex.homamuser.view.orderdetail.OrderDetailsActivity
-import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
 
 
-class MyOrderListAdapter(private val context: Context, val chartList: MutableList<FoodLoveModel>?)
+class MyOrderListAdapter(private val context: Context, val mList: List<Data>)
     : RecyclerView.Adapter<MyOrderListAdapter.MyViewHolder>() {
 
 
@@ -25,18 +21,22 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 
-        holder.binding?.btnOrdernow?.setOnClickListener {
-           context.startActivity(Intent(context, OrderDetailsActivity::class.java))
-        }
+            holder.binding.restName.text=mList[position].restaurant
+         holder.binding.txtOrderPrice.text=mList[position].total.toString()
+        holder.binding.numDished.text=mList[position].dishes.toString()
+        holder.binding.numOrder.text=mList[position].code
+        holder.binding.txtDate.text=mList[position].date
+        holder.binding.btnOrdernow.text=mList[position].status
+
 
 
     }
 
 
 
-    fun addList(movielist: MutableList<FoodLoveModel>) {
+    fun addList(list: List<Data>) {
 
-        this.chartList?.addAll(movielist)
+        this.mList.toMutableList().addAll(list)
         notifyDataSetChanged()
     }
 
@@ -44,11 +44,9 @@ class MyOrderListAdapter(private val context: Context, val chartList: MutableLis
 
 
     override fun getItemCount(): Int {
-        if (chartList?.size== null) {
-            return 10
-        } else {
-            return chartList?.size!!
-        }
+
+            return mList?.size!!
+
     }
 
 

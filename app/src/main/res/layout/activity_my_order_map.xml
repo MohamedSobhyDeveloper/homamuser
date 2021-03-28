@@ -111,7 +111,7 @@
 
                 <TextView
                     android:text="Happy Bones"
-                    android:id="@+id/order"
+                    android:id="@+id/rest_name"
                     android:textSize="18sp"
                     android:fontFamily="@font/robotobold"
                     android:textColor="@color/black"
