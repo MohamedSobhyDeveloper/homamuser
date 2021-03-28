@@ -33,6 +33,8 @@ class Constant {
         var userid = "userId"
         var categoryID = "category_id"
         var restID = "id"
+        var optionId = "optionId"
+        var additionId = "additionId"
 
 
 

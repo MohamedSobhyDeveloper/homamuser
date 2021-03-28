@@ -1,11 +1,8 @@
 package com.otex.homamuser.view.myprofile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.otex.homamuser.R
-import com.otex.homamuser.databinding.ActivityEditProfileBinding
 import com.otex.homamuser.databinding.ActivityMyProfileBinding
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.PrefsUtil
@@ -44,8 +41,10 @@ class MyProfileActivity : BaseActivity() {
             finish()
         }
         binding.logout.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            PrefsUtil.with(this).add(Constant.token,"").apply()
+            val intent =Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+             startActivity(intent)
         }
     }
 

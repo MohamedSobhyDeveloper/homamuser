@@ -215,7 +215,7 @@
                         android:textColor="@color/orangefateh"
                         android:textSize="14sp"
                         android:gravity="center"
-                        android:id="@+id/num_order"
+                        android:id="@+id/quantity"
                         android:background="@drawable/rounddrawablewhiteoval"
                         android:fontFamily="@font/robotobold"
                         android:layout_width="0dp"

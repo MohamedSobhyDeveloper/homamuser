@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi
 
 data class Option(
         val feature_id: Int,
-        val id: Int,
+        val id: String,
         val name: String,
         val price: Int,
         var isChecked:Boolean=false
@@ -16,7 +16,7 @@ data class Option(
     @SuppressLint("NewApi")
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
-            parcel.readInt(),
+            parcel.readString()!!,
             parcel.readString()!!,
             parcel.readInt(),
             parcel.readBoolean()
@@ -26,7 +26,7 @@ data class Option(
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(feature_id)
-        parcel.writeInt(id)
+        parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeInt(price)
         parcel.writeBoolean(isChecked)

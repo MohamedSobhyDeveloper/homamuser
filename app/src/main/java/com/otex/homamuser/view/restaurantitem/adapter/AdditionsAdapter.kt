@@ -1,4 +1,4 @@
-package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
+package com.otex.homamuser.view.restaurantitem.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,22 +8,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.*
-import com.otex.homamuser.view.home.model.FoodLoveModel
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.restaurantitem.model.Addition
 
 
-class AdditionsAdapter(private val context: Context, val chartList: List<Addition>)
+class AdditionsAdapter(private val context: Context, val list: List<Addition>)
     : RecyclerView.Adapter<AdditionsAdapter.MyViewHolder>() {
     private var selectedItemPosition: Int = 0
-
-    var itemBinding: ItemAdditionBinding?=null
 
 
     @SuppressLint("NewApi", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.binding.txtNameFood.text=chartList.get(position).name
-        holder.binding.txtSalary.text= chartList.get(position).price.toString()+" "+"ج"
+        holder.binding.txtNameFood.text=list.get(position).name
+        holder.binding.txtSalary.text= list.get(position).price.toString()+" "+"ج"
 
         holder.binding.conAddition.setOnClickListener {
             selectedItemPosition=position
@@ -33,6 +32,7 @@ class AdditionsAdapter(private val context: Context, val chartList: List<Additio
             notifyDataSetChanged()
         }
         if(selectedItemPosition == position) {
+            PrefsUtil.with(context).add(Constant.additionId,list[position].id).apply()
             holder.binding.conAddition.setBackgroundResource(R.drawable.circleback)
             holder.binding.txtNameFood.setTextColor(context.getColor(R.color.white))
             holder.binding.txtSalary.setTextColor(context.getColor(R.color.white))
@@ -49,21 +49,10 @@ class AdditionsAdapter(private val context: Context, val chartList: List<Additio
 
 
 
-    fun addList(movielist: MutableList<FoodLoveModel>) {
-
-    //    this.chartList?.addAll(movielist)
-        notifyDataSetChanged()
-    }
-
-
 
 
     override fun getItemCount(): Int {
-        if (chartList?.size== null) {
-            return 5
-        } else {
-            return chartList?.size!!
-        }
+        return list.size
     }
 
 

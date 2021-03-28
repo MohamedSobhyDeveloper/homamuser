@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.*
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.restaurantitem.model.Option
 
 
@@ -31,6 +33,7 @@ class ChooseSizeAdapter(private val context: Context, val list: List<Option>)
 
         if(selectedItemPosition == position) {
             holder.binding.selectedsize.setBackgroundResource(R.drawable.circleback)
+            PrefsUtil.with(context).add(Constant.optionId,list[position].id).apply()
         }
         else{
             holder.binding.selectedsize.setBackgroundResource(R.drawable.rounddrawablegrayoval)
