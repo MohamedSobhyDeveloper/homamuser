@@ -15,7 +15,7 @@ class ContactUsViewModel : ViewModel(), HandleRetrofitResp {
 
 
     fun contactUs(context: Context, meMap: HashMap<String, String?>?){
-        HandelCalls.getInstance(context)?.call(DataEnum.homerestaurant.name, meMap, true, this)
+        HandelCalls.getInstance(context)?.call(DataEnum.contactUs.name, meMap, true, this)
     }
 
     override fun onResponseSuccess(flag: String?, o: Any?) {
