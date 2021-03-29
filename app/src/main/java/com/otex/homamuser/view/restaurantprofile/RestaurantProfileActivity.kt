@@ -2,6 +2,7 @@ package com.otex.homamuser.view.restaurantprofile
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -12,7 +13,6 @@ import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.otex.homamuser.view.restaurantprofile.model.Menu
-import com.otex.homamuser.view.specialorder.SpecialOrdesActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
 import com.squareup.picasso.Picasso
@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso
 class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     private var resturantProfileViewModel: ResturantProfileViewModel? = null
     lateinit var binding: ActivityRestaurantProfileBinding
-
+    var phone:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantProfileBinding.inflate(layoutInflater)
@@ -34,6 +34,9 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         binding.backbtn.setOnClickListener {
             finish()
         }
+        binding.imgPhone.setOnClickListener {
+           dialPhoneNumber(phone)
+        }
 
     }
     @SuppressLint("SetTextI18n")
@@ -41,6 +44,8 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
         resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
 
+
+            phone=it.data.phone
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
             Picasso.get().load(intent.getStringExtra("image")).into(binding.imgCoverphoto)
@@ -51,6 +56,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
 
         }
         resturantProfileViewModel!!.restaurantMenudata.observe(this) {
+
 
             val layoutManager = LinearLayoutManager(this)
             binding.recBestdishes.layoutManager = layoutManager
@@ -91,6 +97,12 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     override fun onClick(value: String?) {
        getMenuItem(intent.getStringExtra(Constant.restID)!!, value!!)
     }
-
+    fun dialPhoneNumber(phoneNumber: String) {
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:$phoneNumber")
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
+    }
 
 }

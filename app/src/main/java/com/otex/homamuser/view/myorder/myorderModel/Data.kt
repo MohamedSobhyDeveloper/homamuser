@@ -4,7 +4,7 @@ data class Data(
     val code: String,
     val date: String,
     val dishes: Int,
-    val id: Int,
+    val id: String,
     val restaurant: String,
     val restaurant_logo: String,
     val status: String,

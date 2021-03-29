@@ -28,6 +28,12 @@ class MyOrderListAdapter(private val context: Context, val mList: List<Data>)
         holder.binding.txtDate.text=mList[position].date
         holder.binding.btnOrdernow.text=mList[position].status
 
+        holder.binding.conCart.setOnClickListener {
+            var intent=Intent(context,OrderDetailsActivity::class.java)
+            intent.putExtra("order_id",mList[position].id)
+            context.startActivity(intent)
+        }
+
 
 
     }

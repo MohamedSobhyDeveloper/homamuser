@@ -78,14 +78,19 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
         binding.conOrderNow.setOnClickListener {
 
+            var address = binding.txtAddress.text.toString()
+            if (address == "") {
+                binding.txtAddress.error = getString(R.string.select_address)
+            } else {
 
-            if (addresses != null && addresses!!.isNotEmpty()) {
-                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
-                binding.txtAddress.setText(streetStart);
-            }else{
-                streetStart=""
+                if (addresses != null && addresses!!.isNotEmpty()) {
+                    streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+                    binding.txtAddress.setText(streetStart);
+                } else {
+                    streetStart = ""
+                }
+                make_order(streetStart, PrefsUtil.with(this).get("msg", ""))
             }
-                make_order(streetStart,PrefsUtil.with(this).get("msg",""))
         }
 
     }
@@ -95,8 +100,6 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
         map.put("address",streetStart)
         map.put("note",get)
         myOrderViewModel?.makeOrder(this,map)
-        val intent = Intent(this, MyOrderListActivity::class.java)
-        startActivity(intent)
     }
 
     private fun initialize() {
@@ -106,9 +109,14 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
         myOrderViewModel = ViewModelProvider(this).get(MyOrderViewModel::class.java)
         myOrderViewModel!!.makeOrderlivedtat.observe(this) {
 
-            Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MyOrderListActivity::class.java)
-            startActivity(intent)
+            if(it.status=="0") {
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                finish()
+
+            }
+
         }
 
     }

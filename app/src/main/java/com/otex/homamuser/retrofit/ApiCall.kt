@@ -7,6 +7,7 @@ import com.otex.homamuser.view.login.model.ModelLogin
 import com.otex.homamuser.view.myorder.model.ModelMakeOrder
 import com.otex.homamuser.view.myorder.myorderModel.ModelMyOrderList
 import com.otex.homamuser.view.myprofile.model.ModelProfile
+import com.otex.homamuser.view.orderdetail.model.ModelOrderDetails
 import com.otex.homamuser.view.register.model.ModelRegister
 import com.otex.homamuser.view.restaurantitem.ModelResponeBasket
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
@@ -67,4 +68,8 @@ interface ApiCall {
 
     @GET
     fun getURLMyOrder(@Url url: String?): Call<ModelMyOrderList?>?
+
+    @GET("user/order/{order_id}")
+    fun orderDetails(@Path("order_id") id: String?):Call<ModelOrderDetails?>?
+
 }

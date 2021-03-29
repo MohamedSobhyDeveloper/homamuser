@@ -6,5 +6,6 @@ data class Data(
         val id: Int,
         val logo: String,
         val menus: List<Menu>,
-        val name: String
+        val name: String,
+        val phone:String
 )
