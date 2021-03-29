@@ -28,7 +28,7 @@ class RestaurantItemActivity : BaseActivity() {
     var pricevalue:Int=0
     var message:String=""
     private var resturantItemViewModel: ResturantItemViewModel? = null
-    var listid:ArrayList<Addition>?=null
+    var listid:ArrayList<Addition>?=ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
