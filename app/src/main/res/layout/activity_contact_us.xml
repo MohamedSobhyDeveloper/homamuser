@@ -179,10 +179,10 @@
                 >
                 <EditText
                     android:id="@+id/edit_phone"
-                    android:hint="@string/phone"
+                    android:hint="@string/enter_email"
                     android:textColor="@color/gray"
                     android:textSize="12sp"
-                    android:inputType="phone"
+                    android:inputType="textEmailAddress"
                     android:paddingStart="10dp"
                     android:fontFamily="@font/rubikregular"
                     android:layout_width="match_parent"

@@ -67,4 +67,8 @@ interface ApiCall {
 
     @GET
     fun getURLMyOrder(@Url url: String?): Call<ModelMyOrderList?>?
+
+    @FormUrlEncoded
+    @POST("user/contact-us")
+    fun contactUs(@FieldMap map: HashMap<String, String?>?): Call<ModelMakeOrder?>?
 }

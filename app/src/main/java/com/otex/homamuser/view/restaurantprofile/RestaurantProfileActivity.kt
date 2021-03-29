@@ -40,7 +40,6 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     private fun initialize() {
         resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
         resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
-
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
             Picasso.get().load(intent.getStringExtra("image")).into(binding.imgCoverphoto)

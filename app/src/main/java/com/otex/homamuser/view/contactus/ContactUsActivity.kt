@@ -1,17 +1,15 @@
 package com.otex.homamuser.view.contactus
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityContactUsBinding
+import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.otex.homamuser.view.home.HomeActivity
-import kotlin.math.roundToInt
+import es.dmoral.toasty.Toasty
 
 
 class ContactUsActivity : BaseActivity() {
@@ -20,7 +18,7 @@ class ContactUsActivity : BaseActivity() {
     private var contactUsViewModel: ContactUsViewModel? = null
     lateinit var binding: ActivityContactUsBinding
      var username:String=""
-     var phone:String=""
+     var email:String=""
      var subject:String=""
      var message:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,32 +54,47 @@ class ContactUsActivity : BaseActivity() {
         }
         binding.btnNext.setOnClickListener {
             username=binding.editUsername.text.toString()
-            phone=binding.editPhone.text.toString()
+            email=binding.editPhone.text.toString()
             message=binding.editMessage.text.toString()
             subject=binding.editSubject.text.toString()
 
             if(username.equals("")){
                 binding.editUsername.setError(getString(R.string.enter_username))
-            }else if(phone.equals("")){
+            }else if(email.equals("")){
                 binding.editPhone.setError(getString(R.string.enter_phone))
             }else if(subject.equals("")){
                 binding.editSubject.setError(getString(R.string.enter_subject))
             }else if(message.equals("")){
                 binding.editMessage.setError(getString(R.string.enter_message))
             }else{
-                contact()
+                contact(username,email,message,subject)
             }
 
         }
 
     }
 
-    private fun contact() {
-        startActivity(Intent(this, HomeActivity::class.java))
-        finish()
+    private fun contact(username: String, email: String, message: String, subject: String) {
+        val map = HashMap<String, String?>()
+        map.put("email",email)
+        map.put("subject",subject)
+        map.put("message",message)
+        map.put("name",username)
+
+        contactUsViewModel?.contactUs(this,map)
     }
 
     private fun initialize() {
         contactUsViewModel = ViewModelProvider(this).get(ContactUsViewModel::class.java)
+
+        contactUsViewModel!!.contactsLiveData.observe(this) {
+
+
+            Toasty.success(this, it.message, Toast.LENGTH_SHORT, true).show()
+            finish()
+
+
+
+        }
     }
 }

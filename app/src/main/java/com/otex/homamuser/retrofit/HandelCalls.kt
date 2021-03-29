@@ -92,6 +92,9 @@ class HandelCalls {
 
             callRetrofit(restRetrofit?.getClientService()?.getURLMyOrder(url), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.contactUs.name){
+            callRetrofit(restRetrofit?.getClientService()?.contactUs(meMap), flag, ShowLoadingDialog)
+
         }
 
     }
