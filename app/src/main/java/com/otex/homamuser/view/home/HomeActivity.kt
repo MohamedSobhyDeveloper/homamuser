@@ -1,8 +1,12 @@
 package com.otex.homamuser.view.home
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -20,6 +24,7 @@ import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
+import com.tbruyelle.rxpermissions2.RxPermissions
 import java.util.*
 
 
@@ -38,6 +43,8 @@ class HomeActivity : BaseActivity() {
         binding=ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        checkPermission()
+
         initialize()
 
         setuptoolbar()
@@ -46,6 +53,29 @@ class HomeActivity : BaseActivity() {
 
         getRestaurant()
 
+    }
+
+
+    @SuppressLint("CheckResult")
+    private fun checkPermission() {
+        val rxPermissions = RxPermissions(this)
+        rxPermissions.setLogging(true)
+
+        rxPermissions
+            .request(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+            .subscribe { granted ->
+                if (granted) { // Always true pre-M
+                    // I can control the camera now
+                    Log.e("m", "permission")
+                } else {
+                    Toast.makeText(this, "Denied", Toast.LENGTH_SHORT).show()
+                    finish()
+                    // Oups permission denied
+                }
+            }
     }
 
     private fun getRestaurant() {
