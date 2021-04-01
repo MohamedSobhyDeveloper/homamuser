@@ -10,11 +10,10 @@ import android.graphics.Canvas
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.DrawableRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.gms.location.places.ui.PlacePicker.getLatLngBounds
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -120,7 +119,7 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
         mMap.addMarker(
                 this.currentLocation?.let {
                     MarkerOptions().position(it)
-                            .icon(bitmapDescriptorFromVector(this, R.drawable.baseline_room_black_18))
+                            .draggable(true)
                 })
         // mMap.addMarker(MarkerOptions().position(myLocation))//.title("Marker in Sydney"))
         mMap.moveCamera(
@@ -130,22 +129,41 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         mMap.isMyLocationEnabled=true
 
-        mMap.setOnMapClickListener { latLng ->
+//        mMap.setOnMapClickListener { latLng ->
+//
+//            mMap.clear()
+//            mylocation=latLng
+//            mMap.addMarker(MarkerOptions().position(mylocation)//.title("Marker in Sydney"))
+////                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
+//            )
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
+//            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
+//
+//
+//                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+//                binding.txtAddress.setText(streetStart)
+//
+//
+//        }
 
-            mMap.clear()
-            mylocation=latLng
-            mMap.addMarker(MarkerOptions().position(mylocation)//.title("Marker in Sydney"))
-//                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
-            )
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
-            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
 
+        mMap.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
+            override fun onMarkerDragStart(arg0: Marker) {
+                // TODO Auto-generated method stub
+                Log.d("System out", "onMarkerDragStart..." + arg0.position.latitude.toString() + "..." + arg0.position.longitude)
+            }
 
-                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
-                binding.txtAddress.setText(streetStart)
+            override fun onMarkerDragEnd(arg0: Marker) {
+                // TODO Auto-generated method stub
+                Log.d("System out", "onMarkerDragEnd..." + arg0.position.latitude.toString() + "..." + arg0.position.longitude)
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(arg0.position))
+            }
 
-
-        }
+            override fun onMarkerDrag(arg0: Marker?) {
+                // TODO Auto-generated method stub
+                Log.i("System out", "onMarkerDrag...")
+            }
+        })
     }
 
     fun bitmapDescriptorFromVector(activity: Context, @DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {

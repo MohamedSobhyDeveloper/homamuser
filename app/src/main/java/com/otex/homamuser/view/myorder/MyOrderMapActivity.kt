@@ -156,6 +156,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
             val intent= Intent(this, SelectAddressActivity::class.java)
             startActivityForResult(intent,LAUNCH_SECOND_ACTIVITY)
         }
+
     }
 
     fun bitmapDescriptorFromVector(activity: Context, @DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
