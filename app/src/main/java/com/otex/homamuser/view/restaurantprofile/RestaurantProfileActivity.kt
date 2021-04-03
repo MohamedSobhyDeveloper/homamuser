@@ -94,8 +94,9 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     }
 
 
-    override fun onClick(value: String?) {
+    override fun onClick(value: String?, name: String?) {
        getMenuItem(intent.getStringExtra(Constant.restID)!!, value!!)
+        binding.best.text=name
     }
     fun dialPhoneNumber(phoneNumber: String) {
         val intent = Intent(Intent.ACTION_DIAL)

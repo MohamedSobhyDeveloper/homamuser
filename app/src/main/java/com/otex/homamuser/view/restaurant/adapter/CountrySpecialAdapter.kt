@@ -23,7 +23,7 @@ class CountrySpecialAdapter(private val context: Context, val chartList: List<Ca
 
         holder.binding.conCountry.setOnClickListener {
             notifyDataSetChanged()
-            onclik.onClick(chartList[position].id)
+            onclik.onClick(chartList[position].id,null)
         }
 
 

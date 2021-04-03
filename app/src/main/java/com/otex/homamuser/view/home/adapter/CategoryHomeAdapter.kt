@@ -21,6 +21,9 @@ class CategoryHomeAdapter(private val context: Context, private val mList: List<
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.nameCategory.text=mList[position].name
+        if(mList[position].image.isNotEmpty()){
+            Picasso.get().load(mList[position].image).into(holder.binding.imgDepartment)
+        }
         holder.binding.categoryHome.setOnClickListener {
             val intent=Intent(context,ResturantActivity::class.java)
             intent.putExtra(Constant.categoryID,mList[position].id)

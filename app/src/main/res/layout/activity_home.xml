@@ -57,11 +57,59 @@
     >
 
 
-            <TextView
-                app:layout_constraintTop_toTopOf="parent"
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:padding="10dp"
+        android:text="@string/special_offers"
+        android:fontFamily="@font/robotobold"
+        android:textSize="14sp"
+        android:id="@+id/new_txt_special_offers"
+        android:textColor="@color/bluefateh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        app:layout_constraintTop_toTopOf="@+id/new_txt_special_offers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/new_txt_special_offers"
+        android:layout_marginEnd="12dp"
+        android:text="@string/sell_all"
+        android:fontFamily="@font/josefinsansregular"
+        android:textSize="13sp"
+        android:padding="10dp"
+        android:id="@+id/new_txt_sellAll_special"
+        android:textColor="@color/orangefateh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/new_rec_special_restaurantHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_special_offers"
+        app:layout_constraintTop_toBottomOf="@+id/new_txt_special_offers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlCompat"/>
+
+
+
+
+
+
+
+          <TextView
+                app:layout_constraintTop_toBottomOf="@+id/new_rec_special_restaurantHome"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:text="@string/role_on_food_you_which_love"
                 android:fontFamily="@font/robotobold"

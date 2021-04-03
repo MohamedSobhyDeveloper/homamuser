@@ -1,5 +1,6 @@
 package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
 
 
 
+    @SuppressLint("Range")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.btnOpen.text=mList[position].is_open

@@ -14,34 +14,36 @@
         android:id="@+id/con_country"
         android:layout_width="99dp"
         android:layout_height="100dp"
-        android:background="@drawable/button_corner_country"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         >
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name_Category"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Italia"
-            android:textSize="17sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/josefinsansbold"
-            tools:ignore="HardcodedText" />
-
-
-
+        <ImageView
+            android:alpha="0.4"
+            android:src="@drawable/logosplash"
+            android:id="@+id/img_department"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_Category"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Italia"
+        android:textSize="17sp"
+        android:alpha="5"
+        android:textColor="@color/white"
+        android:fontFamily="@font/josefinsansbold"
+        tools:ignore="HardcodedText" />
 
 
 

@@ -118,7 +118,7 @@ class ResturantActivity : BaseActivity() ,OnItemClick{
         binding.recCountry.adapter = adapter
     }
 
-    override fun onClick(value: String?) {
+    override fun onClick(value: String?, name: String?) {
         setupResOfCategory(value)
     }
 

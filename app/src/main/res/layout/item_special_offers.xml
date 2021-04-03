@@ -57,6 +57,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textColor="@color/black"
                 android:text="4.5"
+                android:visibility="gone"
                 android:textSize="11sp"
                 android:textAlignment="center"
                 android:gravity="center"
