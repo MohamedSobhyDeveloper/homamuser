@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,7 @@ import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.otex.homamuser.view.restaurantprofile.model.Menu
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MenuResProfileAdapter
+import com.otex.homamuser.view.restaurantprofile.adapter.MenuResProfileAdapter
 import com.squareup.picasso.Picasso
 
 class RestaurantProfileActivity : BaseActivity(), OnItemClick {
@@ -44,7 +45,9 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         resturantProfileViewModel = ViewModelProvider(this).get(ResturantProfileViewModel::class.java)
         resturantProfileViewModel!!.restaurantProfilelivedata.observe(this) {
 
-
+            if(it.data.logo.isNotEmpty()){
+                Picasso.get().load(it.data.logo).into(binding.imgPastaprofile)
+            }
             phone=it.data.phone
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
@@ -57,7 +60,13 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
         }
         resturantProfileViewModel!!.restaurantMenudata.observe(this) {
 
+           // binding.txtDescription.text=it.data.products[0].description
+            if(it.data.products.isEmpty()) {
+                binding.txtNotFound.visibility=View.VISIBLE
+            }else{
+                binding.txtNotFound.visibility=View.GONE
 
+            }
             val layoutManager = LinearLayoutManager(this)
             binding.recBestdishes.layoutManager = layoutManager
             val adapter =
@@ -87,6 +96,8 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     }
 
     private fun getRestaurant_details() {
+
+        binding.txtClock.text=intent.getStringExtra("isOpen").toString()
         val map = HashMap<String, String?>()
         map.put(Constant.restID,intent.getStringExtra(Constant.restID))
         resturantProfileViewModel?.getRestaurantDetails(this,map)
@@ -105,5 +116,6 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
             startActivity(intent)
         }
     }
+
 
 }

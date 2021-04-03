@@ -1,14 +1,14 @@
-package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
+package com.otex.homamuser.view.restaurantprofile.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.compose.navArgument
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemMenuBinding
-import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.otex.homamuser.view.restaurantprofile.model.Menu
 import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
@@ -18,15 +18,23 @@ class MenuResProfileAdapter(private val context: Context, val meulList: List<Men
     : RecyclerView.Adapter<MenuResProfileAdapter.MyViewHolder>() {
 
     private var selectedItemPosition: Int = 0
+    private var value: Int = 0
 
     @SuppressLint("ResourceAsColor", "NewApi")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.binding?.txtMenu.text=meulList.get(position).name
+         holder.binding?.txtMenu.text=meulList.get(position).name
+         value=0
+        if(value==0){
+            value=position
+         onclik.onClick(meulList[0].id,meulList[0].name)
+        }else{
+            selectedItemPosition=value
+            notifyDataSetChanged()
+        }
 
          holder.binding?.conMenu?.setOnClickListener {
-              selectedItemPosition=position
-             notifyDataSetChanged()
+             selectedItemPosition=position
              onclik.onClick(meulList[position].id,meulList.get(position).name)
              holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
              holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))

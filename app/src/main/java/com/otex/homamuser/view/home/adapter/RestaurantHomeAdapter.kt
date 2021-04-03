@@ -28,6 +28,7 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
         holder.binding.btnOpen.text=mList[position].is_open
         holder.binding.nameRestaurant.text=mList[position].name
         holder.binding.txtAddress.text=mList[position].address
+
         if(mList[position].image.isNotEmpty()){
             Picasso.get().load(mList[position].image).into(holder.binding.imgOffer)
         }else if(mList[position].logo.isNotEmpty()){
@@ -38,6 +39,7 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
             val intent=Intent(context, RestaurantProfileActivity::class.java)
             intent.putExtra(Constant.restID,mList[position].id)
             intent.putExtra("image",mList[position].image)
+            intent.putExtra("isOpen",mList[position].is_open)
             context.startActivity(intent)
         }
 

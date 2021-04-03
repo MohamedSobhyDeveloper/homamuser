@@ -21,13 +21,19 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
 
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.productName.text=menuItemList[position].name
         holder.binding.description.text=menuItemList[position].description
 
+        holder.binding.price.text= menuItemList[position].options[0].price.toString()+" ج" +" : "+
+                                          menuItemList[position].options[menuItemList[position]
+                                                  .options.size-1].price.toString()+"ج"
 
+        if(menuItemList[position].image_path!=null){
+            Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
+        }
         holder.binding.imgAdd.setOnClickListener {
 
             val intent=Intent(context,RestaurantItemActivity::class.java)
@@ -36,6 +42,15 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
             context.startActivity(intent)
 
         }
+        holder.binding.conParent.setOnClickListener {
+
+            val intent=Intent(context,RestaurantItemActivity::class.java)
+            intent.putExtra("menuItemList", menuItemList[position])
+            intent.putExtra(Constant.restID, restauranrId)
+            context.startActivity(intent)
+
+        }
+
 
 
     }
@@ -52,6 +67,7 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
 
     override fun getItemCount(): Int {
+
 
 
             return menuItemList.size

@@ -35,7 +35,7 @@ class ResturantProfileViewModel : ViewModel() ,HandleRetrofitResp{
             restaurantProfilelivedata.setValue(modelRestaurantDetails)
         }else if(flag==DataEnum.RestMenu.name){
             val modelRestaurantMenu: ModelRestaurantMenu = o as ModelRestaurantMenu
-            restaurantMenudata.setValue(modelRestaurantMenu)
+            restaurantMenudata.value = modelRestaurantMenu
         }
 
     }

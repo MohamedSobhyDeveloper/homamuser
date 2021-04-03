@@ -9,22 +9,25 @@ data class Product(
     val description: String,
     val id: Int,
     val name: String,
-    val options: List<Option>
+    val options: List<Option>,
+    val image_path:String
 ):Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.createTypedArrayList(Addition)!!,
             parcel.readString()!!,
             parcel.readInt(),
             parcel.readString()!!,
-            parcel.createTypedArrayList(Option)!!)
+            parcel.createTypedArrayList(Option)!!,
+            parcel.readString()!!) {
+    }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-            parcel.writeTypedList(additions)
-            parcel.writeString(description)
-            parcel.writeInt(id)
-            parcel.writeString(name)
-            parcel.writeTypedList(options)
-
+        parcel.writeTypedList(additions)
+        parcel.writeString(description)
+        parcel.writeInt(id)
+        parcel.writeString(name)
+        parcel.writeTypedList(options)
+        parcel.writeString(image_path)
     }
 
     override fun describeContents(): Int {
