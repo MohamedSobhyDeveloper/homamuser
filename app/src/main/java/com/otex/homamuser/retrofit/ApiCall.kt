@@ -11,7 +11,6 @@ import com.otex.homamuser.view.orderdetail.model.ModelOrderDetails
 import com.otex.homamuser.view.register.model.ModelRegister
 import com.otex.homamuser.view.restaurantitem.ModelResponeBasket
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
-import com.otex.homamuser.view.restaurantitem.modelsendbasket.ModelSendBasket
 import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
 import retrofit2.Call
 import retrofit2.http.*

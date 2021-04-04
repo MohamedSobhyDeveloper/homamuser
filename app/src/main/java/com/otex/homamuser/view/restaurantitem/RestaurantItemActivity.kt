@@ -13,20 +13,23 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.myorder.MyOrderMapActivity
+import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
+import com.otex.homamuser.view.restaurantitem.adapter.AdditionsAdapter
 import com.otex.homamuser.view.restaurantitem.model.Addition
 import com.otex.homamuser.view.restaurantitem.model.Option
 import com.otex.homamuser.view.restaurantitem.model.Product
-import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
-import com.otex.homamuser.view.restaurantitem.adapter.AdditionsAdapter
+import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.ChooseSizeAdapter
 import es.dmoral.toasty.Toasty
 
-class RestaurantItemActivity : BaseActivity() {
+class RestaurantItemActivity : BaseActivity(),OnItemClick {
     lateinit var binding: ActivityRestaurantItemBinding
     var num:Int=1
     var productId=""
     var pricevalue:Int=0
     var message:String=""
+    var priceAddition:Int=0
+    var priceOption:Int=0
     private var resturantItemViewModel: ResturantItemViewModel? = null
     var listid:ArrayList<Addition>?=ArrayList()
 
@@ -40,6 +43,7 @@ class RestaurantItemActivity : BaseActivity() {
     @SuppressLint("SetTextI18n")
     private fun click() {
         binding.quantity.text = (num).toString()
+        binding.txtPrice.text=(priceAddition+priceOption).toString()
         binding.backbtn.setOnClickListener {
             finish()
         }
@@ -83,7 +87,7 @@ class RestaurantItemActivity : BaseActivity() {
 
 
         for (i in listid?.indices!!){
-            map.put("additions[$i]", listid!![i].id)
+            map.put("additions[$i]", listid!![i].id.toString())
         }
 
 
@@ -131,12 +135,13 @@ class RestaurantItemActivity : BaseActivity() {
                         listid=idlist
                     }
 
-                })
+                },this)
         binding.recyclerAddition.adapter = adapter_addition
 
     }
 
     private fun setUpRecyclerSize(options: List<Option>) {
+
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerSize.layoutManager = layoutManager
         val adapter =
@@ -144,14 +149,16 @@ class RestaurantItemActivity : BaseActivity() {
                     @SuppressLint("SetTextI18n")
                     override fun click(price: Int) {
                         pricevalue=price
-                        binding.txtPrice.text=price.toString()+"ج"
+                        priceOption=price
                     }
 
                 })
         binding.recyclerSize.adapter = adapter
     }
 
-
+    override fun onClick(value: String?, name: String?) {
+        priceAddition=value!!.toInt()
+    }
 
 
 }

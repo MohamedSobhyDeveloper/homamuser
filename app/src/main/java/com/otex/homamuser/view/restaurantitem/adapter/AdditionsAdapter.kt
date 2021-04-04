@@ -11,9 +11,11 @@ import com.otex.homamuser.databinding.*
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.restaurantitem.model.Addition
+import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 
 
-class AdditionsAdapter(private val context: Context, val list: List<Addition>,val clicvalue:Clickvaluelistener)
+class AdditionsAdapter(private val context: Context, val list: List<Addition>,val clicvalue:Clickvaluelistener
+,var onclik: OnItemClick)
     : RecyclerView.Adapter<AdditionsAdapter.MyViewHolder>() {
 
      val listid= ArrayList<Addition>()
@@ -34,7 +36,7 @@ class AdditionsAdapter(private val context: Context, val list: List<Addition>,va
                }
 
             clicvalue.click(listid!!)
-
+            onclik.onClick(list[position].price.toString(),null)
 
             notifyDataSetChanged()
         }

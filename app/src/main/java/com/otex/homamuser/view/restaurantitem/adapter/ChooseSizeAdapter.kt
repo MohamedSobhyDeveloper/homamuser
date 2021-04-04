@@ -13,7 +13,7 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.restaurantitem.model.Option
 
 
-class ChooseSizeAdapter(private val context: Context, val list: List<Option>,val clicvalue:Clickvaluelistener)
+class ChooseSizeAdapter(private val context: Context, val list: List<Option>, val clicvalue:Clickvaluelistener)
     : RecyclerView.Adapter<ChooseSizeAdapter.MyViewHolder>() {
 
 

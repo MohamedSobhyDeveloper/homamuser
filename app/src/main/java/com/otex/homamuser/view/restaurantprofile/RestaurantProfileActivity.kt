@@ -14,7 +14,7 @@ import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.restaurantitem.model.Product
 import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 import com.otex.homamuser.view.restaurantprofile.model.Menu
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.BestDishesAdapter
+import com.otex.homamuser.view.restaurantprofile.adapter.BestDishesAdapter
 import com.otex.homamuser.view.restaurantprofile.adapter.MenuResProfileAdapter
 import com.squareup.picasso.Picasso
 

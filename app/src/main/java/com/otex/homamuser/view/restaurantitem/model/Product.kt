@@ -3,22 +3,19 @@ package com.otex.homamuser.view.restaurantitem.model
 import android.os.Parcel
 import android.os.Parcelable
 
-
 data class Product(
     val additions: List<Addition>,
     val description: String,
     val id: Int,
     val name: String,
-    val options: List<Option>,
-    val image_path:String
+    val options: List<Option>
 ):Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.createTypedArrayList(Addition)!!,
             parcel.readString()!!,
             parcel.readInt(),
             parcel.readString()!!,
-            parcel.createTypedArrayList(Option)!!,
-            parcel.readString()!!) {
+            parcel.createTypedArrayList(Option)!!) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -27,7 +24,6 @@ data class Product(
         parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeTypedList(options)
-        parcel.writeString(image_path)
     }
 
     override fun describeContents(): Int {

@@ -1,4 +1,4 @@
-package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
+package com.otex.homamuser.view.restaurantprofile.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,17 +6,15 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.ui.unit.Constraints
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemBestdishesBinding
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
 import com.otex.homamuser.view.restaurantitem.model.Product
-import com.squareup.picasso.Picasso
 
 
-class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>,val restauranrId:String)
+class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>, val restauranrId:String)
     : RecyclerView.Adapter<BestDishesAdapter.MyViewHolder>() {
 
 
@@ -31,9 +29,9 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
                                           menuItemList[position].options[menuItemList[position]
                                                   .options.size-1].price.toString()+"ج"
 
-        if(menuItemList[position].image_path!=null){
-            Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
-        }
+//        if(menuItemList[position].image_path!=null){
+//            Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
+//        }
         holder.binding.imgAdd.setOnClickListener {
 
             val intent=Intent(context,RestaurantItemActivity::class.java)
@@ -67,8 +65,6 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
 
     override fun getItemCount(): Int {
-
-
 
             return menuItemList.size
 
