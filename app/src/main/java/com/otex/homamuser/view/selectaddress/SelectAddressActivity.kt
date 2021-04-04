@@ -77,8 +77,8 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
 
             val returnIntent = Intent()
              returnIntent.putExtra("result", streetStart)
-            returnIntent.putExtra("latitude", mylocation.latitude.toString())
-            returnIntent.putExtra("longitude", mylocation.longitude.toString())
+            returnIntent.putExtra("latitude", currentLocation?.latitude.toString())
+            returnIntent.putExtra("longitude", currentLocation?.longitude.toString())
             setResult(Activity.RESULT_OK,returnIntent)
              finish()
         }
@@ -101,13 +101,7 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap?) {
 
-        ActivityCompat.requestPermissions(
-                this, arrayOf<String>(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-        ),
-                1
-        )
+
         mMap = googleMap!!
         //  mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         mMap.uiSettings.isZoomGesturesEnabled=true
@@ -121,6 +115,10 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
                     MarkerOptions().position(it)
                             .draggable(true)
                 })
+                addresses = geocode.getFromLocation(currentLocation!!.latitude, currentLocation!!.longitude, 1)
+                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+                binding.txtAddress.setText(streetStart)
+//
         // mMap.addMarker(MarkerOptions().position(myLocation))//.title("Marker in Sydney"))
         mMap.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(currentLocation
@@ -154,7 +152,10 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
             }
 
             override fun onMarkerDragEnd(arg0: Marker) {
-                // TODO Auto-generated method stub
+                addresses = geocode.getFromLocation(arg0.position!!.latitude, arg0.position!!.longitude, 1)
+                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+                binding.txtAddress.setText(streetStart)
+                 currentLocation=arg0.position
                 Log.d("System out", "onMarkerDragEnd..." + arg0.position.latitude.toString() + "..." + arg0.position.longitude)
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(arg0.position))
             }

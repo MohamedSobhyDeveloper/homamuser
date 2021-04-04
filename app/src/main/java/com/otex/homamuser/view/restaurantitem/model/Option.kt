@@ -5,20 +5,20 @@ import android.os.Parcelable
 
 data class Option(
     val feature_id: Int,
-    val id: Int,
+    val id: String,
     val name: String,
     val price: Int
 ):Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
-            parcel.readInt(),
+            parcel.readString()!!,
             parcel.readString()!!,
             parcel.readInt()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(feature_id)
-        parcel.writeInt(id)
+        parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeInt(price)
     }

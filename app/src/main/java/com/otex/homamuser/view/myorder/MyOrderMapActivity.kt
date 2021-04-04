@@ -32,6 +32,8 @@ import com.otex.homamuser.utlitites.GPSTracker
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
+import com.otex.homamuser.view.home.HomeActivity
+import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
 import java.util.*
 
@@ -113,7 +115,10 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                finish()
+                val intent =Intent(this, HomeActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
 
             }
 
@@ -186,6 +191,8 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
                 streetStart = addresses!![0].getAddressLine(0)//thoroughfare
                 binding.txtAddress.setText(streetStart)
+
+
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
