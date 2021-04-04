@@ -177,8 +177,8 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:text="120 L.E"
-                    android:id="@+id/txt_price"
+                    android:text="120 "
+                    android:id="@+id/txtPriceValue"
                     android:textColor="@color/orangefateh"
                     android:textSize="14sp"
                     android:fontFamily="@font/robotobold"
@@ -186,11 +186,28 @@
                     android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
 
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txtPriceValue"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="ج.م "
+                    android:id="@+id/txtValue"
+                    android:textColor="@color/orangefateh"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/robotobold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText" />
+
+
                 <LinearLayout
                     android:orientation="horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/txt_price"
+                    app:layout_constraintStart_toEndOf="@+id/txtValue"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="15dp"
                     android:padding="10dp"

@@ -15,10 +15,10 @@ import com.otex.homamuser.view.restaurantprofile.`interface`.OnItemClick
 
 
 class AdditionsAdapter(private val context: Context, val list: List<Addition>,val clicvalue:Clickvaluelistener
-,var onclik: OnItemClick)
+)
     : RecyclerView.Adapter<AdditionsAdapter.MyViewHolder>() {
 
-     val listid= ArrayList<Addition>()
+
 
     @SuppressLint("NewApi", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -29,6 +29,7 @@ class AdditionsAdapter(private val context: Context, val list: List<Addition>,va
         holder.binding.conAddition.setOnClickListener {
 //            selectedItemPosition=position
             list[position].isChecked = !list[position].isChecked
+            val listid= ArrayList<Addition>()
                for (i in list.indices){
                    if (list[i].isChecked){
                        listid?.add(list[i])
@@ -36,7 +37,6 @@ class AdditionsAdapter(private val context: Context, val list: List<Addition>,va
                }
 
             clicvalue.click(listid!!)
-            onclik.onClick(list[position].price.toString(),null)
 
             notifyDataSetChanged()
         }
