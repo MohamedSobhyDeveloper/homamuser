@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="@+id/txt_compo"
         app:layout_constraintBottom_toBottomOf="@+id/txt_compo"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="75.00 X1"
+        android:text="00 X1"
         android:textSize="15sp"
         android:fontFamily="@font/robotoregular"
         android:textColor="@color/eyecolor"
