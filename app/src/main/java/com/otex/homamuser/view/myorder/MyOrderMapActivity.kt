@@ -37,6 +37,7 @@ import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
 import java.util.*
 
+@Suppress("DEPRECATION")
 class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     private var myOrderViewModel: MyOrderViewModel? = null
     lateinit var binding: ActivityMyOrderMapBinding
@@ -164,7 +165,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
     }
 
-    fun bitmapDescriptorFromVector(activity: Context, @DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
+    private fun bitmapDescriptorFromVector(activity: Context, @DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
         val vectorDrawable = ContextCompat.getDrawable(activity, vectorDrawableResourceId)
         vectorDrawable!!.setBounds(0, 0, vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
         val bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)

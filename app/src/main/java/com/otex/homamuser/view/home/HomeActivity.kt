@@ -24,6 +24,7 @@ import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeOffersAdapter
 import com.tbruyelle.rxpermissions2.RxPermissions
 import java.util.*
 
@@ -132,6 +133,11 @@ class HomeActivity : BaseActivity() {
 
     private fun initialize() {
 
+        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        binding.newRecSpecialRestaurantHome.layoutManager = layoutManager
+        val adapter =
+                RestaurantHomeOffersAdapter(this,null)
+        binding.newRecSpecialRestaurantHome.adapter = adapter
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
         homeActivityViewModel!!.restaurantCategoryLiveData.observe(this) {
