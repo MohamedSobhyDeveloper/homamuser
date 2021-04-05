@@ -138,6 +138,8 @@ class HomeActivity : BaseActivity() {
         val adapter =
                 RestaurantHomeOffersAdapter(this,null)
         binding.newRecSpecialRestaurantHome.adapter = adapter
+
+        binding.indicator.attachToRecyclerView(binding.newRecSpecialRestaurantHome)
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
         homeActivityViewModel!!.restaurantCategoryLiveData.observe(this) {

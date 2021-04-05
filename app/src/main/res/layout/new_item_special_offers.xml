@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:elevation="3dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:id="@+id/parentLayout"
+    android:background="@drawable/buttoncornerwhitebackground"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:id="@+id/img_offer"
+            android:scaleType="fitXY"
+            android:src="@drawable/offericon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:id="@+id/btn_open"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/buttoncornerwhitebackground"
+            android:text="@string/open"
+            android:textSize="11sp"
+            android:fontFamily="@font/rubikbold"
+            android:textColor="@color/green"
+            tools:ignore="SmallSp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_rate"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black"
+                android:text="4.5"
+                android:visibility="gone"
+                android:textSize="11sp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="3dp"
+                android:fontFamily="@font/josefinsansbold"
+                app:drawableStartCompat="@drawable/star"
+                tools:ignore="HardcodedText,SmallSp" />
+
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/img_restaurant"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/pasta"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="@color/white"
+            app:civ_shadow_radius="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_offer"
+            app:layout_constraintStart_toStartOf="parent"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_restaurant"
+            app:layout_constraintStart_toEndOf="@+id/img_restaurant"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Happy"
+            android:textSize="15sp"
+            android:textColor="@color/bluefateh"
+            android:fontFamily="@font/josefinsansbold"
+            app:layout_constraintTop_toTopOf="@+id/img_restaurant"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_address"
+            app:layout_constraintStart_toEndOf="@+id/img_restaurant"
+            android:layout_marginStart="10dp"
+            android:text="Bakery and pasta"
+            android:textSize="13sp"
+            android:textColor="@color/whiteblue"
+            android:fontFamily="@font/robotoregular"
+            app:layout_constraintTop_toBottomOf="@+id/name_restaurant"
+            app:layout_constraintBottom_toBottomOf="@+id/img_restaurant"
+            tools:ignore="HardcodedText" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

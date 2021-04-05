@@ -93,20 +93,26 @@
         android:orientation="horizontal"
         android:padding="12dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_special_offers"
+        tools:listitem="@layout/new_item_special_offers"
         app:layout_constraintTop_toBottomOf="@+id/new_txt_special_offers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="RtlCompat"/>
 
-
+    <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+        app:layout_constraintTop_toBottomOf="@+id/new_rec_special_restaurantHome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 
 
 
           <TextView
-                app:layout_constraintTop_toBottomOf="@+id/new_rec_special_restaurantHome"
+                app:layout_constraintTop_toBottomOf="@+id/indicator"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"

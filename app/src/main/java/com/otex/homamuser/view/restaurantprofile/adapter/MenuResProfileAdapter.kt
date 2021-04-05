@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.compose.navArgument
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemMenuBinding
@@ -24,22 +23,19 @@ class MenuResProfileAdapter(private val context: Context, val meulList: List<Men
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
          holder.binding?.txtMenu.text=meulList.get(position).name
-         value=0
         if(value==0){
-            value=position
+            value=1
          onclik.onClick(meulList[0].id,meulList[0].name)
-        }else{
-            selectedItemPosition=value
-            notifyDataSetChanged()
         }
 
          holder.binding?.conMenu?.setOnClickListener {
              selectedItemPosition=position
+             notifyDataSetChanged()
              onclik.onClick(meulList[position].id,meulList.get(position).name)
              holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
              holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))
-
          }
+
         if(selectedItemPosition == position) {
             holder.binding.conMenu.setBackgroundResource(R.drawable.backgmenu)
             holder.binding.txtMenu.setTextColor(context.getColor(R.color.white))
@@ -48,7 +44,6 @@ class MenuResProfileAdapter(private val context: Context, val meulList: List<Men
             holder.binding.conMenu.setBackgroundResource(R.drawable.round_circle_fayroze)
             holder.binding.txtMenu.setTextColor(context.getColor(R.color.eyecolor))
         }
-
 
 
 
@@ -77,6 +72,7 @@ class MenuResProfileAdapter(private val context: Context, val meulList: List<Men
         return MyViewHolder(
                 LayoutInflater.from(context).inflate(R.layout.item_menu, parent, false)
         )
+
     }
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {

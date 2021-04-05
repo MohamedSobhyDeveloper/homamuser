@@ -111,8 +111,10 @@ class RestaurantItemActivity : BaseActivity() {
             binding.description.text=list?.description
 
 
+        if(list?.options!!.isNotEmpty()){
             priceOption=list?.options!![0].price
             binding.txtPriceValue.text= priceOption.toString()
+        }
             setUpRecyclerSize(list.options)
 
             setUpRecyclerAdditions(list.additions)

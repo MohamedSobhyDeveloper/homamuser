@@ -25,9 +25,13 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
         holder.binding.productName.text=menuItemList[position].name
         holder.binding.description.text=menuItemList[position].description
 
+        if(menuItemList[position].options.isNotEmpty()){
         holder.binding.price.text= menuItemList[position].options[0].price.toString()+" ج" +" : "+
-                                          menuItemList[position].options[menuItemList[position]
-                                                  .options.size-1].price.toString()+"ج"
+                                                  menuItemList[position].options[menuItemList[position]
+                                                                         .options.size-1].price.toString()+"ج"
+                                                                     } else{
+            holder.binding.price.text="0.0 ج"
+        }
 
 //        if(menuItemList[position].image_path!=null){
 //            Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
@@ -64,11 +68,7 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
 
 
-    override fun getItemCount(): Int {
-
-            return menuItemList.size
-
-    }
+    override fun getItemCount(): Int = menuItemList.size
 
 
 

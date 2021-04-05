@@ -67,7 +67,7 @@ class RestaurantHomeOffersAdapter(private val context: Context, val mList: Mutab
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.item_special_offers, parent, false)
+                LayoutInflater.from(context).inflate(R.layout.new_item_special_offers, parent, false)
         )
     }
 
