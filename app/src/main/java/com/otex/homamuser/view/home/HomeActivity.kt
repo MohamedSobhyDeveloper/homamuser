@@ -139,7 +139,7 @@ class HomeActivity : BaseActivity() {
                 RestaurantHomeOffersAdapter(this,null)
         binding.newRecSpecialRestaurantHome.adapter = adapter
 
-        binding.indicator.attachToRecyclerView(binding.newRecSpecialRestaurantHome)
+//        binding.indicator.attachToRecyclerView(binding.newRecSpecialRestaurantHome)
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
 
         homeActivityViewModel!!.restaurantCategoryLiveData.observe(this) {

@@ -245,7 +245,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txt_delivery"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_delivery"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="00 X1"
+                android:text="0"
                 android:id="@+id/txt_price_delivery"
                 android:textSize="15sp"
                 android:fontFamily="@font/robotoregular"

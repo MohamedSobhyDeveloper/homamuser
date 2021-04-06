@@ -69,6 +69,7 @@
                     android:layout_gravity="center"
                     android:id="@+id/img_share"
                     android:rotation="@string/rotate"
+                    android:visibility="invisible"
                     tools:ignore="ContentDescription" />
                 <ImageView
                     android:layout_width="0dp"
