@@ -20,7 +20,7 @@
     <string name="please_enter_your_email">رجاءا أدخل بريدك الإلكتروني</string>
     <string name="your_email">بريدك الالكتروني</string>
     <string name="next">التالى</string>
-    <string name="verification_code_has_been_sent_to_your_email_addresse">تم إرسال رمز التحقق إلى عنوان بريدك الإلكتروني</string>
+    <string name="verification_code_has_been_sent_to_your_email_addresse">تم إرسال رمز التحقق إلى رقم الهاتف الخاص بك</string>
     <string name="resent_code">اعادة ارسال الرمز</string>
     <string name="update_password">تحديث كلمة السر</string>
     <string name="please_enter_your_password">من فضلك أدخل رقمك السري</string>
@@ -76,5 +76,9 @@
     <string name="enter_subject">أدخل الموضوع</string>
     <string name="enter_message">أدخل رسالة</string>
     <string name="login_success">تم تسجيل الدخول بنجاح</string>
+    <string name="verification_phone_number">تحقق من رقم الهاتف</string>
+    <string name="verify">تحقق</string>
+    <string name="enter_verification_code">ادخل رمز التحقق</string>
+    <string name="phone_verified">تم التحقق من رقم الهاتف</string>
 
 </resources>

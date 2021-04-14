@@ -68,7 +68,7 @@ class LoginActivity : BaseActivity() {
     private fun login(emailOrPhone: String, password: String) {
 
         val map = HashMap<String, String?>()
-        map.put("email",emailOrPhone)
+        map.put("phone",emailOrPhone)
         map.put("password",password)
         loginviewmodel!!.makeLogin(this, map)
 

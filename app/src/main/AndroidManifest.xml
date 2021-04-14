@@ -19,7 +19,8 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.baseActivity.BaseActivity"></activity>
+        <activity android:name=".view.register.VerificationCodeActivity"></activity>
+        <activity android:name=".view.baseActivity.BaseActivity" />
         <activity android:name=".view.selectaddress.SelectAddressActivity" />
 
         <meta-data
@@ -41,9 +42,7 @@
         <activity android:name=".view.aboutus.AboutUsActivity" />
         <activity android:name=".view.forgetpassword.ActivityForgetPassword" />
         <activity android:name=".view.register.RegisterActivity" />
-        <activity android:name=".view.login.LoginActivity"
-            
-            />
+        <activity android:name=".view.login.LoginActivity" />
         <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

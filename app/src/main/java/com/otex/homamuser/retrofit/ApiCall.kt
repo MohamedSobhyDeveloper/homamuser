@@ -75,4 +75,10 @@ interface ApiCall {
     @FormUrlEncoded
     @POST("user/contact-us")
     fun contactUs(@FieldMap map: HashMap<String, String?>?): Call<ModelMakeOrder?>?
+
+    @FormUrlEncoded
+    @POST("user/activate")
+    fun activePhone(@FieldMap map: HashMap<String, String?>?): Call<ModelMakeOrder?>?
+
+
 }

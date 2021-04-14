@@ -94,11 +94,13 @@ class HandelCalls {
 
         }else if(flag==DataEnum.orderDetails.name){
             val id=meMap?.get("order_id")
-
             callRetrofit(restRetrofit?.getClientService()?.orderDetails(id), flag, ShowLoadingDialog)
 
         }else if(flag==DataEnum.contactUs.name){
             callRetrofit(restRetrofit?.getClientService()?.contactUs(meMap), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.activeCode.name){
+            callRetrofit(restRetrofit?.getClientService()?.activePhone(meMap), flag, ShowLoadingDialog)
 
         }
 

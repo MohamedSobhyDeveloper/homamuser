@@ -19,7 +19,7 @@
     <string name="please_enter_your_email">Please enter your email</string>
     <string name="your_email">Your Email</string>
     <string name="next">Next</string>
-    <string name="verification_code_has_been_sent_to_your_email_addresse">Verification code has been sent to your email addresse</string>
+    <string name="verification_code_has_been_sent_to_your_email_addresse">Verification code has been sent to your Phone Number</string>
     <string name="resent_code">Resent Code</string>
     <string name="update_password">Update Password</string>
     <string name="please_enter_your_password">Please enter your password</string>
@@ -75,5 +75,9 @@
     <string name="enter_subject">Enter Subject</string>
     <string name="enter_message">Enter Message</string>
     <string name="login_success">تم تسجيل الدخول بنجاح</string>
+    <string name="verification_phone_number">Verification Phone Number</string>
+    <string name="verify">Verify</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="phone_verified">Phone Verified Successfully</string>
 
 </resources>

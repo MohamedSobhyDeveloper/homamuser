@@ -2,16 +2,12 @@ package com.otex.homamuser.view.register
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRegisterBinding
-import com.otex.homamuser.utlitites.Constant
-import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.utlitites.UserInfo
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
 import java.util.*
 
@@ -35,10 +31,12 @@ class RegisterActivity : BaseActivity() {
     private fun initialize() {
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
         registerActivityViewModel!!.registerLivedata.observe(this) {
-
-             startActivity(Intent(this, LoginActivity::class.java))
-             finish()
-             Toast.makeText(this,it.message+"",Toast.LENGTH_SHORT).show()
+              val intent =Intent(this,VerificationCodeActivity::class.java)
+                intent.putExtra("phone",it.user.email)
+                startActivity(intent)
+//               startActivity(Intent(this, LoginActivity::class.java))
+//             finish()
+//             Toast.makeText(this,it.message+"",Toast.LENGTH_SHORT).show()
 
         }
     }
