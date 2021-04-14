@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityVerificationCodeBinding
 import com.otex.homamuser.view.login.LoginActivity
@@ -13,7 +14,6 @@ import java.util.HashMap
 class VerificationCodeActivity : AppCompatActivity() {
     lateinit var binding: ActivityVerificationCodeBinding
     private var registerActivityViewModel : RegisterActivityViewModel? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class VerificationCodeActivity : AppCompatActivity() {
         binding.txtPhoneView.text=intent.getStringExtra("phone")
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
 
-        registerActivityViewModel!!.activeLivedata.observe(this, {
+        registerActivityViewModel!!.activeLivedata.observe(this) {
 
             Toasty.success(this,getString(R.string.phone_verified))
             val intent = Intent(this, LoginActivity::class.java)
@@ -53,7 +53,7 @@ class VerificationCodeActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
 
-        })
+        }
 
     }
 }

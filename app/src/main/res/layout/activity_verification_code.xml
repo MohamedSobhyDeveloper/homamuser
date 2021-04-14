@@ -152,7 +152,7 @@
                 tools:ignore="HardcodedText" />
 
 
-            <com.mukesh.OtpView
+            <com.chaos.view.PinView
                 android:id="@+id/edit_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -162,7 +162,8 @@
                 android:textSize="22sp"
                 app:OtpViewType="rectangle"
                 app:OtpItemCount="4"
-                tools:text="2564"
+                tools:hint=""
+                style="@style/PinWidget.PinView"
                 android:gravity="center"
                 app:OtpItemSpacing="20dp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -95,5 +95,6 @@ dependencies {
 
     implementation "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.1"
     implementation 'com.github.sparrow007:carouselrecyclerview:1.1.0'
+    implementation 'com.chaos.view:pinview:1.4.4'
 
 }

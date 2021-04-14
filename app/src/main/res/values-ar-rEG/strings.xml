@@ -80,5 +80,6 @@
     <string name="verify">تحقق</string>
     <string name="enter_verification_code">ادخل رمز التحقق</string>
     <string name="phone_verified">تم التحقق من رقم الهاتف</string>
+    <string name="enter_code">Enter Verification Code</string>
 
 </resources>

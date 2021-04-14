@@ -79,5 +79,6 @@
     <string name="verify">Verify</string>
     <string name="enter_verification_code">Enter Verification Code</string>
     <string name="phone_verified">Phone Verified Successfully</string>
+    <string name="enter_code">Enter Verification Code</string>
 
 </resources>

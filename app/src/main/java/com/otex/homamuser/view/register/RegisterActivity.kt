@@ -32,7 +32,7 @@ class RegisterActivity : BaseActivity() {
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
         registerActivityViewModel!!.registerLivedata.observe(this) {
               val intent =Intent(this,VerificationCodeActivity::class.java)
-                intent.putExtra("phone",it.user.email)
+                intent.putExtra("phone",it.user.phone)
                 startActivity(intent)
 //               startActivity(Intent(this, LoginActivity::class.java))
 //             finish()
@@ -72,7 +72,7 @@ class RegisterActivity : BaseActivity() {
             binding.editPasswordConfirm.error = getString(R.string.enter_password)
         }else{
             if(confirmPassword==password){
-                register(username,emailOrPhone,password,)
+                register(username,emailOrPhone,password,phone)
             }else{
                 binding.editPasswordConfirm.error = getString(R.string.confirm_not_equal_password)
             }
@@ -87,12 +87,13 @@ class RegisterActivity : BaseActivity() {
         confirmPassword=binding.editPasswordConfirm.text.toString()
     }
 
-    private fun register(username: String, emailOrPhone: String, password: String) {
+    private fun register(username: String, emailOrPhone: String, password: String, phone: String) {
 
         val map = HashMap<String, String?>()
         map["email"] = emailOrPhone
         map["password"] = password
         map["name"] = username
+        map["phone"] = phone
         registerActivityViewModel!!.makeRegister(this, map)
 
 

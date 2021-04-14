@@ -7,13 +7,14 @@ import com.otex.homamuser.interfaces.HandleRetrofitResp
 import com.otex.homamuser.retrofit.HandelCalls
 import com.otex.homamuser.utlitites.DataEnum
 import com.otex.homamuser.view.register.model.ModelRegister
+import com.otex.homamuser.view.register.modelactivate.ModelActivate
 import java.util.HashMap
 
 class RegisterActivityViewModel : ViewModel(), HandleRetrofitResp {
 
 
     var registerLivedata = MutableLiveData<ModelRegister>()
-    var activeLivedata = MutableLiveData<ModelRegister>()
+    var activeLivedata = MutableLiveData<ModelActivate>()
 
 
     fun makeRegister(context: Context, meMap: HashMap<String, String?>?){

@@ -8,6 +8,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityRestaurantProfileBinding
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.baseActivity.BaseActivity
@@ -51,6 +52,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
             phone=it.data.phone
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
+            binding.txtDescription.text=it.data.description
             Picasso.get().load(intent.getStringExtra("image")).into(binding.imgCoverphoto)
             if(it.data.menus.isNotEmpty()) {
                 setUpMenu(it.data.menus)
@@ -95,9 +97,18 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
 
     }
 
+    @SuppressLint("NewApi")
     private fun getRestaurant_details() {
 
-        binding.txtClock.text=intent.getStringExtra("isOpen").toString()
+        if(intent.getStringExtra("isOpen").toString()=="Open") {
+           binding.txtClock.setTextColor(getColor(R.color.green))
+            binding.txtClock.text = intent.getStringExtra("isOpen").toString()
+
+        }else{
+            binding.txtClock.setTextColor(getColor(R.color.red))
+            binding.txtClock.text = intent.getStringExtra("isOpen").toString()
+
+        }
         val map = HashMap<String, String?>()
         map.put(Constant.restID,intent.getStringExtra(Constant.restID))
         resturantProfileViewModel?.getRestaurantDetails(this,map)

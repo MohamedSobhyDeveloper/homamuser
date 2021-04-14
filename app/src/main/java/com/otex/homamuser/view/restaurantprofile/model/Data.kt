@@ -7,5 +7,7 @@ data class Data(
         val logo: String,
         val menus: List<Menu>,
         val name: String,
-        val phone:String
+        val phone:String,
+        val description:String
+
 )

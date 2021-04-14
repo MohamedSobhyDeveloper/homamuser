@@ -102,6 +102,15 @@ class HandelCalls {
         }else if(flag==DataEnum.activeCode.name){
             callRetrofit(restRetrofit?.getClientService()?.activePhone(meMap), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.forgetPass.name){
+            callRetrofit(restRetrofit?.getClientService()?.userForgetPassword(meMap), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.resetPass.name){
+            callRetrofit(restRetrofit?.getClientService()?.userResetPassword(meMap), flag, ShowLoadingDialog)
+
+        }else if(flag==DataEnum.updatePass.name){
+            callRetrofit(restRetrofit?.getClientService()?.userUpdatePassword(meMap), flag, ShowLoadingDialog)
+
         }
 
     }

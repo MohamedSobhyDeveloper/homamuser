@@ -7,13 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.observe
 import androidx.navigation.NavAction
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
 import com.otex.homamuser.databinding.FragmentForgetPasswordAddEmailFragmentBinding
+import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
+import com.otex.homamuser.view.login.LoginActivityViewModel
+import java.util.HashMap
 
 class FragmentForgetPasswordAddEmail : Fragment() {
 
@@ -24,7 +29,7 @@ class FragmentForgetPasswordAddEmail : Fragment() {
     private lateinit var viewModel: FragmentForgetPasswordAddEmailViewModel
     lateinit var binding: FragmentForgetPasswordAddEmailFragmentBinding
     private lateinit var navController: NavController
-   var emai:String=""
+   var phone:String=""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,11 +53,11 @@ class FragmentForgetPasswordAddEmail : Fragment() {
 
     private fun click() {
         binding.btnNext.setOnClickListener {
-            emai=binding.editEmail.text.toString()
-            if(emai.equals("")){
-                binding.editEmail.setError(getString(R.string.enter_email))
+            phone=binding.editPhone.text.toString()
+            if(phone.equals("")){
+                binding.editPhone.setError(getString(R.string.enter_phone))
             }else{
-                addEmail(emai)
+                addPhone(phone)
             }
         }
         binding.backbtn.setOnClickListener {
@@ -61,14 +66,24 @@ class FragmentForgetPasswordAddEmail : Fragment() {
 
     }
 
-    private fun addEmail(emai: String) {
-
+    private fun addPhone(phone: String) {
+        val map = HashMap<String, String?>()
+        map.put("phone",phone)
+        activity?.let { viewModel!!.forgerPass(it, map) }
         navController.navigate(R.id.action_fragmentForgetPasswordAddEmail_to_fragmentForgetAddOTP)
     }
 
     private fun initialize(view: View) {
+        navController = Navigation.findNavController(view)
+        viewModel = ViewModelProvider(this).get(FragmentForgetPasswordAddEmailViewModel::class.java)
+        this!!.activity?.let {
+            viewModel!!.forgetpassLivedata.observe(it) {
 
-            navController = Navigation.findNavController(view)
+                navController.navigate(R.id.action_fragmentForgetPasswordAddEmail_to_fragmentForgetAddOTP)
+
+            }
+        }
+
 
     }
 

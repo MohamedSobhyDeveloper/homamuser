@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.FragmentForgetPasswordAddEmailFragmentBinding
 import com.otex.homamuser.databinding.FragmentUpdatePasswordFragmentBinding
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
+import com.otex.homamuser.view.forgetpassword.fragmentforgetpass.FragmentForgetPasswordAddEmailViewModel
 import com.otex.homamuser.view.login.LoginActivity
+import java.util.HashMap
 
 class FragmentUpdatePassword : Fragment() {
 
@@ -21,7 +24,7 @@ class FragmentUpdatePassword : Fragment() {
         fun newInstance() = FragmentUpdatePassword()
     }
 
-    private lateinit var viewModel: FragmentUpdatePasswordViewModel
+    private lateinit var viewModel: FragmentForgetPasswordAddEmailViewModel
     lateinit var binding: FragmentUpdatePasswordFragmentBinding
     private lateinit var navController: NavController
     var newpassword:String=""
@@ -36,7 +39,7 @@ class FragmentUpdatePassword : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FragmentUpdatePasswordViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FragmentForgetPasswordAddEmailViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
@@ -70,14 +73,25 @@ class FragmentUpdatePassword : Fragment() {
     }
 
     private fun updatepassword(newpassword: String, retypepass: String) {
-
+        val map = HashMap<String, String?>()
+        map.put("password",newpassword)
+        map.put("confirm_password",retypepass)
+        activity?.let { viewModel!!.updatefPass(it,map) }
         startActivity(Intent(context, LoginActivity::class.java))
 
     }
 
     private fun initialize(view: View) {
-
         navController = Navigation.findNavController(view)
+
+        viewModel = ViewModelProvider(this).get(FragmentForgetPasswordAddEmailViewModel::class.java)
+        this!!.activity?.let {
+            viewModel!!.updatepassLivedata.observe(it) {
+
+                startActivity(Intent(context, LoginActivity::class.java))
+
+            }
+        }
 
     }
 }

@@ -9,6 +9,7 @@ import com.otex.homamuser.view.myorder.myorderModel.ModelMyOrderList
 import com.otex.homamuser.view.myprofile.model.ModelProfile
 import com.otex.homamuser.view.orderdetail.model.ModelOrderDetails
 import com.otex.homamuser.view.register.model.ModelRegister
+import com.otex.homamuser.view.register.modelactivate.ModelActivate
 import com.otex.homamuser.view.restaurantitem.ModelResponeBasket
 import com.otex.homamuser.view.restaurantitem.model.ModelRestaurantMenu
 import com.otex.homamuser.view.restaurantprofile.model.ModelRestaurantDetails
@@ -78,7 +79,18 @@ interface ApiCall {
 
     @FormUrlEncoded
     @POST("user/activate")
-    fun activePhone(@FieldMap map: HashMap<String, String?>?): Call<ModelMakeOrder?>?
+    fun activePhone(@FieldMap map: HashMap<String, String?>?): Call<ModelActivate?>?
 
+    @FormUrlEncoded
+    @POST("user/forget-password")
+    fun userForgetPassword(@FieldMap map: HashMap<String, String?>?): Call<ModelActivate?>?
+
+    @FormUrlEncoded
+    @POST("user/reset")
+    fun userResetPassword(@FieldMap map: HashMap<String, String?>?): Call<ModelActivate?>?
+
+    @FormUrlEncoded
+    @POST("user/update-password")
+    fun userUpdatePassword(@FieldMap map: HashMap<String, String?>?): Call<ModelActivate?>?
 
 }
