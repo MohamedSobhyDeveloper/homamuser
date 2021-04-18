@@ -29,6 +29,7 @@ class Constant {
 
         var token = "token"
         var email = "email"
+        var phone = "phone"
         var username = "username"
         var userid = "userId"
         var categoryID = "category_id"

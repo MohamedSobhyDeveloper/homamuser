@@ -20,6 +20,7 @@ import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.contactus.ContactUsActivity
 import com.otex.homamuser.view.home.model.Category
 import com.otex.homamuser.view.home.model.Data
+import com.otex.homamuser.view.home.model.Offer
 import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
@@ -133,11 +134,7 @@ class HomeActivity : BaseActivity() {
 
     private fun initialize() {
 
-        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
-        binding.newRecSpecialRestaurantHome.layoutManager = layoutManager
-        val adapter =
-                RestaurantHomeOffersAdapter(this,null)
-        binding.newRecSpecialRestaurantHome.adapter = adapter
+
 
 //        binding.indicator.attachToRecyclerView(binding.newRecSpecialRestaurantHome)
         homeActivityViewModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
@@ -146,14 +143,20 @@ class HomeActivity : BaseActivity() {
 
             setupRecyclerCategoryHome(it.categories)
             setupRecyclerRestaurantHome(it.restaurants.data)
+            setUpOffers(it.offers)
 
         }
 
 
     }
 
-
-
+    private fun setUpOffers(offers: List<Offer>) {
+        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        binding.newRecSpecialRestaurantHome.layoutManager = layoutManager
+        val adapter =
+                RestaurantHomeOffersAdapter(this,offers)
+        binding.newRecSpecialRestaurantHome.adapter = adapter
+    }
 
 
     private fun setupRecyclerRestaurantHome(restaurants: List<Data>) {

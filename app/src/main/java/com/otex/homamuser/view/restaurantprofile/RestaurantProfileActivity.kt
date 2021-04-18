@@ -102,11 +102,11 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
 
         if(intent.getStringExtra("isOpen").toString()=="Open") {
            binding.txtClock.setTextColor(getColor(R.color.green))
-            binding.txtClock.text = intent.getStringExtra("isOpen").toString()
+            binding.txtClock.text = getString(R.string.open)
 
         }else{
             binding.txtClock.setTextColor(getColor(R.color.red))
-            binding.txtClock.text = intent.getStringExtra("isOpen").toString()
+            binding.txtClock.text = getString(R.string.close)
 
         }
         val map = HashMap<String, String?>()

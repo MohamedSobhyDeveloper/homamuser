@@ -102,6 +102,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
         val map = HashMap<String, String?>()
         map.put("address",streetStart)
         map.put("note",get)
+        map.put("phone",PrefsUtil.with(this).get(Constant.phone,""))
         myOrderViewModel?.makeOrder(this,map)
     }
 

@@ -6,8 +6,8 @@
     <string name="rotate0">0</string>
     <string name="welcome">أهلا بك</string>
     <string name="please_login_or_sign_up_to_continue_using_our_app">يرجى تسجيل الدخول أو الاشتراك لمواصلة استخدام التطبيق لدينا.</string>
-    <string name="email_phonenumber">البريد الإلكتروني / رقم الهاتف</string>
-    <string name="please_check_your_email_and_try_again">يرجى التحقق من بريدك الإلكتروني وحاول مرة أخرى.</string>
+    <string name="email_phonenumber">رقم الهاتف</string>
+    <string name="please_check_your_email_and_try_again">يرجى التحقق من رقم الهاتف وحاول مرة أخرى.</string>
     <string name="password">كلمه السر</string>
     <string name="forgot_password">هل نسيت كلمة السر؟</string>
     <string name="don_t_have_an_account">ليس لديك حساب؟</string>
@@ -17,7 +17,7 @@
     <string name="i_have_an_account">لدي حساب؟</string>
     <string name="log_in">تسجيل دخول</string>
     <string name="forget_password">هل نسيت كلمة السر</string>
-    <string name="please_enter_your_email">رجاءا أدخل بريدك الإلكتروني</string>
+    <string name="please_enter_your_email">رجاءا أدخل رقم الهاتف</string>
     <string name="your_email">بريدك الالكتروني</string>
     <string name="next">التالى</string>
     <string name="verification_code_has_been_sent_to_your_email_addresse">تم إرسال رمز التحقق إلى رقم الهاتف الخاص بك</string>
@@ -64,12 +64,12 @@
     <string name="address">العنوان</string>
     <string name="select_address">اختر عنوان</string>
     <string name="search">بحث</string>
-    <string name="enter_email_phone">أدخل البريد الإلكتروني أو الهاتف</string>
+    <string name="enter_email_phone">أدخل  الهاتف</string>
     <string name="enter_password">أدخل كلمة المرور</string>
     <string name="enter_username">ادخل اسم المستخدم</string>
     <string name="enter_phone">أدخل الهاتف</string>
     <string name="confirm_not_equal_password">تأكيد كلمة المرور لا يتطابق مع كلمة المرور</string>
-    <string name="enter_email">أدخل البريد الإلكتروني</string>
+    <string name="enter_email">أدخل رقم الهاتف</string>
     <string name="enter_new_pass">أدخل كلمة مرور جديدة</string>
     <string name="enter_retype_pass">اعد كتابة كلمة المرور</string>
     <string name="dosent_match">كلمة المرور لا تتطابق مع كلمة المرور الجديدة</string>
@@ -80,6 +80,7 @@
     <string name="verify">تحقق</string>
     <string name="enter_verification_code">ادخل رمز التحقق</string>
     <string name="phone_verified">تم التحقق من رقم الهاتف</string>
-    <string name="enter_code">Enter Verification Code</string>
+    <string name="enter_code">ادخل رمز التحقق</string>
+    <string name="close">مغلق</string>
 
 </resources>

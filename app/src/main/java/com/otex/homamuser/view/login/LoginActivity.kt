@@ -91,7 +91,7 @@ class LoginActivity : BaseActivity() {
         PrefsUtil.with(this).add(Constant.token,it!!.token).apply()
         PrefsUtil.with(this).add(Constant.userid,it.user.id).apply()
         PrefsUtil.with(this).add(Constant.username,it.user.name).apply()
-        PrefsUtil.with(this).add(Constant.email,it.user.email).apply()
+        PrefsUtil.with(this).add(Constant.phone,it.user.phone).apply()
     }
 
 

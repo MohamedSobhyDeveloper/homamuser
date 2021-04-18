@@ -62,6 +62,10 @@ interface ApiCall {
     @POST("user/make_order")
     fun makeorder(@FieldMap map: HashMap<String, String?>?): Call<ModelMakeOrder?>?
 
+    @FormUrlEncoded
+    @POST("user/restaurants/{restaurant_id}/shipping-fees")
+    fun getFees(@FieldMap map: HashMap<String, String?>?,@Path("restaurant_id") id: String?): Call<ModelMakeOrder?>?
+
 
     @GET("user/orders")
     fun myOrderList():Call<ModelMyOrderList?>?
