@@ -99,7 +99,7 @@
             android:layout_height="0dp">
 
                 <TextView
-                    android:text="Order From"
+                    android:text="@string/order_from"
                     android:id="@+id/num_dished"
                     android:textSize="15sp"
                     android:gravity="center"
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="0dp"
-                    tools:ignore="HardcodedText" />
+                     />
 
                 <TextView
                     android:text="Happy Bones"

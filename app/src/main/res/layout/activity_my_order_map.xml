@@ -79,13 +79,13 @@
                 android:layout_marginStart="2dp"
                 android:src="@drawable/pasta"
                 android:scaleType="centerCrop"
-                android:id="@+id/img_food"
+                android:id="@+id/logo"
                 android:layout_width="80dp"
                 android:layout_height="80dp"/>
 
 
             <LinearLayout
-                app:layout_constraintStart_toEndOf="@+id/img_food"
+                app:layout_constraintStart_toEndOf="@+id/logo"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
                 android:layout_height="0dp">
 
                 <TextView
-                    android:text="Order From"
+                    android:text="@string/order_from"
                     android:id="@+id/num_dished"
                     android:textSize="15sp"
                     android:gravity="center"

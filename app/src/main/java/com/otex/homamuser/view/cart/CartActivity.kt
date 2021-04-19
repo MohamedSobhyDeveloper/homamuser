@@ -18,6 +18,7 @@ class CartActivity : BaseActivity() {
     var total:String=""
     var restname:String=""
     var restId:String=""
+    var restlogo:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,7 @@ class CartActivity : BaseActivity() {
             intent.putExtra("total",total)
             intent.putExtra("restname",restname)
             intent.putExtra("restId",restId)
+            intent.putExtra("restlogo",restlogo)
 
             startActivity(intent)
         }
@@ -56,7 +58,7 @@ class CartActivity : BaseActivity() {
 
             if (it.data != null) {
                 Picasso.get().load(it.data.restaurant_logo).into(binding.logo)
-
+                restlogo=it.data.restaurant_logo
                 restId = it.data.restaurant_id
                 binding.restName.text = it.data.restaurant
                 binding.txtPriceTotalFirst.text = it.data.total.toString()

@@ -32,6 +32,7 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
+import com.squareup.picasso.Picasso
 import java.util.*
 
 @Suppress("DEPRECATION")
@@ -108,6 +109,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun initialize() {
+        Picasso.get().load(intent.getStringExtra("restlogo")).into(binding.logo)
 
         mylocation= LatLng(0.0,0.0)
         geocode = Geocoder(this, Locale("ar"))//.getDefault())
