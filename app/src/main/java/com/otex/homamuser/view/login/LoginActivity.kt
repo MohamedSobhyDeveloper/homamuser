@@ -79,10 +79,9 @@ class LoginActivity : BaseActivity() {
         loginviewmodel!!.loginLivedata.observe(this) {
 
             saveDataInShared(it)
-
+            Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
-            Toast.makeText(this,getString(R.string.login_success), Toast.LENGTH_SHORT).show()
 
         }
     }

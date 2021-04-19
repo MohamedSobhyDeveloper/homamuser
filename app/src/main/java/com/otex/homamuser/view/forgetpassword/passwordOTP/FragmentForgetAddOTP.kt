@@ -13,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.FragmentForgetAddOTFragmentBinding
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.forgetpassword.fragmentforgetpass.FragmentForgetPasswordAddEmailViewModel
 import com.otex.homamuser.view.login.LoginActivity
 import java.util.HashMap
@@ -67,15 +69,13 @@ class FragmentForgetAddOTP : Fragment() {
         }else{
             sendCodeToReset(code)
         }
-         navController.navigate(R.id.action_fragmentForgetAddOTP_to_fragmentUpdatePassword)
     }
 
     private fun sendCodeToReset(code: String) {
         val map = HashMap<String, String?>()
-        map.put("phone","phone")
+        map.put("phone",PrefsUtil.with(requireActivity()).get("phoneverify",""))
         map.put("code",code)
         activity?.let { viewModel!!.resetPass(it,map) }
-        navController.navigate(R.id.action_fragmentForgetAddOTP_to_fragmentUpdatePassword)
     }
 
     private fun initialize(view: View) {
@@ -85,7 +85,13 @@ class FragmentForgetAddOTP : Fragment() {
         this!!.activity?.let {
             viewModel!!.resetpassLivedata.observe(it) {
 
-                navController.navigate(R.id.action_fragmentForgetAddOTP_to_fragmentUpdatePassword)
+                if (it.status== 1){
+                    PrefsUtil.with(requireActivity()).add(Constant.token,it!!.token).apply()
+                    navController.navigate(R.id.action_fragmentForgetAddOTP_to_fragmentUpdatePassword)
+
+
+                }
+
 
             }
         }

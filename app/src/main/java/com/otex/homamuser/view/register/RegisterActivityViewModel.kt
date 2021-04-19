@@ -36,7 +36,8 @@ class RegisterActivityViewModel : ViewModel(), HandleRetrofitResp {
             val modelRegister: ModelRegister = o as ModelRegister
             registerLivedata.setValue(modelRegister)
         }else if (flag==DataEnum.activeCode.name){
-
+            val modelActivate: ModelActivate = o as ModelActivate
+            activeLivedata.setValue(modelActivate)
         }
 
     }

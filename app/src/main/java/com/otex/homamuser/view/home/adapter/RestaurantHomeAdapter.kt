@@ -27,13 +27,11 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
 
         if(mList[position].is_open_value==1){
             holder.binding.btnOpen.setTextColor(context.getColor(R.color.green))
-            holder.binding.btnOpen.text=mList[position].is_open
-
+            holder.binding.btnOpen.text=context.getString(R.string.open)
         }else{
             holder.binding.btnOpen.setTextColor(context.getColor(R.color.red))
-            holder.binding.btnOpen.text=mList[position].is_open
+            holder.binding.btnOpen.text=context.getString(R.string.close)
         }
-        holder.binding.btnOpen.text=mList[position].is_open
         holder.binding.nameRestaurant.text=mList[position].name
         holder.binding.txtAddress.text=mList[position].address
 

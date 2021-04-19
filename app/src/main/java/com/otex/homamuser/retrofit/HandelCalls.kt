@@ -111,6 +111,10 @@ class HandelCalls {
         }else if(flag==DataEnum.updatePass.name){
             callRetrofit(restRetrofit?.getClientService()?.userUpdatePassword(meMap), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.getFees.name){
+            val id=meMap?.get("id")
+            callRetrofit(restRetrofit?.getClientService()?.getFees(meMap,id), flag, ShowLoadingDialog)
+
         }
 
     }
@@ -146,7 +150,8 @@ class HandelCalls {
                             // onRespnse.onBadRequest(flag, response.errorBody().string());
                             // Log.e("resp",response.errorBody().string());
                             val o = JSONObject(response.errorBody()!!.string())
-                            Toasty.error(context!!, o.getJSONObject("status").getString("message"), Toast.LENGTH_SHORT, true).show()
+                            val message=o.getString("message")
+                            Toasty.error(context!!, message, Toast.LENGTH_SHORT, true).show()
 
                             onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
 

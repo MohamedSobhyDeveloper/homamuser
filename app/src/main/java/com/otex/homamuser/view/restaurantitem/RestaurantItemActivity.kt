@@ -17,6 +17,7 @@ import com.otex.homamuser.view.restaurantitem.model.Addition
 import com.otex.homamuser.view.restaurantitem.model.Option
 import com.otex.homamuser.view.restaurantitem.model.Product
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.ChooseSizeAdapter
+import com.squareup.picasso.Picasso
 import es.dmoral.toasty.Toasty
 
 class RestaurantItemActivity : BaseActivity() {
@@ -110,6 +111,7 @@ class RestaurantItemActivity : BaseActivity() {
             binding.foodName.text= list?.name
             binding.description.text=list?.description
 
+         Picasso.get().load(list?.image_path).into(binding.imgFood)
 
         if(list?.options!!.isNotEmpty()){
             priceOption=list?.options!![0].price

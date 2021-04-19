@@ -31,7 +31,7 @@ class RegisterActivity : BaseActivity() {
     private fun initialize() {
         registerActivityViewModel = ViewModelProvider(this).get(RegisterActivityViewModel::class.java)
         registerActivityViewModel!!.registerLivedata.observe(this) {
-              val intent =Intent(this,VerificationCodeActivity::class.java)
+                val intent =Intent(this,VerificationCodeActivity::class.java)
                 intent.putExtra("phone",it.user.phone)
                 startActivity(intent)
 //               startActivity(Intent(this, LoginActivity::class.java))

@@ -6,21 +6,24 @@ import android.os.Parcelable
 data class Product(
     val additions: List<Addition>,
     val description: String,
+    val image_path: String,
     val id: Int,
     val name: String,
     val options: List<Option>
 ):Parcelable {
     constructor(parcel: Parcel) : this(
-            parcel.createTypedArrayList(Addition)!!,
-            parcel.readString()!!,
-            parcel.readInt(),
-            parcel.readString()!!,
-            parcel.createTypedArrayList(Option)!!) {
-    }
+        parcel.createTypedArrayList(Addition)!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readInt(),
+        parcel.readString()!!,
+        parcel.createTypedArrayList(Option)!!
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeTypedList(additions)
         parcel.writeString(description)
+        parcel.writeString(image_path)
         parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeTypedList(options)

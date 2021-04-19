@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.otex.homamuser.R
 import es.dmoral.toasty.Toasty
 import java.net.ConnectException
 
@@ -130,10 +131,10 @@ class HelpMe {
 
     fun retrofironFailure(t: Throwable) {
         if (t is ConnectException) {
-            Toasty.error(context!!, t.message!!, Toast.LENGTH_SHORT, true).show()
+            Toasty.error(context!!, context!!.getString(R.string.check_internet_connection), Toast.LENGTH_SHORT, true).show()
 
         } else {
-            Toasty.error(context!!, "Check internet connections", Toast.LENGTH_SHORT, true).show()
+            Toasty.error(context!!, context!!.getString(R.string.check_internet_connection), Toast.LENGTH_SHORT, true).show()
 
             Log.e("errrr", t.message!!)
         }

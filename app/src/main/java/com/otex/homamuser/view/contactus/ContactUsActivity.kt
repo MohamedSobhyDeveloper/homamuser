@@ -64,7 +64,7 @@ class ContactUsActivity : BaseActivity() {
                 binding.editPhone.setError(getString(R.string.enter_phone))
             }else if(subject.equals("")){
                 binding.editSubject.setError(getString(R.string.enter_subject))
-            }else if(message.equals("")){
+            }else if(message.equals("")&&message.length<=10){
                 binding.editMessage.setError(getString(R.string.enter_message))
             }else{
                 contact(username,email,message,subject)

@@ -7,15 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.FragmentForgetPasswordAddEmailFragmentBinding
 import com.otex.homamuser.databinding.FragmentUpdatePasswordFragmentBinding
+import com.otex.homamuser.retrofit.HandelCalls
+import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.forgetpassword.ActivityForgetPassword
 import com.otex.homamuser.view.forgetpassword.fragmentforgetpass.FragmentForgetPasswordAddEmailViewModel
 import com.otex.homamuser.view.login.LoginActivity
+import es.dmoral.toasty.Toasty
 import java.util.HashMap
 
 class FragmentUpdatePassword : Fragment() {
@@ -77,7 +82,6 @@ class FragmentUpdatePassword : Fragment() {
         map.put("password",newpassword)
         map.put("confirm_password",retypepass)
         activity?.let { viewModel!!.updatefPass(it,map) }
-        startActivity(Intent(context, LoginActivity::class.java))
 
     }
 
@@ -88,7 +92,13 @@ class FragmentUpdatePassword : Fragment() {
         this!!.activity?.let {
             viewModel!!.updatepassLivedata.observe(it) {
 
-                startActivity(Intent(context, LoginActivity::class.java))
+                if (it.status==1){
+                    PrefsUtil.with(requireActivity()).add(Constant.token,"").apply()
+                    Toasty.success(requireActivity(), getString(R.string.update_pass), Toast.LENGTH_SHORT, true).show()
+                    requireActivity().finish()
+
+                }
+
 
             }
         }

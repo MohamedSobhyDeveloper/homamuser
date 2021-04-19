@@ -161,11 +161,11 @@
                 android:textColor="@android:color/black"
                 android:textSize="22sp"
                 app:viewType="rectangle"
-                app:OtpItemCount="4"
+                app:itemCount="4"
                 android:hint=""
                 style="@style/PinWidget.PinView"
                 android:gravity="center"
-                app:OtpItemSpacing="20dp"
+                app:itemSpacing="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_email_view"
@@ -185,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
+                android:visibility="gone"
                 app:drawableStartCompat="@drawable/refresh" />
 
 

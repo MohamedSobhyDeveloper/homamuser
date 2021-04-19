@@ -12,6 +12,7 @@ import com.otex.homamuser.databinding.ItemBestdishesBinding
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.view.restaurantitem.RestaurantItemActivity
 import com.otex.homamuser.view.restaurantitem.model.Product
+import com.squareup.picasso.Picasso
 
 
 class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>, val restauranrId:String)
@@ -33,9 +34,7 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
             holder.binding.price.text="0.0 ج"
         }
 
-//        if(menuItemList[position].image_path!=null){
-//            Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
-//        }
+        Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
         holder.binding.imgAdd.setOnClickListener {
 
             val intent=Intent(context,RestaurantItemActivity::class.java)

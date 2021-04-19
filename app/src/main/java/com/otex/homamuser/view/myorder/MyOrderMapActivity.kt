@@ -12,7 +12,6 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.DrawableRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -31,9 +30,7 @@ import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.GPSTracker
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.otex.homamuser.view.cart.CartActivity
 import com.otex.homamuser.view.home.HomeActivity
-import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
 import java.util.*
 
@@ -50,6 +47,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     private lateinit var geocode : Geocoder
     var result:String=""
     private lateinit var my_select_location: LatLng
+
     var addresses:List<Address>?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,17 +90,20 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 } else {
                     streetStart = ""
                 }
-                make_order(streetStart, PrefsUtil.with(this).get("msg", ""))
+                make_order(streetStart, PrefsUtil.with(this).get("msg", ""),my_select_location.latitude,my_select_location.longitude)
             }
         }
 
     }
 
-    private fun make_order(streetStart: String, get: String?) {
+    private fun make_order(streetStart: String, get: String?, latitude: Double, longitude: Double) {
         val map = HashMap<String, String?>()
         map.put("address",streetStart)
         map.put("note",get)
         map.put("phone",PrefsUtil.with(this).get(Constant.phone,""))
+        map.put("lat",latitude.toString())
+        map.put("long",longitude.toString())
+
         myOrderViewModel?.makeOrder(this,map)
     }
 
@@ -123,6 +124,24 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 startActivity(intent)
 
             }
+
+        }
+
+        myOrderViewModel!!.feesLiveData.observe(this) {
+            val totalEnd= intent.getStringExtra("total")?.toInt()
+           if (it.status==1){
+               binding.txtPriceDelivery.text= it.fees.toString()
+               val total= totalEnd?.plus(it.fees)
+               binding.txtPriceTotalEnd.text= total.toString()
+               binding.txtConTotal.text= total.toString()
+
+           }else{
+               binding.txtPriceDelivery.text="0"
+               binding.txtPriceTotalEnd.text= totalEnd.toString()
+               binding.txtConTotal.text= totalEnd.toString()
+
+           }
+
 
         }
 
@@ -190,11 +209,16 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(my_select_location))
                 addresses = geocode.getFromLocation(my_select_location.latitude, my_select_location.longitude, 1)
 
-
+                 viewModelStore
                 streetStart = addresses!![0].getAddressLine(0)//thoroughfare
                 binding.txtAddress.setText(streetStart)
 
+                val map = HashMap<String, String?>()
+                map.put("lat",latitude)
+                map.put("long",longitude)
+                map.put("id",intent.getStringExtra("restId"))
 
+                myOrderViewModel?.getFees(this,map)
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result

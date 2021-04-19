@@ -179,7 +179,7 @@
                 >
                 <EditText
                     android:id="@+id/edit_phone"
-                    android:hint="@string/enter_email"
+                    android:hint="ادخل البريد الالكترونى"
                     android:textColor="@color/gray"
                     android:textSize="12sp"
                     android:inputType="textEmailAddress"

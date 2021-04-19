@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemMyorderBinding
-import com.otex.homamuser.view.home.model.FoodLoveModel
 import com.otex.homamuser.view.myorder.myorderModel.Data
 import com.otex.homamuser.view.orderdetail.OrderDetailsActivity
 

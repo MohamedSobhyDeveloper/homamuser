@@ -4,6 +4,7 @@ import com.otex.homamuser.view.cart.model.ModelCart
 import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
 import com.otex.homamuser.view.home.model.ModelHomeScreen
 import com.otex.homamuser.view.login.model.ModelLogin
+import com.otex.homamuser.view.myorder.model.ModelFees
 import com.otex.homamuser.view.myorder.model.ModelMakeOrder
 import com.otex.homamuser.view.myorder.myorderModel.ModelMyOrderList
 import com.otex.homamuser.view.myprofile.model.ModelProfile
@@ -64,7 +65,7 @@ interface ApiCall {
 
     @FormUrlEncoded
     @POST("user/restaurants/{restaurant_id}/shipping-fees")
-    fun getFees(@FieldMap map: HashMap<String, String?>?,@Path("restaurant_id") id: String?): Call<ModelMakeOrder?>?
+    fun getFees(@FieldMap map: HashMap<String, String?>?,@Path("restaurant_id") id: String?): Call<ModelFees?>?
 
 
     @GET("user/orders")

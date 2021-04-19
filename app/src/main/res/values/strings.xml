@@ -81,5 +81,10 @@
     <string name="phone_verified">Phone Verified Successfully</string>
     <string name="enter_code">Enter Verification Code</string>
     <string name="close">Close</string>
+    <string name="offers">Offers</string>
+    <string name="check_internet_connection">Check internet connections</string>
+    <string name="cart_is_empty">Cart Is Empty</string>
+    <string name="update_pass">Password Update Successfully</string>
+    <string name="codesend">Code send successfully</string>
 
 </resources>

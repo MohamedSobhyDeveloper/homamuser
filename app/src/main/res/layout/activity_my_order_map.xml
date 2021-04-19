@@ -51,8 +51,7 @@
         app:layout_constraintBottom_toTopOf="@+id/con_order_now"
         android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:id="@+id/scroll"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:id="@+id/scroll">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -280,19 +279,20 @@
                 android:layout_height="2dp"/>
 
             <TextView
-                app:layout_constraintTop_toBottomOf="@+id/view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="20dp"
-                android:text="@string/total"
                 android:id="@+id/txt_total_end"
-                android:textSize="17sp"
-                android:fontFamily="@font/robotoregular"
-                android:textColor="@color/black"
-                android:layout_marginTop="13dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/robotoregular"
+                android:text="@string/total"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 app:layout_constraintTop_toTopOf="@+id/txt_total_end"

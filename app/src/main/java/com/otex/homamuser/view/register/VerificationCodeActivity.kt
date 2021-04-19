@@ -47,11 +47,18 @@ class VerificationCodeActivity : AppCompatActivity() {
 
         registerActivityViewModel!!.activeLivedata.observe(this) {
 
-            Toasty.success(this,getString(R.string.phone_verified))
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
+            if (it.status==1){
+                Toasty.success(this,getString(R.string.phone_verified))
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }else{
+                Toasty.success(this,it.message)
+
+            }
+
+
 
         }
 

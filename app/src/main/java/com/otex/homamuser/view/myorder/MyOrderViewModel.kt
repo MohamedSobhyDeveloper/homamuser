@@ -7,6 +7,7 @@ import com.otex.homamuser.interfaces.HandleRetrofitResp
 import com.otex.homamuser.retrofit.HandelCalls
 import com.otex.homamuser.utlitites.DataEnum
 import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
+import com.otex.homamuser.view.myorder.model.ModelFees
 import com.otex.homamuser.view.myorder.model.ModelMakeOrder
 import com.otex.homamuser.view.myorder.myorderModel.Data
 import com.otex.homamuser.view.myorder.myorderModel.ModelMyOrderList
@@ -17,6 +18,7 @@ class MyOrderViewModel : ViewModel(),HandleRetrofitResp {
     var makeOrderlivedtat = MutableLiveData<ModelMakeOrder>()
     var myOrderListViewModel = MutableLiveData<ModelMyOrderList>()
     var urlOrderListViewModel = MutableLiveData<ModelMyOrderList>()
+    var feesLiveData = MutableLiveData<ModelFees>()
 
 
     fun makeOrder(context: Context, meMap: HashMap<String, String?>?){
@@ -31,6 +33,10 @@ class MyOrderViewModel : ViewModel(),HandleRetrofitResp {
         HandelCalls.getInstance(context)?.call(DataEnum.urlMyOrderList.name, meMap, true, this)
     }
 
+    fun getFees(context: Context, meMap: HashMap<String, String?>?){
+        HandelCalls.getInstance(context)?.call(DataEnum.getFees.name, meMap, true, this)
+    }
+
     override fun onResponseSuccess(flag: String?, o: Any?) {
         if(flag==DataEnum.makeOrder.name){
             val makeOrder: ModelMakeOrder = o as ModelMakeOrder
@@ -41,6 +47,9 @@ class MyOrderViewModel : ViewModel(),HandleRetrofitResp {
         }else if(flag==DataEnum.urlMyOrderList.name){
             val myOrderList: ModelMyOrderList = o as ModelMyOrderList
             urlOrderListViewModel.setValue(myOrderList)
+        }else if(flag==DataEnum.getFees.name){
+            val modelFees: ModelFees = o as ModelFees
+            feesLiveData.setValue(modelFees)
         }
     }
 

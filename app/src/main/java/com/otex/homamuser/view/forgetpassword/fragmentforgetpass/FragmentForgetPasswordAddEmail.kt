@@ -15,9 +15,11 @@ import androidx.navigation.Navigation
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
 import com.otex.homamuser.databinding.FragmentForgetPasswordAddEmailFragmentBinding
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.login.LoginActivityViewModel
+import es.dmoral.toasty.Toasty
 import java.util.HashMap
 
 class FragmentForgetPasswordAddEmail : Fragment() {
@@ -70,7 +72,6 @@ class FragmentForgetPasswordAddEmail : Fragment() {
         val map = HashMap<String, String?>()
         map.put("phone",phone)
         activity?.let { viewModel!!.forgerPass(it, map) }
-        navController.navigate(R.id.action_fragmentForgetPasswordAddEmail_to_fragmentForgetAddOTP)
     }
 
     private fun initialize(view: View) {
@@ -78,8 +79,13 @@ class FragmentForgetPasswordAddEmail : Fragment() {
         viewModel = ViewModelProvider(this).get(FragmentForgetPasswordAddEmailViewModel::class.java)
         this!!.activity?.let {
             viewModel!!.forgetpassLivedata.observe(it) {
+                if (it.status==1){
+                    Toasty.success(requireActivity(), getString(R.string.codesend), Toast.LENGTH_SHORT, true).show()
+                     PrefsUtil.with(requireActivity()).add("phoneverify",phone).apply()
+                    navController.navigate(R.id.action_fragmentForgetPasswordAddEmail_to_fragmentForgetAddOTP)
 
-                navController.navigate(R.id.action_fragmentForgetPasswordAddEmail_to_fragmentForgetAddOTP)
+                }
+
 
             }
         }
