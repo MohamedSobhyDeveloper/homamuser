@@ -140,7 +140,7 @@ class HandelCalls {
                         onRespnse!!.onResponseSuccess(flag, response.body())
                     }
                     // TODO - 4 Add 400 to condition base on (Login Response)
-                } else if (response.code() == 400 || response.code() == 401) {
+                } else if (response.code() == 400 || response.code() == 401 || response.code() == 300) {
                     Log.e("res1", "resp")
                     if (onRespnse != null) {
                         Log.e("res2", "resp")
@@ -151,7 +151,9 @@ class HandelCalls {
                             // Log.e("resp",response.errorBody().string());
                             val o = JSONObject(response.errorBody()!!.string())
                             val message=o.getString("message")
-                            Toasty.error(context!!, message, Toast.LENGTH_SHORT, true).show()
+                            if (message.isNotEmpty()){
+                                Toasty.error(context!!, message, Toast.LENGTH_SHORT, true).show()
+                            }
 
                             onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
 

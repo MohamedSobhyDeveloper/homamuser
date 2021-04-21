@@ -80,6 +80,7 @@
 
 
         <ImageView
+            android:alpha="0.7"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,20 +91,10 @@
             android:layout_width="match_parent"
             android:layout_height="175dp"
             android:visibility="visible"
+            android:scaleType="fitXY"
             tools:ignore="ContentDescription,HardcodedText" />
 
-        <ImageView
-            android:id="@+id/imgg_coverphoto"
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:background="#17FF2600"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="ContentDescription,HardcodedText" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

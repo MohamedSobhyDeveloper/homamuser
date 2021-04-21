@@ -80,6 +80,8 @@ class FragmentForgetAddOTP : Fragment() {
 
     private fun initialize(view: View) {
 
+        binding.txtEmailView.text=PrefsUtil.with(requireActivity()).get("phoneverify","")
+
         navController = Navigation.findNavController(view)
         viewModel = ViewModelProvider(this).get(FragmentForgetPasswordAddEmailViewModel::class.java)
         this!!.activity?.let {

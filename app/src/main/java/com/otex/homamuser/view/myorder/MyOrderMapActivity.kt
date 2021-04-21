@@ -42,7 +42,6 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     private var mapFragment: SupportMapFragment? = null
     private lateinit var mMap: GoogleMap
     private var gpsTracker: GPSTracker? = null
-    private var currentLocation: LatLng? = null
     private lateinit var mylocation: LatLng
     private lateinit var streetStart: String
     private lateinit var geocode : Geocoder
@@ -53,7 +52,6 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyOrderMapBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         mapFragment = supportFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
         mapFragment!!.getMapAsync(this)
@@ -151,29 +149,36 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap?) {
-        ActivityCompat.requestPermissions(
-            this, arrayOf<String>(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ),
-            1
-        )
+
         mMap = googleMap!!
         //  mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         mMap.uiSettings.isZoomGesturesEnabled=true
         gpsTracker = GPSTracker(this)
         if (gpsTracker!!.canGetLocation) {
 //          binding.chooseLocationBtn.setEnabled(true);
-            currentLocation = LatLng(gpsTracker!!.latitude, gpsTracker!!.longitude)
+            my_select_location = LatLng(gpsTracker!!.latitude, gpsTracker!!.longitude)
+
+            addresses = geocode.getFromLocation(my_select_location!!.latitude, my_select_location!!.longitude, 1)
+
+            streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+            binding.txtAddress.setText(streetStart)
+
+
+            val map = HashMap<String, String?>()
+            map.put("lat", my_select_location!!.latitude.toString())
+            map.put("long", my_select_location!!.longitude.toString())
+            map.put("id",intent.getStringExtra("restId"))
+
+            myOrderViewModel?.getFees(this,map)
         }
         mMap.addMarker(
-            this.currentLocation?.let {
+            this.my_select_location?.let {
                 MarkerOptions().position(it)
                     .icon(bitmapDescriptorFromVector(this, R.drawable.baseline_room_black_18))
             })
         // mMap.addMarker(MarkerOptions().position(myLocation))//.title("Marker in Sydney"))
         mMap.moveCamera(
-            CameraUpdateFactory.newLatLngZoom(currentLocation
+            CameraUpdateFactory.newLatLngZoom(my_select_location
             , 10F))
 
 

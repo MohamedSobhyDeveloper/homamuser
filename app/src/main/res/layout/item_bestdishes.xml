@@ -55,9 +55,10 @@
             app:layout_constraintStart_toEndOf="@+id/img_food"
             app:layout_constraintTop_toTopOf="@+id/img_food"
             app:layout_constraintBottom_toBottomOf="@id/img_food"
+            app:layout_constraintEnd_toStartOf="@+id/img_add"
             android:layout_marginStart="10dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -73,11 +74,13 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="0dp"
                 android:id="@+id/description"
-                android:text="he break the record"
+                android:text="he break the record    "
                 android:textSize="15sp"
+                android:maxLines="2"
+                android:layout_marginTop="5dp"
                 android:fontFamily="@font/robotoregular"
                 android:textColor="@color/gray"
                 />

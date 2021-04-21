@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Homamuser"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.register.VerificationCodeActivity"></activity>
+        <activity android:name=".view.register.VerificationCodeActivity" />
         <activity android:name=".view.baseActivity.BaseActivity" />
         <activity android:name=".view.selectaddress.SelectAddressActivity" />
 

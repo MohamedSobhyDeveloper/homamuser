@@ -41,14 +41,11 @@ class ResturantProfileViewModel : ViewModel() ,HandleRetrofitResp{
     }
 
     override fun onResponseFailure(flag: String?, o: String?) {
-        TODO("Not yet implemented")
     }
 
     override fun onNoContent(flag: String?, code: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun onBadRequest(flag: String?, o: Any?) {
-        TODO("Not yet implemented")
     }
 }

@@ -1,8 +1,12 @@
 package com.otex.homamuser.view.cart
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +15,7 @@ import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.myorder.MyOrderMapActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CartAdapter
 import com.squareup.picasso.Picasso
+import com.tbruyelle.rxpermissions2.RxPermissions
 
 class CartActivity : BaseActivity() {
     private var cartViewModel : CartViewModel? = null
@@ -24,10 +29,33 @@ class CartActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        checkPermission()
         initialize()
         getcart()
         click()
 
+    }
+
+    @SuppressLint("CheckResult")
+    private fun checkPermission() {
+        val rxPermissions = RxPermissions(this)
+        rxPermissions.setLogging(true)
+
+        rxPermissions
+                .request(
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+                .subscribe { granted ->
+                    if (granted) { // Always true pre-M
+                        // I can control the camera now
+                        Log.e("m", "permission")
+                    } else {
+                        Toast.makeText(this, "Denied", Toast.LENGTH_SHORT).show()
+                        finish()
+                        // Oups permission denied
+                    }
+                }
     }
 
     private fun getcart() {
