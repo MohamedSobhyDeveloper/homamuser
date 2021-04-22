@@ -150,10 +150,23 @@ class HandelCalls {
                             // onRespnse.onBadRequest(flag, response.errorBody().string());
                             // Log.e("resp",response.errorBody().string());
                             val o = JSONObject(response.errorBody()!!.string())
-                            val message=o.getString("message")
-                            if (message.isNotEmpty()){
-                                Toasty.error(context!!, message, Toast.LENGTH_SHORT, true).show()
+                            if (o.has("message")){
+                                val message=o.getString("message")
+                                if (message.isNotEmpty()){
+                                    Toasty.error(context!!, message, Toast.LENGTH_SHORT, true).show()
+                                }
+                            }else{
+                                if (o.has("erroe")){
+                                    val error=o.getString("error")
+
+
+                                    if (error.isNotEmpty()){
+                                        Toasty.error(context!!, error, Toast.LENGTH_SHORT, true).show()
+
+                                    }
+                                }
                             }
+
 
                             onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
 
