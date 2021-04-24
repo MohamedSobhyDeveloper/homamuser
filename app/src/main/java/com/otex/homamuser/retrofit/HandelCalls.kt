@@ -168,7 +168,7 @@ class HandelCalls {
                             }
 
 
-                            onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
+//                            onRespnse!!.onBadRequest(flag, response.errorBody()!!.string())
 
                         } catch (e: IOException) {
                             e.printStackTrace()

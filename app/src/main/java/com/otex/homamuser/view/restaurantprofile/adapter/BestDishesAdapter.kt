@@ -15,7 +15,7 @@ import com.otex.homamuser.view.restaurantitem.model.Product
 import com.squareup.picasso.Picasso
 
 
-class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>, val restauranrId:String)
+class BestDishesAdapter(private val context: Context, var menuItemList: ArrayList<Product>, val restauranrId:String,val resStatus:String)
     : RecyclerView.Adapter<BestDishesAdapter.MyViewHolder>() {
 
 
@@ -35,19 +35,24 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
         }
 
         Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
-        holder.binding.imgAdd.setOnClickListener {
 
-            val intent=Intent(context,RestaurantItemActivity::class.java)
-            intent.putExtra("menuItemList", menuItemList[position])
-            intent.putExtra(Constant.restID, restauranrId)
-            context.startActivity(intent)
+//        holder.binding.imgAdd.setOnClickListener {
+//
+//            val intent=Intent(context,RestaurantItemActivity::class.java)
+//            intent.putExtra("menuItemList", menuItemList[position])
+//            intent.putExtra(Constant.restID, restauranrId)
+//            intent.putExtra(Constant.restStatus, resStatus)
+//
+//            context.startActivity(intent)
+//
+//        }
 
-        }
         holder.binding.conParent.setOnClickListener {
 
             val intent=Intent(context,RestaurantItemActivity::class.java)
             intent.putExtra("menuItemList", menuItemList[position])
             intent.putExtra(Constant.restID, restauranrId)
+            intent.putExtra(Constant.restStatus, resStatus)
             context.startActivity(intent)
 
         }

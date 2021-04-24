@@ -45,7 +45,7 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
             val intent=Intent(context, RestaurantProfileActivity::class.java)
             intent.putExtra(Constant.restID,mList[position].id)
             intent.putExtra("image",mList[position].image)
-            intent.putExtra("isOpen",mList[position].is_open)
+            intent.putExtra("isOpen",mList[position].is_open_value.toString())
             context.startActivity(intent)
         }
 

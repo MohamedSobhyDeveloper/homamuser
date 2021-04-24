@@ -3,6 +3,7 @@ package com.otex.homamuser.view.restaurantitem
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
@@ -93,6 +94,13 @@ class RestaurantItemActivity : BaseActivity() {
     private fun initialize() {
         PrefsUtil.with(this).add(Constant.additionId,"0").apply()
         PrefsUtil.with(this).add(Constant.optionId,"0").apply()
+
+        if (intent.getStringExtra(Constant.restStatus).equals("1")){
+            binding.addToCart.visibility=View.VISIBLE
+        }else{
+            binding.addToCart.visibility=View.INVISIBLE
+
+        }
 
 
         resturantItemViewModel = ViewModelProvider(this).get(ResturantItemViewModel::class.java)

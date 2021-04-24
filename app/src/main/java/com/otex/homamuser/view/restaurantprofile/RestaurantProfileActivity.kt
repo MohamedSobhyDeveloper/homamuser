@@ -72,7 +72,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
             val layoutManager = LinearLayoutManager(this)
             binding.recBestdishes.layoutManager = layoutManager
             val adapter =
-                    BestDishesAdapter(this, it.data.products as ArrayList<Product>,intent.getStringExtra(Constant.restID)!!)
+                    BestDishesAdapter(this, it.data.products as ArrayList<Product>,intent.getStringExtra(Constant.restID)!!,intent.getStringExtra("isOpen").toString())
             binding.recBestdishes.adapter = adapter
 
         }
@@ -100,7 +100,7 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
     @SuppressLint("NewApi")
     private fun getRestaurant_details() {
 
-        if(intent.getStringExtra("isOpen").toString()=="Open") {
+        if(intent.getStringExtra("isOpen").toString()=="1") {
            binding.txtClock.setTextColor(getColor(R.color.green))
             binding.txtClock.text = getString(R.string.open)
 
