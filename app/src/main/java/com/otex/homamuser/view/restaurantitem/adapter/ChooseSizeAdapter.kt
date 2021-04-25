@@ -24,7 +24,7 @@ class ChooseSizeAdapter(private val context: Context, val list: List<Option>, va
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.checkboc.text= list[position].name
-        holder.binding.txtSalary.text= list[position].price.toString()+" "+"ج"
+        holder.binding.txtSalary.text= list[position].price.toString()+" "+"د.ل"
 
         holder.binding.conCheckbox.setOnClickListener {
             selectedItemPosition=position

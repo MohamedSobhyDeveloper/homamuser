@@ -87,5 +87,6 @@
     <string name="update_pass">Password Update Successfully</string>
     <string name="codesend">Code send successfully</string>
     <string name="order_from">Order From</string>
+    <string name="log_out">log out</string>
 
 </resources>

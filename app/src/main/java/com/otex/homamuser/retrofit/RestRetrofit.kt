@@ -3,10 +3,9 @@ package com.otex.homamuser.retrofit
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
+import com.google.gson.GsonBuilder
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.DataEnum
-import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.utlitites.PrefsUtil.with
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -14,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+
 
 // start comment
 //import okhttp3.logging.HttpLoggingInterceptor;
@@ -74,7 +74,7 @@ class RestRetrofit private constructor() {
             if (token!!.isNotEmpty()) {
 
                 newRequest = request.newBuilder()
-                        .header(Authorization, "Bearer "+token)
+                        .header(Authorization, "Bearer " + token)
                         .method(request.method, request.body)
                         .build()
                 chain.proceed(newRequest)

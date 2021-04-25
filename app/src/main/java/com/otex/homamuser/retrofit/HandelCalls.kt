@@ -180,6 +180,7 @@ class HandelCalls {
             }
 
             override fun onFailure(call: Call<T?>, t: Throwable) {
+
                 if (ShowDialog) progressDialog.dismiss()
                 HelpMe.getInstance(context)!!.retrofironFailure(t)
             }

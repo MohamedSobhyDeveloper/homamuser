@@ -24,7 +24,7 @@ class AdditionsAdapter(private val context: Context, val list: List<Addition>,va
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.binding.txtNameFood.text=list.get(position).name
-        holder.binding.txtSalary.text= list.get(position).price.toString()+" "+"ج"
+        holder.binding.txtSalary.text= list.get(position).price.toString()+" "+"د.ل"
 
         holder.binding.conAddition.setOnClickListener {
 //            selectedItemPosition=position

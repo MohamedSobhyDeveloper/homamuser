@@ -88,5 +88,6 @@
     <string name="update_pass">تم تحديث كلمة السر</string>
     <string name="codesend">تم ارسال رمز التحقق</string>
     <string name="order_from">طلب من</string>
+    <string name="log_out">تسجيل الخروج</string>
 
 </resources>

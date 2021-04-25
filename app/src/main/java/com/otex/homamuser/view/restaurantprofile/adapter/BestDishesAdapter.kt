@@ -27,11 +27,11 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
         holder.binding.description.text=menuItemList[position].description
 
         if(menuItemList[position].options.isNotEmpty()){
-        holder.binding.price.text= menuItemList[position].options[0].price.toString()+" ج" +" : "+
+        holder.binding.price.text= menuItemList[position].options[0].price.toString()+" د.ل" +" : "+
                                                   menuItemList[position].options[menuItemList[position]
-                                                                         .options.size-1].price.toString()+"ج"
+                                                                         .options.size-1].price.toString()+"د.ل"
                                                                      } else{
-            holder.binding.price.text="0.0 ج"
+            holder.binding.price.text="0.0 د.ل"
         }
 
         Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)

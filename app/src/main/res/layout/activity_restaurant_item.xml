@@ -195,7 +195,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:text="ج.م "
+                    android:text="د.ل "
                     android:id="@+id/txtValue"
                     android:textColor="@color/orangefateh"
                     android:textSize="14sp"

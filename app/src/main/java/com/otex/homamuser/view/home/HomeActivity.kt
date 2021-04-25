@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityHomeBinding
 import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.aboutus.AboutUsActivity
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
@@ -21,6 +22,7 @@ import com.otex.homamuser.view.contactus.ContactUsActivity
 import com.otex.homamuser.view.home.model.Category
 import com.otex.homamuser.view.home.model.Data
 import com.otex.homamuser.view.home.model.Offer
+import com.otex.homamuser.view.login.LoginActivity
 import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
@@ -88,6 +90,14 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun click() {
+
+        binding.drawer.logout.setOnClickListener {
+            PrefsUtil.with(this).add(Constant.token,"").apply()
+            val intent =Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
         binding.drawer.layoutContactus.setOnClickListener {
             val intent = Intent(this, ContactUsActivity::class.java)
             startActivity(intent)
