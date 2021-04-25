@@ -1,14 +1,14 @@
 package com.otex.homamuser.retrofit
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.otex.homamuser.interfaces.HandleRetrofitResp
 import com.otex.homamuser.interfaces.HandleRetrofitRespAdapter
-import com.otex.homamuser.utlitites.Constant
-import com.otex.homamuser.utlitites.DataEnum
-import com.otex.homamuser.utlitites.HelpMe
-import com.otex.homamuser.utlitites.Loading
+import com.otex.homamuser.utlitites.*
+import com.otex.homamuser.view.login.LoginActivity
 import es.dmoral.toasty.Toasty
 import org.json.JSONException
 import org.json.JSONObject
@@ -140,7 +140,13 @@ class HandelCalls {
                         onRespnse!!.onResponseSuccess(flag, response.body())
                     }
                     // TODO - 4 Add 400 to condition base on (Login Response)
-                } else if (response.code() == 400 || response.code() == 401 || response.code() == 300) {
+                }else if (response.code() == 401){
+                    PrefsUtil.with(context!!).add(Constant.token,"").apply()
+                    val intent = Intent(context, LoginActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context?.startActivity(intent)
+                } else if (response.code() == 400 ||  response.code() == 300) {
                     Log.e("res1", "resp")
                     if (onRespnse != null) {
                         Log.e("res2", "resp")
