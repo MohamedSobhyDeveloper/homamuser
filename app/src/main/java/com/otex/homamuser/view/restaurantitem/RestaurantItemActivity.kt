@@ -118,8 +118,9 @@ class RestaurantItemActivity : BaseActivity() {
             productId= list?.id.toString()
             binding.foodName.text= list?.name
             binding.description.text=list?.description
-
-         Picasso.get().load(list?.image_path).into(binding.imgFood)
+           if (list?.image_path!!.isNotEmpty()){
+               Picasso.get().load(list.image_path).into(binding.imgFood)
+           }
 
         if(list?.options!!.isNotEmpty()){
             priceOption=list?.options!![0].price

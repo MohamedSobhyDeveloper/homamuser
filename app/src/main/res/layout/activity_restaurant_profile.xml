@@ -123,6 +123,7 @@
         android:scaleType="centerInside"
         android:elevation="15dp"
         android:layout_width="50dp"
+        android:visibility="gone"
         android:layout_height="50dp"
         tools:ignore="ContentDescription" />
 

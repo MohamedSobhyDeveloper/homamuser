@@ -34,7 +34,13 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
             holder.binding.price.text="0.0 د.ل"
         }
 
-        Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
+        if (menuItemList[position].image_path.isNotEmpty()){
+            Picasso.get().load(menuItemList[position].image_path).into(holder.binding.imgFood)
+
+        }else{
+            Picasso.get().load(R.drawable.food).into(holder.binding.imgFood)
+
+        }
 
 //        holder.binding.imgAdd.setOnClickListener {
 //

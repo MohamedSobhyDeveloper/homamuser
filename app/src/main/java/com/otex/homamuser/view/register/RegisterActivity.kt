@@ -62,8 +62,6 @@ class RegisterActivity : BaseActivity() {
         assimentVariable()
         if(username == ""){
             binding.editUsername.error = getString(R.string.enter_username)
-        }else if(emailOrPhone == ""){
-            binding.editEmailPhone.error = getString(R.string.enter_email_phone)
         }else if(phone == ""){
             binding.editPhone.error = getString(R.string.enter_phone)
         }else if(password == ""){
@@ -90,7 +88,7 @@ class RegisterActivity : BaseActivity() {
     private fun register(username: String, emailOrPhone: String, password: String, phone: String) {
 
         val map = HashMap<String, String?>()
-        map["email"] = emailOrPhone
+        map["email"] = phone
         map["password"] = password
         map["name"] = username
         map["phone"] = phone

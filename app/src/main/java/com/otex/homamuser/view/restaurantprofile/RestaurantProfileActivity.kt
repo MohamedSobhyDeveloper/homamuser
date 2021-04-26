@@ -53,7 +53,10 @@ class RestaurantProfileActivity : BaseActivity(), OnItemClick {
             binding.txtNameProfile.text=it.data.name
             binding.txtAddress.text=it.data.address+" "+it.data.district
             binding.txtDescription.text=it.data.description
-            Picasso.get().load(intent.getStringExtra("image")).into(binding.imgCoverphoto)
+            if (intent.getStringExtra("image")!!.isNotEmpty()){
+                Picasso.get().load(intent.getStringExtra("image")).into(binding.imgCoverphoto)
+            }
+
             if(it.data.menus.isNotEmpty()) {
                 setUpMenu(it.data.menus)
             }

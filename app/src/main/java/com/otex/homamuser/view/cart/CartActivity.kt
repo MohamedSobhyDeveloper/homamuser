@@ -85,7 +85,9 @@ class CartActivity : BaseActivity() {
         cartViewModel!!.mycartlivedata.observe(this) {
 
             if (it.data != null) {
-                Picasso.get().load(it.data.restaurant_logo).into(binding.logo)
+                if (it.data.restaurant_logo.isNotEmpty()){
+                    Picasso.get().load(it.data.restaurant_logo).into(binding.logo)
+                }
                 restlogo=it.data.restaurant_logo
                 restId = it.data.restaurant_id
                 binding.restName.text = it.data.restaurant

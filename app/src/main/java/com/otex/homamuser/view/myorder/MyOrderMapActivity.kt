@@ -107,7 +107,10 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun initialize() {
-        Picasso.get().load(intent.getStringExtra("restlogo")).into(binding.logo)
+        if (intent.getStringExtra("restlogo")!!.isNotEmpty()){
+            Picasso.get().load(intent.getStringExtra("restlogo")).into(binding.logo)
+
+        }
 
         mylocation= LatLng(0.0,0.0)
         geocode = Geocoder(this, Locale("ar"))//.getDefault())
