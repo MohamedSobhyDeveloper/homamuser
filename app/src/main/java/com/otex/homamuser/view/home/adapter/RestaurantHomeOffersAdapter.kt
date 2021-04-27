@@ -27,10 +27,17 @@ class RestaurantHomeOffersAdapter(private val context: Context, val mList: List<
         holder.binding.txtDescription.text=mList[position].restaurant.address
 
         if(mList[position].image_path.isNotEmpty()){
+            Picasso.get().load(R.drawable.offericon).into(holder.binding.imgOffer)
+        }else{
             Picasso.get().load(mList[position].image_path).into(holder.binding.imgOffer)
-        }else if(mList[position].restaurant.logo.isNotEmpty()){
-            Picasso.get().load(mList[position].restaurant.logo).into(holder.binding.imgRestaurant)
+
         }
+
+         if(mList[position].restaurant.logo.isNotEmpty()){
+            Picasso.get().load(mList[position].restaurant.logo).into(holder.binding.imgRestaurant)
+        }else{
+             Picasso.get().load(R.drawable.pasta).into(holder.binding.imgRestaurant)
+         }
 
         holder.binding.parentLayout.setOnClickListener {
             val intent= Intent(context, RestaurantProfileActivity::class.java)

@@ -84,6 +84,7 @@
             android:textSize="18sp"
             android:elevation="15dp"
             android:id="@+id/useremail"
+            android:visibility="gone"
             android:fontFamily="@font/robotoregular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

@@ -6,16 +6,16 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityMyOrderListBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.MyOrderListAdapter
+import com.otex.homamuser.view.myorder.adapter.MyOrderListAdapter
 import java.util.HashMap
 
 class MyOrderListActivity : BaseActivity() {
     private lateinit var binding : ActivityMyOrderListBinding
 
     private var myOrderViewModel : MyOrderViewModel? = null
-    private var loading = true
+    private var loading = false
     private var nextPage = ""
-    var adapter:MyOrderListAdapter?=null
+    var adapter: MyOrderListAdapter?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMyOrderListBinding.inflate(layoutInflater)

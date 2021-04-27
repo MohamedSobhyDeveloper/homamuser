@@ -37,9 +37,17 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
 
         if(mList[position].image.isNotEmpty()){
             Picasso.get().load(mList[position].image).into(holder.binding.imgOffer)
-        }else if(mList[position].logo.isNotEmpty()){
-            Picasso.get().load(mList[position].logo).into(holder.binding.imgRestaurant)
+        }else{
+            Picasso.get().load(mList[position].image).into(holder.binding.imgOffer)
+
         }
+
+         if(mList[position].logo.isNotEmpty()){
+            Picasso.get().load(mList[position].logo).into(holder.binding.imgRestaurant)
+        }else{
+             Picasso.get().load(R.drawable.pasta).into(holder.binding.imgRestaurant)
+
+         }
 
         holder.binding.parentLayout.setOnClickListener {
             val intent=Intent(context, RestaurantProfileActivity::class.java)

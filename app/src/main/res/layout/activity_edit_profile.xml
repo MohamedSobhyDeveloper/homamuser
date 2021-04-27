@@ -159,6 +159,7 @@
                 app:boxCornerRadiusTopEnd="6dp"
                 app:boxCornerRadiusTopStart="6dp"
                 app:boxStrokeWidth="0.5dp"
+                android:visibility="gone"
                 android:textColorHint="@color/gray"
                 >
                 <EditText

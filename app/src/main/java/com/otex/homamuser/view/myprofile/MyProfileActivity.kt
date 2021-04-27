@@ -62,7 +62,7 @@ class MyProfileActivity : BaseActivity() {
 
 
             binding.username.text= it.user.name
-            binding.useremail.text= it.user.email
+//            binding.useremail.text= it.user.email
 
             if(it.user.phone!=null){
                 binding.userPhone.text= it.user.phone

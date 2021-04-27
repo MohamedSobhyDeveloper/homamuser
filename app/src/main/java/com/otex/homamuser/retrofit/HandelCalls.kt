@@ -146,7 +146,7 @@ class HandelCalls {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     context?.startActivity(intent)
-                } else if (response.code() == 400 ||  response.code() == 300) {
+                } else if (response.code() == 400 || response.code() == 422 || response.code() == 300) {
                     Log.e("res1", "resp")
                     if (onRespnse != null) {
                         Log.e("res2", "resp")

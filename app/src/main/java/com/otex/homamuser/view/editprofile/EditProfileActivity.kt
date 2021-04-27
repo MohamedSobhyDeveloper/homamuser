@@ -45,8 +45,6 @@ class EditProfileActivity : BaseActivity() {
 
             if(username.equals("")){
                 binding.editUsername.setError(getString(R.string.enter_username))
-            }else if(email_or_phone.equals("")){
-                binding.editEmailPhone.setError(getString(R.string.enter_email_phone))
             }else if(phone.equals("")){
                 binding.editPhone.setError(getString(R.string.enter_phone))
 
@@ -74,7 +72,7 @@ class EditProfileActivity : BaseActivity() {
     ) {
 
         val map = HashMap<String, String?>()
-        map.put("email",emailOrPhone)
+//        map.put("email",emailOrPhone)
         map.put("phone",phone)
         map.put("name",username)
         updateProfileviewmodel!!.updateProfile(this, map)
@@ -86,14 +84,14 @@ class EditProfileActivity : BaseActivity() {
     private fun initialize() {
         binding.editUsername.setText(PrefsUtil.with(this)[Constant.username, ""]
             , TextView.BufferType.EDITABLE)
-        binding.editEmailPhone.setText(PrefsUtil.with(this)[Constant.email, ""],
-            TextView.BufferType.EDITABLE)
+//        binding.editEmailPhone.setText(PrefsUtil.with(this)[Constant.email, ""],
+//            TextView.BufferType.EDITABLE)
         binding.editPhone.setText(PrefsUtil.with(this)["phone", ""],
                 TextView.BufferType.EDITABLE)
         updateProfileviewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
         updateProfileviewmodel!!.updateProfileLiveData.observe(this) {
 
-            PrefsUtil.with(this).add(Constant.email,it.user.email).apply()
+//            PrefsUtil.with(this).add(Constant.email,it.user.email).apply()
             PrefsUtil.with(this).add(Constant.username,it.user.name).apply()
             PrefsUtil.with(this).add("phone",it.user.phone).apply()
 

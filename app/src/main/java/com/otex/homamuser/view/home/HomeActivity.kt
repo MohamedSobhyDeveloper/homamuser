@@ -23,6 +23,7 @@ import com.otex.homamuser.view.home.model.Category
 import com.otex.homamuser.view.home.model.Data
 import com.otex.homamuser.view.home.model.Offer
 import com.otex.homamuser.view.login.LoginActivity
+import com.otex.homamuser.view.myorder.MyOrderListActivity
 import com.otex.homamuser.view.myprofile.MyProfileActivity
 import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
@@ -123,6 +124,10 @@ class HomeActivity : BaseActivity() {
         binding.drawer.layoutCart.setOnClickListener {
             val intent = Intent(this, CartActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.drawer.layoutOrders.setOnClickListener {
+            startActivity(Intent(this, MyOrderListActivity::class.java))
         }
     }
 

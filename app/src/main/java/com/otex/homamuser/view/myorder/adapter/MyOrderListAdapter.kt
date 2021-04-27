@@ -1,4 +1,4 @@
-package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
+package com.otex.homamuser.view.myorder.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemMyorderBinding
 import com.otex.homamuser.view.myorder.myorderModel.Data
 import com.otex.homamuser.view.orderdetail.OrderDetailsActivity
+import com.squareup.picasso.Picasso
 
 
 class MyOrderListAdapter(private val context: Context, val mList: List<Data>)
@@ -20,12 +21,20 @@ class MyOrderListAdapter(private val context: Context, val mList: List<Data>)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
 
-            holder.binding.restName.text=mList[position].restaurant
-         holder.binding.txtOrderPrice.text=mList[position].total.toString()
+       holder.binding.restName.text=mList[position].restaurant
+        holder.binding.txtOrderPrice.text=mList[position].total.toString()
         holder.binding.numDished.text=mList[position].dishes.toString()
         holder.binding.numOrder.text=mList[position].code
         holder.binding.txtDate.text=mList[position].date
         holder.binding.btnOrdernow.text=mList[position].status
+
+        if (mList[position].restaurant_logo.isNotEmpty()){
+            Picasso.get().load(mList[position].restaurant_logo).into(holder.binding.imgLogo)
+
+        }else{
+            Picasso.get().load(R.drawable.pasta).into(holder.binding.imgLogo)
+
+        }
 
         holder.binding.conCart.setOnClickListener {
             var intent=Intent(context,OrderDetailsActivity::class.java)
