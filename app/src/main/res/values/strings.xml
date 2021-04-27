@@ -88,5 +88,11 @@
     <string name="codesend">Code send successfully</string>
     <string name="order_from">Order From</string>
     <string name="log_out">log out</string>
-
+    <string name="waiting_order">pending Order</string>
+    <string name="delivered">Delivered</string>
+    <string name="accepted_order">Accepted Order</string>
+    <string name="canceled_order">Canceled Order</string>
+    <string name="working_on">Working On</string>
+    <string name="ready_for_delivery">ready for delivery</string>
+    <string name="on_delivery">On delivery</string>
 </resources>

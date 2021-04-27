@@ -89,5 +89,11 @@
     <string name="codesend">تم ارسال رمز التحقق</string>
     <string name="order_from">طلب من</string>
     <string name="log_out">تسجيل الخروج</string>
-
+    <string name="waiting_order">طلب فى الانتظار</string>
+    <string name="delivered">تم التوصيل</string>
+    <string name="accepted_order">طلب مقبول</string>
+    <string name="canceled_order">طلب ملغى</string>
+    <string name="working_on">طلب في التجهيز</string>
+    <string name="ready_for_delivery">جاهز للتوصيل</string>
+    <string name="on_delivery">في التوصيل</string>
 </resources>

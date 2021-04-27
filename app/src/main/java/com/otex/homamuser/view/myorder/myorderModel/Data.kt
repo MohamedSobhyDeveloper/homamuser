@@ -8,5 +8,6 @@ data class Data(
     val restaurant: String,
     val restaurant_logo: String,
     val status: String,
+    val status_str: String,
     val total: Int
 )
