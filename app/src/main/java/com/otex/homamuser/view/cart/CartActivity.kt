@@ -3,7 +3,9 @@ package com.otex.homamuser.view.cart
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -51,8 +53,11 @@ class CartActivity : BaseActivity() {
                         // I can control the camera now
                         Log.e("m", "permission")
                     } else {
-                        Toast.makeText(this, "Denied", Toast.LENGTH_SHORT).show()
-                        finish()
+                        Toast.makeText(this, "Allow App to Access Your Location", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                        val uri: Uri = Uri.fromParts("package", packageName, null)
+                        intent.data = uri
+                        startActivity(intent)
                         // Oups permission denied
                     }
                 }

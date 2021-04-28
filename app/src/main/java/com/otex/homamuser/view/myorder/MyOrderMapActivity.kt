@@ -173,6 +173,19 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
             map.put("id",intent.getStringExtra("restId"))
 
             myOrderViewModel?.getFees(this,map)
+        }else{
+            my_select_location= LatLng(32.094513273747104, 20.08060458593437)
+            addresses = geocode.getFromLocation(my_select_location!!.latitude, my_select_location!!.longitude, 1)
+
+            streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+            binding.txtAddress.setText(streetStart)
+
+            val map = HashMap<String, String?>()
+            map.put("lat", my_select_location!!.latitude.toString())
+            map.put("long", my_select_location!!.longitude.toString())
+            map.put("id",intent.getStringExtra("restId"))
+
+            myOrderViewModel?.getFees(this,map)
         }
         mMap.addMarker(
             this.my_select_location?.let {

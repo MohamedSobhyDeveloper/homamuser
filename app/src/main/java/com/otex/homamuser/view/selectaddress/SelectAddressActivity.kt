@@ -12,7 +12,6 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.DrawableRes
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -109,6 +108,9 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
         if (gpsTracker!!.canGetLocation) {
 //          binding.chooseLocationBtn.setEnabled(true);
             currentLocation = LatLng(gpsTracker!!.latitude, gpsTracker!!.longitude)
+        }else{
+            currentLocation= LatLng(32.094513273747104, 20.08060458593437)
+
         }
         mMap.addMarker(
                 this.currentLocation?.let {
@@ -127,27 +129,30 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
 
         mMap.isMyLocationEnabled=true
 
-//        mMap.setOnMapClickListener { latLng ->
-//
-//            mMap.clear()
-//            mylocation=latLng
-//            mMap.addMarker(MarkerOptions().position(mylocation)//.title("Marker in Sydney"))
-////                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
-//            )
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
-//            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
-//
-//
-//                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
-//                binding.txtAddress.setText(streetStart)
-//
-//
-//        }
+        mMap.setOnMapClickListener { latLng ->
+
+            mMap.clear()
+            mylocation=latLng
+            currentLocation=mylocation
+            mMap.addMarker(MarkerOptions().position(mylocation).draggable(true)//.title("Marker in Sydney"))
+//                        .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_pin_receive))
+            )
+
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(mylocation))
+            addresses = geocode.getFromLocation(mylocation.latitude, mylocation.longitude, 1)
+
+
+                streetStart = addresses!![0].getAddressLine(0)//thoroughfare
+                binding.txtAddress.setText(streetStart)
+
+
+
+        }
 
 
         mMap.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
             override fun onMarkerDragStart(arg0: Marker) {
-                // TODO Auto-generated method stub
                 Log.d("System out", "onMarkerDragStart..." + arg0.position.latitude.toString() + "..." + arg0.position.longitude)
             }
 
@@ -161,7 +166,6 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
             }
 
             override fun onMarkerDrag(arg0: Marker?) {
-                // TODO Auto-generated method stub
                 Log.i("System out", "onMarkerDrag...")
             }
         })
@@ -220,7 +224,6 @@ class SelectAddressActivity : BaseActivity(), OnMapReadyCallback {
 
                 }
             } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
-                // TODO: Handle the error.
                 val status = Autocomplete.getStatusFromIntent(data!!)
             } else if (resultCode == Activity.RESULT_CANCELED) {
             }

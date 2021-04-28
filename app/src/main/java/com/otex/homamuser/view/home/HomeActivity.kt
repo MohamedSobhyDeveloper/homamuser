@@ -3,7 +3,9 @@ package com.otex.homamuser.view.home
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -68,16 +70,19 @@ class HomeActivity : BaseActivity() {
 
         rxPermissions
             .request(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
             )
             .subscribe { granted ->
                 if (granted) { // Always true pre-M
                     // I can control the camera now
                     Log.e("m", "permission")
                 } else {
-                    Toast.makeText(this, "Denied", Toast.LENGTH_SHORT).show()
-                    finish()
+                    Toast.makeText(this, "Allow App to Access Your Location", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    val uri: Uri = Uri.fromParts("package", packageName, null)
+                    intent.data = uri
+                    startActivity(intent)
                     // Oups permission denied
                 }
             }
@@ -85,15 +90,15 @@ class HomeActivity : BaseActivity() {
 
     private fun getRestaurant() {
         val map = HashMap<String, String?>()
-        map.put("category_id","0")
-        homeActivityViewModel?.getRestaurant_category(this,map)
+        map.put("category_id", "0")
+        homeActivityViewModel?.getRestaurant_category(this, map)
 
     }
 
     private fun click() {
 
         binding.drawer.logout.setOnClickListener {
-            PrefsUtil.with(this).add(Constant.token,"").apply()
+            PrefsUtil.with(this).add(Constant.token, "").apply()
             val intent =Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -112,13 +117,13 @@ class HomeActivity : BaseActivity() {
             startActivity(intent)
         }
         binding.txtSellAllFoodlove.setOnClickListener {
-            val intent=Intent(this,ResturantActivity::class.java)
-            intent.putExtra(Constant.categoryID,"0")
+            val intent=Intent(this, ResturantActivity::class.java)
+            intent.putExtra(Constant.categoryID, "0")
             startActivity(intent)
         }
         binding.txtSellAllSpecial.setOnClickListener {
-            val intent=Intent(this,ResturantActivity::class.java)
-            intent.putExtra(Constant.categoryID,"0")
+            val intent=Intent(this, ResturantActivity::class.java)
+            intent.putExtra(Constant.categoryID, "0")
             startActivity(intent)
         }
         binding.drawer.layoutCart.setOnClickListener {
@@ -166,10 +171,10 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun setUpOffers(offers: List<Offer>) {
-        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.newRecSpecialRestaurantHome.layoutManager = layoutManager
         val adapter =
-                RestaurantHomeOffersAdapter(this,offers)
+                RestaurantHomeOffersAdapter(this, offers)
         binding.newRecSpecialRestaurantHome.adapter = adapter
     }
 
@@ -178,15 +183,15 @@ class HomeActivity : BaseActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recSpecialRestaurantHome.layoutManager = layoutManager
         val adapter =
-                RestaurantHomeAdapter(this,restaurants)
+                RestaurantHomeAdapter(this, restaurants)
         binding.recSpecialRestaurantHome.adapter = adapter
     }
 
     private fun setupRecyclerCategoryHome(categories: List<Category>) {
-        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recCategoryHome.layoutManager = layoutManager
         restaurantAdapter =
-                CategoryHomeAdapter(this,categories)
+                CategoryHomeAdapter(this, categories)
         binding.recCategoryHome.adapter = restaurantAdapter
     }
 

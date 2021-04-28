@@ -26,14 +26,14 @@ class SplashActivity : BaseActivity() {
 
         Handler().postDelayed({
 
-                signstate= PrefsUtil.with(this)[Constant.token, ""].toString()
-                 if(signstate.isNotEmpty()) {
-                     startActivity(Intent(this, HomeActivity::class.java))
-                     finish()
-                 }else{
-                     startActivity(Intent(this, LoginActivity::class.java))
-                     finish()
-                 }
+            signstate= PrefsUtil.with(this)[Constant.token, ""].toString()
+            if(signstate.isNotEmpty()) {
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            }else{
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
 
         }, 2000)
 
