@@ -64,10 +64,7 @@ class HomeActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (PrefsUtil.with(this).get("makeorder","0").equals("1")){
-            PrefsUtil.with(this).add("makeorder","0").apply()
-            startActivity(Intent(this, MyOrderListActivity::class.java))
-        }
+
     }
 
 
@@ -172,6 +169,11 @@ class HomeActivity : BaseActivity() {
             setupRecyclerCategoryHome(it.categories)
             setupRecyclerRestaurantHome(it.restaurants.data)
             setUpOffers(it.offers)
+
+            if (PrefsUtil.with(this).get("makeorder","0").equals("1")){
+                PrefsUtil.with(this).add("makeorder","0").apply()
+                startActivity(Intent(this, MyOrderListActivity::class.java))
+            }
 
         }
 
