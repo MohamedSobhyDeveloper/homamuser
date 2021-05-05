@@ -121,6 +121,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                PrefsUtil.with(this).add("makeorder","1").apply()
                 val intent =Intent(this, HomeActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

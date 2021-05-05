@@ -62,6 +62,14 @@ class HomeActivity : BaseActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (PrefsUtil.with(this).get("makeorder","0").equals("1")){
+            PrefsUtil.with(this).add("makeorder","0").apply()
+            startActivity(Intent(this, MyOrderListActivity::class.java))
+        }
+    }
+
 
     @SuppressLint("CheckResult")
     private fun checkPermission() {
