@@ -20,11 +20,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <ImageView
+            android:id="@+id/deleteItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/baseline_delete_black_18"
+            android:padding="10dp"
+            android:visibility="invisible"
+            app:tint="@color/red" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txt_num_order"
-            app:layout_constraintTop_toTopOf="@+id/txt_name_order"
+            app:layout_constraintTop_toBottomOf="@+id/deleteItem"
             app:layout_constraintBottom_toBottomOf="@+id/txt_name_order"
             app:layout_constraintStart_toStartOf="parent"
             android:text="1"
@@ -40,14 +52,13 @@
             android:id="@+id/txt_name_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deleteItem"
             app:layout_constraintStart_toEndOf="@+id/txt_num_order"
             android:text="BiG ZAK"
             android:textSize="17sp"
             android:visibility="visible"
             android:fontFamily="@font/robotoregular"
             android:textColor="@color/black"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="10dp"
             />
 

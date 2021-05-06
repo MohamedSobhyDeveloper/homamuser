@@ -1,4 +1,4 @@
-package com.softray_solutions.newschoolproject.ui.activities.chart.adapter
+package com.otex.homamuser.view.cart.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,9 +10,10 @@ import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ItemCartBinding
 import com.otex.homamuser.view.cart.model.Item
 import com.otex.homamuser.view.home.model.FoodLoveModel
+import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.AdditionalCartAdapter
 
 
-class CartAdapter(private val context: Context, val cartList: List<Item>)
+class CartAdapter(private val context: Context, val cartList: List<Item>,val clicvalue: Clickvaluelistener)
     : RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
 
 
@@ -29,6 +30,11 @@ class CartAdapter(private val context: Context, val cartList: List<Item>)
         val adapter =
             AdditionalCartAdapter(context,cartList[position].details)
        holder.binding.recAdditionalItem.adapter = adapter
+
+        holder.binding.deleteItem.visibility=View.VISIBLE
+        holder.binding.deleteItem.setOnClickListener {
+            clicvalue.click("1")
+        }
 
 
 
@@ -52,7 +58,9 @@ class CartAdapter(private val context: Context, val cartList: List<Item>)
     }
 
 
-
+    interface Clickvaluelistener{
+        fun click(id:String)
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

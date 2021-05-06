@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.databinding.ActivityCartBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.myorder.MyOrderMapActivity
-import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CartAdapter
+import com.otex.homamuser.view.cart.adapter.CartAdapter
 import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
+import java.util.*
 
 class CartActivity : BaseActivity() {
     private var cartViewModel : CartViewModel? = null
@@ -105,7 +106,13 @@ class CartActivity : BaseActivity() {
                 val layoutManager = LinearLayoutManager(this)
                 binding.recOrderCart.layoutManager = layoutManager
                 val adapter =
-                    CartAdapter(this, it.data.items)
+                    CartAdapter(this, it.data.items,object : CartAdapter.Clickvaluelistener {
+                        override fun click(id: String) {
+                            Toast.makeText(this@CartActivity, "backend prepare deleting", Toast.LENGTH_SHORT).show()
+
+                        }
+
+                    })
                 binding.recOrderCart.adapter = adapter
 
 
