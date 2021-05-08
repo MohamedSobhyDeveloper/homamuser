@@ -95,4 +95,5 @@
     <string name="working_on">Working On</string>
     <string name="ready_for_delivery">ready for delivery</string>
     <string name="on_delivery">On delivery</string>
+    <string name="itemdelete">Item Deleted</string>
 </resources>

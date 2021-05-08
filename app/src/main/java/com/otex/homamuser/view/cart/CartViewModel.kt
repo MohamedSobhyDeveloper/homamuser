@@ -7,6 +7,7 @@ import com.otex.homamuser.interfaces.HandleRetrofitResp
 import com.otex.homamuser.retrofit.HandelCalls
 import com.otex.homamuser.utlitites.DataEnum
 import com.otex.homamuser.view.cart.model.ModelCart
+import com.otex.homamuser.view.cart.modeldelete.ModelDelete
 import com.otex.homamuser.view.myprofile.model.ModelProfile
 import com.otex.homamuser.view.orderdetail.model.ModelOrderDetails
 import java.util.HashMap
@@ -15,10 +16,16 @@ class CartViewModel : ViewModel(),HandleRetrofitResp {
 
     var mycartlivedata = MutableLiveData<ModelCart>()
     var orderdtailslivedata = MutableLiveData<ModelOrderDetails>()
+    var deleteItemlivedata = MutableLiveData<ModelDelete>()
 
     fun getMyCart(context: Context, meMap: HashMap<String, String?>?){
 
         HandelCalls.getInstance(context)?.call(DataEnum.mycart.name, meMap, true, this)
+    }
+
+    fun deleteCart(context: Context, meMap: HashMap<String, String?>?){
+
+        HandelCalls.getInstance(context)?.call(DataEnum.deletItem.name, meMap, true, this)
     }
     fun getOrderDetails(context: Context, meMap: HashMap<String, String?>?){
 
@@ -26,12 +33,16 @@ class CartViewModel : ViewModel(),HandleRetrofitResp {
     }
 
     override fun onResponseSuccess(flag: String?, o: Any?) {
+
         if(flag==DataEnum.mycart.name){
             val modelCart: ModelCart = o as ModelCart
             mycartlivedata.value = modelCart
         }else if(flag==DataEnum.orderDetails.name){
             val modelOrderDetails: ModelOrderDetails = o as ModelOrderDetails
             orderdtailslivedata.value = modelOrderDetails
+        }else if(flag==DataEnum.deletItem.name){
+            val modelDelete: ModelDelete = o as ModelDelete
+            deleteItemlivedata.value = modelDelete
         }
     }
 

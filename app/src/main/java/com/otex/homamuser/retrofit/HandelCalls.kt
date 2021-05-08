@@ -115,6 +115,9 @@ class HandelCalls {
             val id=meMap?.get("id")
             callRetrofit(restRetrofit?.getClientService()?.getFees(meMap,id), flag, ShowLoadingDialog)
 
+        }else if(flag==DataEnum.deletItem.name){
+            val id=meMap?.get("id")
+            callRetrofit(restRetrofit?.getClientService()?.deleteItem(id), flag, ShowLoadingDialog)
         }
 
     }

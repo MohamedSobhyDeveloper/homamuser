@@ -1,6 +1,7 @@
 package com.otex.homamuser.retrofit
 
 import com.otex.homamuser.view.cart.model.ModelCart
+import com.otex.homamuser.view.cart.modeldelete.ModelDelete
 import com.otex.homamuser.view.editprofile.model.ModelUpdateProfile
 import com.otex.homamuser.view.home.model.ModelHomeScreen
 import com.otex.homamuser.view.login.model.ModelLogin
@@ -97,5 +98,9 @@ interface ApiCall {
     @FormUrlEncoded
     @POST("user/update-password")
     fun userUpdatePassword(@FieldMap map: HashMap<String, String?>?): Call<ModelActivate?>?
+
+    @POST("user/delete/cart/{cart_id}")
+    fun deleteItem(@Path("cart_id") id: String?): Call<ModelDelete?>?
+
 
 }

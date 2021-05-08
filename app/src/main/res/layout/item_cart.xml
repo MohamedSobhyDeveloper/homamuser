@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/baseline_delete_black_18"
+            android:src="@drawable/pasta"
             android:padding="10dp"
             android:visibility="invisible"
             app:tint="@color/red" />

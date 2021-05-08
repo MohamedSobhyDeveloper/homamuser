@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityCartBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.myorder.MyOrderMapActivity
@@ -20,7 +21,7 @@ import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
 import java.util.*
 
-class CartActivity : BaseActivity() {
+class CartActivity : BaseActivity(){
     private var cartViewModel : CartViewModel? = null
     lateinit var binding: ActivityCartBinding
     var total:String=""
@@ -108,7 +109,10 @@ class CartActivity : BaseActivity() {
                 val adapter =
                     CartAdapter(this, it.data.items,object : CartAdapter.Clickvaluelistener {
                         override fun click(id: String) {
-                            Toast.makeText(this@CartActivity, "backend prepare deleting", Toast.LENGTH_SHORT).show()
+                          //  Toast.makeText(this@CartActivity, "backend prepare deleting", Toast.LENGTH_SHORT).show()
+                            val map = HashMap<String, String?>()
+                            map.put("id",id)
+                            cartViewModel?.deleteCart(this@CartActivity,map)
 
                         }
 
@@ -123,6 +127,17 @@ class CartActivity : BaseActivity() {
 
             }
         }
+
+        cartViewModel!!.deleteItemlivedata.observe(this) {
+
+            if(it.status=="1") {
+                Toast.makeText(this@CartActivity, getString(R.string.itemdelete), Toast.LENGTH_SHORT).show()
+                getcart()
+            }
+
+        }
+
+
     }
 
 }
