@@ -33,7 +33,7 @@ class CartAdapter(private val context: Context, val cartList: List<Item>,val cli
 
         holder.binding.deleteItem.visibility=View.VISIBLE
         holder.binding.deleteItem.setOnClickListener {
-            clicvalue.click("95")
+            clicvalue.click(cartList[position].id)
         }
 
 

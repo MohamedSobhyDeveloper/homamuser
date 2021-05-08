@@ -95,6 +95,20 @@
                 android:textColor="@color/orangefateh"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:id="@+id/notAvilable"
+                android:text="غير متوفر"
+                android:textSize="15sp"
+                android:visibility="gone"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/orangefateh"
+                />
+
+
         </LinearLayout>
 
 

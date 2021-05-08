@@ -8,6 +8,7 @@ data class Product(
     val description: String,
     val image_path: String,
     val id: Int,
+    val status: String,
     val name: String,
     val options: List<Option>
 ):Parcelable {
@@ -17,6 +18,7 @@ data class Product(
         parcel.readString()!!,
         parcel.readInt(),
         parcel.readString()!!,
+        parcel.readString()!!,
         parcel.createTypedArrayList(Option)!!
     )
 
@@ -25,6 +27,7 @@ data class Product(
         parcel.writeString(description)
         parcel.writeString(image_path)
         parcel.writeInt(id)
+        parcel.writeString(status)
         parcel.writeString(name)
         parcel.writeTypedList(options)
     }

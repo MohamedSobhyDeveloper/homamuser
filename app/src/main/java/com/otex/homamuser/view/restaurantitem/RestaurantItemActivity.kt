@@ -107,9 +107,9 @@ class RestaurantItemActivity : BaseActivity() {
         resturantItemViewModel!!.basketlivedata.observe(this) {
 
 
-            Toasty.success(this, it.message, Toast.LENGTH_SHORT, true).show()
-            val intent = Intent(this,CartActivity::class.java)
-            startActivity(intent)
+            Toasty.success(this, "تم الاضافة الى السلة", Toast.LENGTH_SHORT, true).show()
+//            val intent = Intent(this,CartActivity::class.java)
+//            startActivity(intent)
 
         }
 

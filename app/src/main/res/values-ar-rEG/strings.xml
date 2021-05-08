@@ -96,5 +96,5 @@
     <string name="working_on">طلب في التجهيز</string>
     <string name="ready_for_delivery">جاهز للتوصيل</string>
     <string name="on_delivery">في التوصيل</string>
-    <string name="itemdelete">Item Deleted</string>
+    <string name="itemdelete">تم حذف العنصر</string>
 </resources>

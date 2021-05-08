@@ -26,6 +26,13 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
         holder.binding.productName.text=menuItemList[position].name
         holder.binding.description.text=menuItemList[position].description
 
+        if (menuItemList[position].status.equals("1")){
+            holder.binding.notAvilable.visibility=View.GONE
+        }else{
+            holder.binding.notAvilable.visibility=View.VISIBLE
+
+        }
+
         if(menuItemList[position].options.isNotEmpty()){
         holder.binding.price.text= menuItemList[position].options[0].price.toString()+" د.ل" +" : "+
                                                   menuItemList[position].options[menuItemList[position]
@@ -55,11 +62,15 @@ class BestDishesAdapter(private val context: Context, var menuItemList: ArrayLis
 
         holder.binding.conParent.setOnClickListener {
 
-            val intent=Intent(context,RestaurantItemActivity::class.java)
-            intent.putExtra("menuItemList", menuItemList[position])
-            intent.putExtra(Constant.restID, restauranrId)
-            intent.putExtra(Constant.restStatus, resStatus)
-            context.startActivity(intent)
+            if (menuItemList[position].status.equals("1")){
+                val intent=Intent(context,RestaurantItemActivity::class.java)
+                intent.putExtra("menuItemList", menuItemList[position])
+                intent.putExtra(Constant.restID, restauranrId)
+                intent.putExtra(Constant.restStatus, resStatus)
+                context.startActivity(intent)
+            }
+
+
 
         }
 
