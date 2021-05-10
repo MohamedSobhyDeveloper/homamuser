@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/logologin"
+            android:src="@drawable/userlogin"
             android:id="@+id/img_box"
             android:elevation="20dp"
             android:layout_marginTop="20dp"

@@ -3,6 +3,7 @@ package com.otex.homamuser.view.cart
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -15,11 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityCartBinding
 import com.otex.homamuser.view.baseActivity.BaseActivity
-import com.otex.homamuser.view.myorder.MyOrderMapActivity
 import com.otex.homamuser.view.cart.adapter.CartAdapter
+import com.otex.homamuser.view.myorder.MyOrderMapActivity
 import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
 import java.util.*
+
 
 class CartActivity : BaseActivity(){
     private var cartViewModel : CartViewModel? = null
@@ -54,8 +56,9 @@ class CartActivity : BaseActivity(){
                     if (granted) { // Always true pre-M
                         // I can control the camera now
                         Log.e("m", "permission")
+
                     } else {
-                        Toast.makeText(this, "Allow App to Access Your Location", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "اسمح للتطبيق بالوصول إلى موقعك", Toast.LENGTH_SHORT).show()
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                         val uri: Uri = Uri.fromParts("package", packageName, null)
                         intent.data = uri
@@ -65,9 +68,13 @@ class CartActivity : BaseActivity(){
                 }
     }
 
+
+
+
+
     private fun getcart() {
 
-        cartViewModel?.getMyCart(this,null)
+        cartViewModel?.getMyCart(this, null)
 
     }
     private fun click() {
@@ -77,10 +84,10 @@ class CartActivity : BaseActivity(){
         }
         binding.conOrderNow.setOnClickListener {
             val intent = Intent(this, MyOrderMapActivity::class.java)
-            intent.putExtra("total",total)
-            intent.putExtra("restname",restname)
-            intent.putExtra("restId",restId)
-            intent.putExtra("restlogo",restlogo)
+            intent.putExtra("total", total)
+            intent.putExtra("restname", restname)
+            intent.putExtra("restId", restId)
+            intent.putExtra("restlogo", restlogo)
 
             startActivity(intent)
         }
@@ -107,12 +114,12 @@ class CartActivity : BaseActivity(){
                 val layoutManager = LinearLayoutManager(this)
                 binding.recOrderCart.layoutManager = layoutManager
                 val adapter =
-                    CartAdapter(this, it.data.items,object : CartAdapter.Clickvaluelistener {
+                    CartAdapter(this, it.data.items, object : CartAdapter.Clickvaluelistener {
                         override fun click(id: String) {
-                          //  Toast.makeText(this@CartActivity, "backend prepare deleting", Toast.LENGTH_SHORT).show()
+                            //  Toast.makeText(this@CartActivity, "backend prepare deleting", Toast.LENGTH_SHORT).show()
                             val map = HashMap<String, String?>()
-                            map.put("id",id)
-                            cartViewModel?.deleteCart(this@CartActivity,map)
+                            map.put("id", id)
+                            cartViewModel?.deleteCart(this@CartActivity, map)
 
                         }
 

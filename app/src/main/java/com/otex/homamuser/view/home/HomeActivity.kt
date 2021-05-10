@@ -50,7 +50,7 @@ class HomeActivity : BaseActivity() {
         binding=ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        checkPermission()
+//        checkPermission()
 
         initialize()
 

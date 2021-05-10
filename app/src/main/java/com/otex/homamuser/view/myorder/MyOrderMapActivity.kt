@@ -1,6 +1,5 @@
 package com.otex.homamuser.view.myorder
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -9,15 +8,16 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.location.Address
 import android.location.Geocoder
+import android.location.LocationManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.DrawableRes
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
@@ -34,6 +34,7 @@ import com.otex.homamuser.view.home.HomeActivity
 import com.otex.homamuser.view.selectaddress.SelectAddressActivity
 import com.squareup.picasso.Picasso
 import java.util.*
+
 
 @Suppress("DEPRECATION")
 class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
@@ -89,7 +90,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 } else {
                     streetStart = ""
                 }
-                make_order(streetStart, PrefsUtil.with(this).get("msg", ""),my_select_location.latitude,my_select_location.longitude)
+                make_order(streetStart, PrefsUtil.with(this).get("msg", ""), my_select_location.latitude, my_select_location.longitude)
             }
         }
 
@@ -97,13 +98,13 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
     private fun make_order(streetStart: String, get: String?, latitude: Double, longitude: Double) {
         val map = HashMap<String, String?>()
-        map.put("address",streetStart)
-        map.put("note",get)
-        map.put("phone",PrefsUtil.with(this).get(Constant.phone,""))
-        map.put("lat",latitude.toString())
-        map.put("long",longitude.toString())
+        map.put("address", streetStart)
+        map.put("note", get)
+        map.put("phone", PrefsUtil.with(this).get(Constant.phone, ""))
+        map.put("lat", latitude.toString())
+        map.put("long", longitude.toString())
 
-        myOrderViewModel?.makeOrder(this,map)
+        myOrderViewModel?.makeOrder(this, map)
     }
 
     private fun initialize() {
@@ -112,7 +113,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
 
         }
 
-        mylocation= LatLng(0.0,0.0)
+        mylocation= LatLng(0.0, 0.0)
         geocode = Geocoder(this, Locale("ar"))//.getDefault())
         myOrderViewModel = ViewModelProvider(this).get(MyOrderViewModel::class.java)
         myOrderViewModel!!.makeOrderlivedtat.observe(this) {
@@ -121,7 +122,7 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                PrefsUtil.with(this).add("makeorder","1").apply()
+                PrefsUtil.with(this).add("makeorder", "1").apply()
                 val intent =Intent(this, HomeActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -171,9 +172,9 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
             val map = HashMap<String, String?>()
             map.put("lat", my_select_location!!.latitude.toString())
             map.put("long", my_select_location!!.longitude.toString())
-            map.put("id",intent.getStringExtra("restId"))
+            map.put("id", intent.getStringExtra("restId"))
 
-            myOrderViewModel?.getFees(this,map)
+            myOrderViewModel?.getFees(this, map)
         }else{
             my_select_location= LatLng(32.094513273747104, 20.08060458593437)
             addresses = geocode.getFromLocation(my_select_location!!.latitude, my_select_location!!.longitude, 1)
@@ -184,27 +185,38 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
             val map = HashMap<String, String?>()
             map.put("lat", my_select_location!!.latitude.toString())
             map.put("long", my_select_location!!.longitude.toString())
-            map.put("id",intent.getStringExtra("restId"))
+            map.put("id", intent.getStringExtra("restId"))
 
-            myOrderViewModel?.getFees(this,map)
+            myOrderViewModel?.getFees(this, map)
         }
         mMap.addMarker(
-            this.my_select_location?.let {
-                MarkerOptions().position(it)
-                    .icon(bitmapDescriptorFromVector(this, R.drawable.baseline_room_black_18))
-            })
+                this.my_select_location?.let {
+                    MarkerOptions().position(it)
+                            .icon(bitmapDescriptorFromVector(this, R.drawable.baseline_room_black_18))
+                })
         // mMap.addMarker(MarkerOptions().position(myLocation))//.title("Marker in Sydney"))
         mMap.moveCamera(
-            CameraUpdateFactory.newLatLngZoom(my_select_location
-            , 10F))
+                CameraUpdateFactory.newLatLngZoom(my_select_location, 10F))
 
 
         mMap.isMyLocationEnabled=true
+        mMap.setOnMyLocationButtonClickListener {
+            val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                Toast.makeText(this, "يرجى تمكين GPS في جهازك", Toast.LENGTH_SHORT).show()
+
+            }else{
+                mMap.isMyLocationEnabled=true
+                true
+
+            }
+            false
+        }
         mMap.setOnMapClickListener { latLng ->
             val LAUNCH_SECOND_ACTIVITY = 1
             val intent= Intent(this, SelectAddressActivity::class.java)
-            startActivityForResult(intent,LAUNCH_SECOND_ACTIVITY)
+            startActivityForResult(intent, LAUNCH_SECOND_ACTIVITY)
         }
 
     }
@@ -238,11 +250,11 @@ class MyOrderMapActivity : BaseActivity(), OnMapReadyCallback {
                 binding.txtAddress.setText(streetStart)
 
                 val map = HashMap<String, String?>()
-                map.put("lat",latitude)
-                map.put("long",longitude)
-                map.put("id",intent.getStringExtra("restId"))
+                map.put("lat", latitude)
+                map.put("long", longitude)
+                map.put("id", intent.getStringExtra("restId"))
 
-                myOrderViewModel?.getFees(this,map)
+                myOrderViewModel?.getFees(this, map)
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
