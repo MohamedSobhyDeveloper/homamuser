@@ -52,6 +52,11 @@ class RestaurantItemActivity : BaseActivity() {
 
         }
 
+        binding.layoutCart.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.add.setOnClickListener {
             num += 1
             binding.quantity.text = (num).toString()
@@ -95,6 +100,16 @@ class RestaurantItemActivity : BaseActivity() {
         PrefsUtil.with(this).add(Constant.additionId,"0").apply()
         PrefsUtil.with(this).add(Constant.optionId,"0").apply()
 
+        if (PrefsUtil.with(this)["count", "0"].equals("0")){
+            binding.layoutCart.visibility=View.GONE
+            binding.quantitfy.text="0"
+        }else{
+
+            binding.layoutCart.visibility=View.VISIBLE
+            val x=PrefsUtil.with(this)["count", "0"].toString()
+            binding.quantitfy.text= x
+        }
+
         if (intent.getStringExtra(Constant.restStatus).equals("1")){
             binding.addToCart.visibility=View.VISIBLE
         }else{
@@ -108,6 +123,10 @@ class RestaurantItemActivity : BaseActivity() {
 
 
             Toasty.success(this, "تم الاضافة الى السلة", Toast.LENGTH_SHORT, true).show()
+            binding.layoutCart.visibility=View.VISIBLE
+            val count=binding.quantitfy.text.toString()
+            binding.quantitfy.text= (count.toInt()+1).toString()
+
 //            val intent = Intent(this,CartActivity::class.java)
 //            startActivity(intent)
 

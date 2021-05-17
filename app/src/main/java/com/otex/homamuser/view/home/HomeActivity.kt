@@ -20,6 +20,7 @@ import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.view.aboutus.AboutUsActivity
 import com.otex.homamuser.view.baseActivity.BaseActivity
 import com.otex.homamuser.view.cart.CartActivity
+import com.otex.homamuser.view.cart.adapter.CartAdapter
 import com.otex.homamuser.view.contactus.ContactUsActivity
 import com.otex.homamuser.view.home.model.Category
 import com.otex.homamuser.view.home.model.Data
@@ -31,6 +32,7 @@ import com.otex.homamuser.view.restaurant.ResturantActivity
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.CategoryHomeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeAdapter
 import com.softray_solutions.newschoolproject.ui.activities.chart.adapter.RestaurantHomeOffersAdapter
+import com.squareup.picasso.Picasso
 import com.tbruyelle.rxpermissions2.RxPermissions
 import java.util.*
 
@@ -64,6 +66,15 @@ class HomeActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        getcart()
+
+    }
+
+
+    private fun getcart() {
+
+        homeActivityViewModel?.getMyCart(this, null)
 
     }
 
@@ -136,6 +147,10 @@ class HomeActivity : BaseActivity() {
             startActivity(intent)
         }
 
+        binding.layoutCart.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
         binding.drawer.layoutOrders.setOnClickListener {
             startActivity(Intent(this, MyOrderListActivity::class.java))
         }
@@ -175,6 +190,22 @@ class HomeActivity : BaseActivity() {
                 startActivity(Intent(this, MyOrderListActivity::class.java))
             }
 
+        }
+
+
+
+        homeActivityViewModel!!.mycartlivedata.observe(this) {
+
+            if (it.data != null&&it.data.items.size>0) {
+                binding.layoutCart.visibility=View.VISIBLE
+                PrefsUtil.with(this).add("count",it.data.items.size.toString()).apply()
+                binding.quantitfy.text=it.data.items.size.toString()
+
+            }else{
+                binding.layoutCart.visibility=View.GONE
+                PrefsUtil.with(this).add("count","0").apply()
+
+            }
         }
 
 

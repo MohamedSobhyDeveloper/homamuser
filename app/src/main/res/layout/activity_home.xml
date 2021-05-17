@@ -28,16 +28,73 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@color/white">
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/home"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/robotobold"
-                    android:textColor="@color/black"
-                    />
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/robotobold"
+                        android:textColor="@color/black"
+                        />
+
+                    <LinearLayout
+                        android:id="@+id/layout_cart"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/img_food"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:elevation="10dp"
+                        android:background="@drawable/roundorangebutton"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:id="@+id/quantitfy"
+                            android:layout_marginStart="5dp"
+                            android:fontFamily="@font/robotobold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:text="اظهر السلة"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:padding="10dp"
+                            android:textAlignment="center"
+                            android:gravity="center"
+                            android:fontFamily="@font/robotoregular"
+                            android:layout_width="wrap_content"
+                            android:id="@+id/addd"
+                            android:drawableEnd="@drawable/outline_shopping_cart_white_18"
+                            android:layout_height="match_parent"
+                            tools:ignore="HardcodedText" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
 
 
             </androidx.appcompat.widget.Toolbar>
@@ -70,6 +127,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+
+
     <TextView
         app:layout_constraintTop_toTopOf="@+id/new_txt_special_offers"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +138,7 @@
         android:fontFamily="@font/josefinsansregular"
         android:textSize="13sp"
         android:padding="10dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/new_txt_sellAll_special"
         android:textColor="@color/orangefateh"
         android:layout_width="wrap_content"
