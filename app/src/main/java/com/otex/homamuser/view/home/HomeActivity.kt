@@ -220,7 +220,7 @@ class HomeActivity : BaseActivity() {
     }
 
 
-    private fun setupRecyclerRestaurantHome(restaurants: List<Data>) {
+    private fun setupRecyclerRestaurantHome(restaurants: MutableList<Data>) {
         val layoutManager = LinearLayoutManager(this)
         binding.recSpecialRestaurantHome.layoutManager = layoutManager
         val adapter =

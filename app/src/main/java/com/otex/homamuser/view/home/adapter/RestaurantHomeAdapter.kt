@@ -17,7 +17,7 @@ import com.otex.homamuser.view.restaurantprofile.RestaurantProfileActivity
 import com.squareup.picasso.Picasso
 
 
-class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
+class RestaurantHomeAdapter(private val context: Context, val mList: MutableList<Data>)
     : RecyclerView.Adapter<RestaurantHomeAdapter.MyViewHolder>() {
 
 
@@ -61,8 +61,8 @@ class RestaurantHomeAdapter(private val context: Context, val mList: List<Data>)
 
 
 
-    fun addList(list: List<Data>) {
-        this.mList.toMutableList().addAll(list)
+    fun addList(list: MutableList<Data>) {
+        this.mList.addAll(list)
         notifyDataSetChanged()
     }
 

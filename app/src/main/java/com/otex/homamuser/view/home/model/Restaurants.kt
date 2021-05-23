@@ -2,7 +2,7 @@ package com.otex.homamuser.view.home.model
 
 data class Restaurants(
     val current_page: Int,
-    val `data`: List<Data>,
+    val `data`: MutableList<Data>,
     val first_page_url: String,
     val from: Int,
     val last_page: Int,

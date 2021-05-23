@@ -101,7 +101,7 @@ class ResturantActivity : BaseActivity() ,OnItemClick{
         homeActivityViewModel?.getUrlPagination(this,map)
 
     }
-    private fun setupRecyclerRestaurantHome(restaurants: List<Data>) {
+    private fun setupRecyclerRestaurantHome(restaurants: MutableList<Data>) {
         val layoutManager = LinearLayoutManager(this)
         binding.recRestaurants.layoutManager = layoutManager
         binding.recRestaurants.setNestedScrollingEnabled(false);
