@@ -8,6 +8,7 @@ import com.otex.homamuser.R
 import com.otex.homamuser.databinding.ActivityLoginBinding
 import com.otex.homamuser.databinding.ActivitySplashBinding
 import com.otex.homamuser.utlitites.Constant
+import com.otex.homamuser.utlitites.HelpMe
 import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.utlitites.UserInfo
 import com.otex.homamuser.view.MainActivity
@@ -23,6 +24,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        PrefsUtil.with(this).add("device_id", HelpMe.getInstance(this)?.getDeviceId()).apply()
 
         Handler().postDelayed({
 

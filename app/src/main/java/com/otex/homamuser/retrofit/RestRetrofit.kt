@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import com.google.gson.GsonBuilder
 import com.otex.homamuser.utlitites.Constant
 import com.otex.homamuser.utlitites.DataEnum
+import com.otex.homamuser.utlitites.PrefsUtil
 import com.otex.homamuser.utlitites.PrefsUtil.with
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -74,8 +75,9 @@ class RestRetrofit private constructor() {
             if (token!!.isNotEmpty()) {
 
                 newRequest = request.newBuilder()
-                        .header(Authorization, "Bearer " + token)
-                        .header("Accept", "application/json")
+                     .header("device_id", with(mcontext!!).get("device_id","")!!)
+                    .header(Authorization, "Bearer " + token)
+                    .header("Accept", "application/json")
                         .method(request.method, request.body)
                         .build()
                 chain.proceed(newRequest)

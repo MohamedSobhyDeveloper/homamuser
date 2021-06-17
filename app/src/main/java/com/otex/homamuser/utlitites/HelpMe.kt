@@ -1,5 +1,6 @@
 package com.otex.homamuser.utlitites
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -7,6 +8,7 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.RectF
+import android.provider.Settings
 import android.util.Log
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -63,6 +65,16 @@ class HelpMe {
             false
         }
     }
+
+
+    @SuppressLint("HardwareIds")
+    fun getDeviceId(): String {
+
+        val deviceId= Settings.Secure.getString(context?.contentResolver, Settings.Secure.ANDROID_ID)
+
+        return deviceId
+    }
+
 
     fun initLang(lang: String?) {
 
